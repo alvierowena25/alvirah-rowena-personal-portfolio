@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alvirah Rowena | Video Presentations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #f4efe9;
+      --card-white: rgba(255, 255, 255, 0.78);
+      --border-taupe: #e4dcd3;
+      --brown-primary: #8b5a2b;
+      --brown-dark: #3b2618;
+      --brown-light: rgba(250, 246, 240, 0.85);
+      --text-main: #2c221e;
+      --text-muted: #75665e;
+      --accent-glow: rgba(139, 90, 43, 0.14);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .paper-grain {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .bg-video-container {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; opacity: 0.55;
+    }
+    .bg-video-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .main-wrapper {
+      position: relative; z-index: 10; width: 94%; max-width: 1350px; height: 92vh;
+      background: var(--card-white);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid var(--border-taupe);
+      border-radius: 32px; box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
+      display: flex; flex-direction: column; justify-content: space-between;
+      overflow: hidden; margin: auto;
+      opacity: 0;
+      transform: translateY(18px) scale(0.985);
+      animation:
+        wrapperReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        wrapperShadowBreath 6s ease-in-out 0.9s infinite;
+    }
+
+    @keyframes wrapperReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes wrapperShadowBreath {
+      0%, 100% {
+        box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
+        border-color: var(--border-taupe);
+      }
+      50% {
+        box-shadow: 0 30px 75px var(--accent-glow);
+        border-color: #d6c9ba;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .main-wrapper,
+      .chibi-companion {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    header.logo-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px; border-bottom: 1px solid var(--border-taupe);
+      background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(10px); flex-shrink: 0;
+      gap: 12px; z-index: 20;
+    }
+    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; }
+    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 4px; border-radius: 30px; border: 1.5px solid var(--border-taupe); flex-wrap: wrap; }
+    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--brown-dark); background: #ffffff; }
+    nav a.active { background: #3b2618; color: #ffffff; }
+
+    .page-content {
+      padding: 25px 40px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 25px;
+      scrollbar-width: thin; scrollbar-color: var(--border-taupe) transparent;
+    }
+    .page-title {
+      font-family: 'Instrument Serif', serif; font-size: 2.8rem; font-weight: 400; color: var(--brown-dark); line-height: 1;
+    }
+
+    .section-category {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .section-heading {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      color: var(--brown-dark);
+      border-bottom: 1px solid var(--border-taupe);
+      padding-bottom: 5px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+      width: 100%;
+    }
+
+    .video-card {
+      background: var(--brown-light);
+      border: 1.5px solid var(--border-taupe);
+      border-radius: 18px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(59, 38, 24, 0.03);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--brown-primary);
+      box-shadow: 0 10px 24px rgba(139, 90, 43, 0.1);
+    }
+
+    .video-box {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #1b120c;
+      border: 1px solid var(--border-taupe);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .vid-title {
+      font-size: 0.9rem; font-weight: 700; color: var(--brown-dark); font-family: 'Plus Jakarta Sans', sans-serif;
+      text-align: left; padding-left: 2px;
+    }
+
+    /* Pure White Chibi Companion */
+    .chibi-companion {
+      position: fixed;
+      right: 28px;
+      bottom: 64px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+      animation: chibiFloat 3.4s ease-in-out infinite;
+    }
+
+    @keyframes chibiFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .chibi-bubble {
+      background: #ffffff;
+      color: var(--brown-dark);
+      border: 1.5px solid var(--border-taupe);
+      box-shadow: 0 8px 20px rgba(59, 38, 24, 0.1);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .chibi-companion:hover .chibi-bubble {
+      transform: translateY(-2px);
+      border-color: var(--brown-primary);
+    }
+
+    .chibi-avatar-shell {
+      width: 68px;
+      height: 68px;
+      border-radius: 22px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-taupe);
+      box-shadow: 0 12px 26px rgba(59, 38, 24, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .chibi-companion:hover .chibi-avatar-shell {
+      transform: scale(1.07) rotate(-2deg);
+      border-color: var(--brown-primary);
+      box-shadow: 0 14px 30px var(--accent-glow);
+    }
+
+    .chibi-companion:active .chibi-avatar-shell {
+      transform: scale(0.95);
+    }
+
+    .chibi-svg {
+      width: 56px;
+      height: 56px;
+      overflow: visible;
+    }
+
+    .chibi-eye {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: chibiBlink 4.2s infinite;
+    }
+
+    @keyframes chibiBlink {
+      0%, 94%, 100% { transform: scaleY(1); }
+      97% { transform: scaleY(0.12); }
+    }
+
+    footer.footer-area {
+      padding: 16px 40px; border-top: 1px solid var(--border-taupe); background: rgba(255, 255, 255, 0.88);
+      display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
+    }
+    .footer-links { display: flex; gap: 12px; }
+    .footer-links a { color: var(--brown-dark); text-decoration: none; font-weight: 600; }
+    .footer-links a:hover { color: var(--brown-primary); }
+
+    /* Tablet Breakpoint (641px to 1024px) */
+    @media (max-width: 1024px) {
+      body {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        display: block;
+        padding: 14px;
+      }
+      .main-wrapper {
+        width: 100%;
+        height: auto;
+        min-height: calc(100vh - 28px);
+        border-radius: 26px;
+        overflow: visible;
+      }
+      header.logo-nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px 24px;
+      }
+      .page-content {
+        padding: 22px 24px 80px;
+        overflow: visible;
+      }
+      .video-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .chibi-companion {
+        right: 18px;
+        bottom: 18px;
+        transform: scale(0.9);
+        transform-origin: bottom right;
+      }
+    }
+
+    /* Phone Breakpoint (up to 640px) */
+    @media (max-width: 640px) {
+      body {
+        padding: 10px;
+      }
+      .main-wrapper {
+        border-radius: 20px;
+        min-height: calc(100vh - 20px);
+      }
+      header.logo-nav {
+        padding: 12px 14px;
+        gap: 8px;
+      }
+      .logo-text {
+        font-size: 0.82rem;
+        text-align: center;
+      }
+      nav {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        border-radius: 16px;
+        gap: 4px;
+        padding: 4px;
+      }
+      nav a {
+        font-size: 0.72rem;
+        padding: 5px 10px;
+        white-space: nowrap;
+      }
+      .page-content {
+        padding: 16px 14px 84px;
+        gap: 18px;
+      }
+      .page-title {
+        font-size: 2.1rem;
+      }
+      .section-heading {
+        font-size: 1.35rem;
+      }
+      .video-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .video-card {
+        padding: 10px;
+        border-radius: 16px;
+      }
+      .chibi-companion {
+        right: 10px;
+        bottom: 12px;
+        transform: scale(0.72);
+        transform-origin: bottom right;
+      }
+      .chibi-avatar-shell { width: 58px; height: 58px; border-radius: 18px; }
+      .chibi-svg { width: 48px; height: 48px; }
+      footer.footer-area {
+        padding: 14px;
+        flex-direction: column;
+        text-align: center;
+        font-size: 0.68rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="paper-grain"></div>
+  <div class="bg-video-container">
+    <img src="https://drive.google.com/thumbnail?id=1bNPZwzJBS1UO__WUuqtxpzjgOpq4CXgw&sz=w1920" alt="" aria-hidden="true">
+  </div>
+
+  <div class="main-wrapper">
+    <header class="logo-nav">
+      <div class="logo-text">MY WEBSITE PORTFOLIO</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="biodata.html">Biodata</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="video.html" class="active">Video</a>
+        <a href="comments.html">Comments</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <div>
+        <h1 class="page-title">Video Showcases.</h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
+          Selected animations, event recaps, community clips, and assignments.
+        </p>
+      </div>
+
+      <div class="section-category">
+        <h2 class="section-heading">Animations</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1uXV3NN-tjDx1V8w0_FLghNxFbbwW8wOx/preview" title="Humanoid" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Humanoid</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1-Ut1PCXT1mbzkvIgM8EVJgcn4pP_KSTo/preview" title="Ice cream shop" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Ice cream shop</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1jm1z09n2Yhm7W3pIXFTlcUuATK-WcN6P/preview" title="ADVERTISEMENT ZAVIRA" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">ADVERTISEMENT ZAVIRA</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-category">
+        <h2 class="section-heading">Program Video</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1kexLnKcNHnaaX3jnjOu5ob9WJMnG4DhN/preview" title="Bonding KESUWA-KAL" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Bonding KESUWA-KAL</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1i-Af36bsZMlY02zvp28HWCzLkabE8j3S/preview" title="Promoting KESUWA-KAL" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Promoting KESUWA-KAL</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-category">
+        <h2 class="section-heading">Church Video</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1GNMHpw15tXc6aXpSDFqpXjTgy7do0Gm_/preview" title="English Prayer Meeting" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">English Prayer Meeting</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1JcWcWdOmBwtK92wBYz8dyvwGPE4ldAK_/preview" title="Doa Kelompok" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Doa Kelompok</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1hmTI1JbELvQqNLfYUef9bevMCCY-9qSd/preview" title="Guitarist Practice Caroling" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Guitarist Practice Caroling</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-category">
+        <h2 class="section-heading">Assignment</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/129U3OOXVmB49bxC0ilpZ_JXxJARhEtPx/preview" title="CERITA RAKYAT HUMINODUN" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">CERITA RAKYAT HUMINODUN</h3>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer-area">
+      <span>&copy; 2026 Alvirah Rowena Wong Siew Li (BI24110060). All Rights Reserved.</span>
+      <div class="footer-links">
+        <a href="mailto:alvirah_rowena_bi24@iluv.ums.edu.my">Email</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Pure White Chibi Companion -->
+  <div class="chibi-companion" id="chibiCompanion" role="button" tabindex="0" aria-label="Pure White Chibi Companion">
+    <div class="chibi-bubble" id="chibiBubble">Hi! Tap me ✨</div>
+    <div class="chibi-avatar-shell">
+      <svg class="chibi-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="40" cy="73" rx="18" ry="4" fill="#3b2618" fill-opacity="0.12"/>
+        <path d="M26 54C26 47.5 32.2 44 40 44C47.8 44 54 47.5 54 54V65C54 67.2 52.2 69 50 69H30C27.8 69 26 67.2 26 65V54Z" fill="#ffffff" stroke="#3b2618" stroke-width="2.2"/>
+        <rect x="16" y="15" width="48" height="36" rx="18" fill="#ffffff" stroke="#3b2618" stroke-width="2.2"/>
+        <path d="M23 17L20 10L29 15" fill="#ffffff" stroke="#3b2618" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M57 17L60 10L51 15" fill="#ffffff" stroke="#3b2618" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="chibi-eye" cx="31" cy="33" r="3.4" fill="#3b2618"/>
+        <circle class="chibi-eye" cx="49" cy="33" r="3.4" fill="#3b2618"/>
+        <ellipse cx="24" cy="37" rx="3.2" ry="1.8" fill="#d49a6a" fill-opacity="0.45"/>
+        <ellipse cx="56" cy="37" rx="3.2" ry="1.8" fill="#d49a6a" fill-opacity="0.45"/>
+        <path d="M36.5 38.5C37.6 40.6 42.4 40.6 43.5 38.5" stroke="#3b2618" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const chibi = document.getElementById('chibiCompanion');
+      const chibiBubble = document.getElementById('chibiBubble');
+      const chibiLines = [
+        "Hi! Tap me ✨",
+        "Animations & recaps!",
+        "Press play on any clip",
+        "Motion & storytelling"
+      ];
+      let chibiIndex = 0;
+
+      function cycleChibiLine() {
+        chibiIndex = (chibiIndex + 1) % chibiLines.length;
+        chibiBubble.textContent = chibiLines[chibiIndex];
+      }
+
+      if (chibi && chibiBubble) {
+        chibi.addEventListener('click', cycleChibiLine);
+        chibi.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            cycleChibiLine();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

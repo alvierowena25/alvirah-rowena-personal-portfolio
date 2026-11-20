@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alvirah Rowena | Professional Multimedia Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #f4efe9;
+      --card-white: #ffffff;
+      --border-taupe: #e4dcd3;
+      --brown-primary: #8b5a2b;
+      --brown-dark: #3b2618;
+      --brown-light: #faf6f0;
+      --text-main: #2c221e;
+      --text-muted: #75665e;
+      --accent-glow: rgba(139, 90, 43, 0.16);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .paper-grain {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .bg-video-container {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; opacity: 0.45;
+    }
+    .bg-video-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Bingkai Putih Utama dengan Animasi Masuk & Ambient Shadow */
+    .main-wrapper {
+      position: relative; z-index: 10; width: 94%; max-width: 1350px; height: 92vh;
+      background: var(--card-white); border: 1.5px solid var(--border-taupe);
+      border-radius: 32px; box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
+      display: flex; flex-direction: column; justify-content: space-between;
+      overflow: hidden; margin: auto;
+      opacity: 0;
+      transform: translateY(18px) scale(0.985);
+      animation:
+        wrapperReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        wrapperShadowBreath 6s ease-in-out 0.9s infinite;
+    }
+
+    @keyframes wrapperReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes wrapperShadowBreath {
+      0%, 100% {
+        box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
+        border-color: var(--border-taupe);
+      }
+      50% {
+        box-shadow: 0 30px 75px rgba(139, 90, 43, 0.13);
+        border-color: #d6c9ba;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .main-wrapper,
+      .tools-column,
+      .tools-title::before,
+      .chibi-companion {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    header.logo-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px; border-bottom: 1px solid var(--border-taupe);
+      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); flex-shrink: 0;
+      z-index: 20;
+    }
+    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; }
+    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 4px; border-radius: 30px; border: 1.5px solid var(--border-taupe); }
+    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--brown-dark); background: #ffffff; }
+    nav a.active { background: #3b2618; color: #ffffff; }
+    
+    .page-content {
+      padding: 25px 40px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; justify-content: center;
+      scrollbar-width: thin; scrollbar-color: var(--border-taupe) transparent;
+    }
+    .hero-split { display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; align-items: center; }
+    .hero-left { display: flex; flex-direction: column; gap: 12px; }
+    .subtitle-badge {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--brown-primary);
+      text-transform: uppercase; letter-spacing: 2px; background: var(--brown-light); padding: 4px 10px;
+      border-radius: 20px; border: 1px solid var(--border-taupe); align-self: flex-start;
+    }
+    .hero-left h1 {
+      font-family: 'Instrument Serif', serif; font-size: 3.2rem; font-weight: 400; color: var(--brown-dark); line-height: 0.95; text-transform: lowercase;
+    }
+    .hero-left h1 span { display: block; color: var(--brown-primary); font-style: italic; }
+    .professional-bio { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    .pro-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 2px 0; }
+    .stat-card {
+      background: var(--brown-light); border: 1px solid var(--border-taupe); padding: 6px 8px; border-radius: 10px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .stat-card:hover { transform: translateY(-2px); border-color: var(--brown-primary); }
+    .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 800; color: var(--brown-dark); display: block; }
+    .stat-label { font-size: 0.65rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+    .hero-btns { display: flex; gap: 10px; margin-top: 2px; }
+    .btn-primary {
+      background: var(--brown-dark); color: #fff; text-decoration: none; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 700; padding: 8px 18px; border-radius: 30px; transition: all 0.25s ease;
+    }
+    .btn-primary:hover { background: var(--brown-primary); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--brown-dark); text-decoration: none; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 700; padding: 8px 18px; border-radius: 30px; border: 1.5px solid var(--border-taupe); transition: all 0.25s ease;
+    }
+    .btn-outline:hover { border-color: var(--brown-dark); background: var(--brown-light); }
+    .hero-right { display: flex; justify-content: center; align-items: center; }
+    .profile-card-tilt {
+      width: 100%; max-width: 260px; background: var(--brown-light); border: 1.5px solid var(--border-taupe);
+      border-radius: 22px; padding: 10px; box-shadow: 0 12px 30px rgba(59, 38, 24, 0.08); transform: rotate(2deg); transition: transform 0.3s ease;
+    }
+    .profile-card-tilt:hover { transform: rotate(0deg) scale(1.02); }
+    .profile-img-box { width: 100%; height: 270px; border-radius: 14px; overflow: hidden; background: #e8dcd0; }
+    .profile-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Bahagian Tools dengan Interaksi & Animasi */
+    .tools-section-shell {
+      background: var(--brown-light);
+      border-top: 1px solid var(--border-taupe);
+      flex-shrink: 0;
+      transition: background 0.3s ease;
+    }
+
+    .tools-container-wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      padding: 14px 40px 10px;
+    }
+
+    .tools-column {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: toolColEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .tools-column:nth-child(2) { animation-delay: 0.08s; }
+    .tools-column:nth-child(3) { animation-delay: 0.16s; }
+    .tools-column:nth-child(4) { animation-delay: 0.24s; }
+
+    @keyframes toolColEnter {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tools-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--brown-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tools-title::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brown-primary);
+      animation: pulseDot 2.2s infinite ease-in-out;
+    }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 0.75; }
+      50% { transform: scale(1.35); opacity: 1; }
+    }
+
+    .tools-items-flex {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tool-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      border: 1px solid var(--border-taupe);
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      cursor: pointer;
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  border-color 0.22s ease,
+                  box-shadow 0.22s ease,
+                  background-color 0.22s ease,
+                  color 0.22s ease;
+    }
+
+    .tool-chip:hover {
+      transform: translateY(-3px) scale(1.03);
+      border-color: var(--brown-primary);
+      box-shadow: 0 6px 14px var(--accent-glow);
+      background: #fffdfb;
+    }
+
+    .tool-chip:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    .tool-chip.selected {
+      background: var(--brown-dark);
+      color: #ffffff;
+      border-color: var(--brown-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(59, 38, 24, 0.2);
+    }
+
+    .tool-logo {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .tool-chip:hover .tool-logo,
+    .tool-chip.selected .tool-logo {
+      transform: rotate(-10deg) scale(1.15);
+    }
+
+    /* Bar Status Interaktif di bawah Tools */
+    .tool-inspector-bar {
+      padding: 6px 40px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+    .tool-inspector-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.25s ease;
+    }
+    .tool-badge-pill {
+      background: #ffffff;
+      border: 1px solid var(--border-taupe);
+      color: var(--brown-primary);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.63rem;
+    }
+    .tool-reset-btn {
+      background: transparent;
+      border: 1px solid var(--border-taupe);
+      color: var(--brown-dark);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tool-reset-btn:hover {
+      background: var(--brown-dark);
+      color: #ffffff;
+      border-color: var(--brown-dark);
+    }
+
+    /* Pure White Chibi Companion */
+    .chibi-companion {
+      position: fixed;
+      right: 28px;
+      bottom: 64px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+      animation: chibiFloat 3.4s ease-in-out infinite;
+    }
+
+    @keyframes chibiFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .chibi-bubble {
+      background: #ffffff;
+      color: var(--brown-dark);
+      border: 1.5px solid var(--border-taupe);
+      box-shadow: 0 8px 20px rgba(59, 38, 24, 0.1);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .chibi-companion:hover .chibi-bubble {
+      transform: translateY(-2px);
+      border-color: var(--brown-primary);
+    }
+
+    .chibi-avatar-shell {
+      width: 68px;
+      height: 68px;
+      border-radius: 22px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-taupe);
+      box-shadow: 0 12px 26px rgba(59, 38, 24, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .chibi-companion:hover .chibi-avatar-shell {
+      transform: scale(1.07) rotate(-2deg);
+      border-color: var(--brown-primary);
+      box-shadow: 0 14px 30px var(--accent-glow);
+    }
+
+    .chibi-companion:active .chibi-avatar-shell {
+      transform: scale(0.95);
+    }
+
+    .chibi-svg {
+      width: 56px;
+      height: 56px;
+      overflow: visible;
+    }
+
+    .chibi-eye {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: chibiBlink 4.2s infinite;
+    }
+
+    @keyframes chibiBlink {
+      0%, 94%, 100% { transform: scaleY(1); }
+      97% { transform: scaleY(0.12); }
+    }
+    
+    footer.footer-area {
+      padding: 12px 40px; border-top: 1px solid var(--border-taupe); background: #ffffff;
+      display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); flex-shrink: 0;
+    }
+    .footer-links { display: flex; gap: 12px; }
+    .footer-links a { color: var(--brown-dark); text-decoration: none; font-weight: 600; }
+    .footer-links a:hover { color: var(--brown-primary); }
+    
+    @media (max-width: 1050px) {
+      body { overflow: auto; height: auto; }
+      .main-wrapper { height: auto; }
+      .hero-split { grid-template-columns: 1fr; text-align: center; }
+      .subtitle-badge { align-self: center; }
+      .hero-btns { justify-content: center; }
+      .pro-stats-grid { text-align: left; }
+      .tools-container-wrapper { grid-template-columns: repeat(2, 1fr); padding: 14px 20px 8px; }
+      .tool-inspector-bar { padding: 6px 20px 12px; flex-direction: column; align-items: flex-start; }
+      .chibi-companion { right: 16px; bottom: 56px; }
+      .chibi-avatar-shell { width: 58px; height: 58px; border-radius: 18px; }
+      .chibi-svg { width: 48px; height: 48px; }
+      header.logo-nav { flex-direction: column; gap: 10px; padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="paper-grain"></div>
+  <div class="bg-video-container">
+    <img src="https://drive.google.com/thumbnail?id=1bNPZwzJBS1UO__WUuqtxpzjgOpq4CXgw&sz=w1920" alt="" aria-hidden="true">
+  </div>
+  <div class="main-wrapper">
+    <header class="logo-nav">
+      <div class="logo-text">MY WEBSITE PORTFOLIO</div>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="biodata.html">Biodata</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="video.html">Video</a>
+        <a href="comments.html">Comments</a>
+      </nav>
+    </header>
+    <main class="page-content">
+      <div class="hero-split">
+        <div class="hero-left">
+          <span class="subtitle-badge">UMSKAL • BI24110060</span>
+          <h1>hello, i'm<br><span>Alvirah Rowena</span></h1>
+          <p class="professional-bio">I'm a Technology Multimedia student at Universiti Malaysia Sabah, Labuan International Campus, currently in my 3rd year of studies. I am a highly potential photographer and graphic designer who enjoys combining creativity and technology to create engaging digital content. With experience in multimedia production, AI tools, and content creation, I am passionate about learning new skills and delivering meaningful digital experiences.</p>
+          <div class="pro-stats-grid">
+            <div class="stat-card"><span class="stat-num">2+ Years</span><span class="stat-label">Graphic Designer</span></div>
+            <div class="stat-card"><span class="stat-num">5+ Years</span><span class="stat-label">Photography</span></div>
+            <div class="stat-card"><span class="stat-num">10+ Projects</span><span class="stat-label">Pubmets &amp; Posters</span></div>
+          </div>
+          <div class="hero-btns">
+            <a href="portfolio.html" class="btn-primary">View Projects &rarr;</a>
+            <a href="comments.html" class="btn-outline">Contact Me</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="profile-card-tilt">
+            <div class="profile-img-box">
+              <img src="https://drive.google.com/thumbnail?id=1Ly952FjpA66JGSxGXEfLEeLapgKRRUUO&sz=w800" alt="Alvirah Rowena">
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bahagian Tools Beranimasi & Interaktif -->
+    <section class="tools-section-shell" aria-label="Toolkit & Workflow">
+      <div class="tools-container-wrapper">
+        <div class="tools-column">
+          <span class="tools-title">AI Tools</span>
+          <div class="tools-items-flex">
+            <button type="button" class="tool-chip" data-tool="ChatGPT" data-category="AI Tools" data-note="Brainstorming concepts, copywriting drafts &amp; workflow ideation.">
+              <img src="https://drive.google.com/thumbnail?id=1pOUjP8iA1i81VEzx2WHARd3E_ZULMFm-&sz=w128" alt="ChatGPT" class="tool-logo"><span>ChatGPT</span>
+            </button>
+            <button type="button" class="tool-chip" data-tool="Gemini" data-category="AI Tools" data-note="Creative structuring, visual planning &amp; fast research synthesis.">
+              <img src="https://drive.google.com/thumbnail?id=11LhL4F3guyKOmvNY-t4DIrcuDyGVn9wb&sz=w128" alt="Gemini" class="tool-logo"><span>Gemini</span>
+            </button>
+            <button type="button" class="tool-chip" data-tool="NotebookLM" data-category="AI Tools" data-note="Organizing study notes, project references &amp; source summaries.">
+              <img src="https://drive.google.com/thumbnail?id=1lkjeEvxeIulsHz3tR3w-yUKa65p8P7c7&sz=w128" alt="NotebookLM" class="tool-logo"><span>NotebookLM</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="tools-column">
+          <span class="tools-title">Microsoft</span>
+          <div class="tools-items-flex">
+            <button type="button" class="tool-chip" data-tool="Word" data-category="Microsoft" data-note="Formatted documentation, reports, proposals &amp; event paperwork.">
+              <img src="https://drive.google.com/thumbnail?id=1w2rg0mQUO0l3-Q9uhZHY7iidcZEAMVCO&sz=w128" alt="Word" class="tool-logo"><span>Word</span>
+            </button>
+            <button type="button" class="tool-chip" data-tool="Sheets" data-category="Microsoft" data-note="Collaborative tracking, schedules &amp; shared project lists.">
+              <img src="https://drive.google.com/thumbnail?id=1iax8l6bgapwFmnDGrDXd_MIABRbRdQ3N&sz=w128" alt="Sheets" class="tool-logo"><span>Sheets</span>
+            </button>
+            <button type="button" class="tool-chip" data-tool="Excel" data-category="Microsoft" data-note="Structured data tables, timelines &amp; budget/progress tracking.">
+              <img src="https://drive.google.com/thumbnail?id=1g3PpiYP19C3Qxuo5035UEDGF4VG_rIpz&sz=w128" alt="Excel" class="tool-logo"><span>Excel</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="tools-column">
+          <span class="tools-title">Coding</span>
+          <div class="tools-items-flex">
+            <button type="button" class="tool-chip" data-tool="Code::Blocks" data-category="Coding" data-note="C/C++ logic practice, algorithms &amp; foundational programming.">
+              <img src="https://drive.google.com/thumbnail?id=1vxFaL54oMEExBIGV36E6CneUSygjuWhu&sz=w128" alt="Code::Blocks" class="tool-logo"><span>Code::Blocks</span>
+            </button>
+            <button type="button" class="tool-chip" data-tool="VS Code" data-category="Coding" data-note="Building &amp; refining responsive HTML, CSS &amp; JavaScript pages.">
+              <img src="https://drive.google.com/thumbnail?id=1zS1hYzVdBHDp03sZsaEpgW7nugJhVWQ4&sz=w128" alt="VS Code" class="tool-logo"><span>VS Code</span>
+            </button>
+            <button type="button" class="tool-chip" data-tool="XAMPP" data-category="Coding" data-note="Local web server testing, Apache &amp; database development.">
+              <img src="https://drive.google.com/thumbnail?id=1YWInQnAdNQixkE7zjTJeiMvaEtdLdox3&sz=w128" alt="XAMPP" class="tool-logo"><span>XAMPP</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="tools-column">
+          <span class="tools-title">Design</span>
+          <div class="tools-items-flex">
+            <button type="button" class="tool-chip" data-tool="Blender" data-category="Design" data-note="3D modeling, texturing, rigging &amp; product/scene renders.">
+              <img src="https://drive.google.com/thumbnail?id=1krDv0O6Hp2PYi0OzRJ45r_6vyXICYdcA&sz=w128" alt="Blender" class="tool-logo"><span>Blender</span>
+            </button>
+            <button type="button" class="tool-chip" data-tool="Canva" data-category="Design" data-note="Social media posters, event publicity &amp; cover page slides.">
+              <img src="https://drive.google.com/thumbnail?id=1Xtt2rzCF5YE8y8ZcSmx-RGfqiU84-V9p&sz=w128" alt="Canva" class="tool-logo"><span>Canva</span>
+            </button>
+            <button type="button" class="tool-chip" data-tool="Photoshop" data-category="Design" data-note="Photo retouching, visual compositing &amp; crisp graphic artwork.">
+              <img src="https://drive.google.com/thumbnail?id=18UDPOIktfB2xpvHqGlirWEM17ADW9Xbe&sz=w128" alt="Photoshop" class="tool-logo"><span>Photoshop</span>
+            </button>
+            <button type="button" class="tool-chip" data-tool="CapCut" data-category="Design" data-note="Short-form video editing, pacing, captions &amp; visual transitions.">
+              <img src="https://drive.google.com/thumbnail?id=1iBZa-hySR8dYEFEZrz5KWQPtvRBqCXOU&sz=w128" alt="CapCut" class="tool-logo"><span>CapCut</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-inspector-bar">
+        <div class="tool-inspector-text" id="toolInspectorText">
+          <span class="tool-badge-pill">INTERACTIVE TOOLKIT</span>
+          <span>Hover or click any tool badge to preview how it powers my workflow.</span>
+        </div>
+        <button type="button" class="tool-reset-btn" id="resetToolBtn" style="display: none;">Reset Selection</button>
+      </div>
+    </section>
+
+    <footer class="footer-area">
+      <span>&copy; 2026 Alvirah Rowena Wong Siew Li (BI24110060). All Rights Reserved.</span>
+      <div class="footer-links">
+        <a href="mailto:alvirah_rowena_bi24@iluv.ums.edu.my">Email</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Pure White Chibi Companion -->
+  <div class="chibi-companion" id="chibiCompanion" role="button" tabindex="0" aria-label="Pure White Chibi Companion">
+    <div class="chibi-bubble" id="chibiBubble">Hi! Tap me ✨</div>
+    <div class="chibi-avatar-shell">
+      <svg class="chibi-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Soft Shadow -->
+        <ellipse cx="40" cy="73" rx="18" ry="4" fill="#3b2618" fill-opacity="0.12"/>
+        <!-- Pure White Body -->
+        <path d="M26 54C26 47.5 32.2 44 40 44C47.8 44 54 47.5 54 54V65C54 67.2 52.2 69 50 69H30C27.8 69 26 67.2 26 65V54Z" fill="#ffffff" stroke="#3b2618" stroke-width="2.2"/>
+        <!-- Pure White Chibi Head -->
+        <rect x="16" y="15" width="48" height="36" rx="18" fill="#ffffff" stroke="#3b2618" stroke-width="2.2"/>
+        <!-- Cute Ears / Mini Accents -->
+        <path d="M23 17L20 10L29 15" fill="#ffffff" stroke="#3b2618" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M57 17L60 10L51 15" fill="#ffffff" stroke="#3b2618" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Eyes -->
+        <circle class="chibi-eye" cx="31" cy="33" r="3.4" fill="#3b2618"/>
+        <circle class="chibi-eye" cx="49" cy="33" r="3.4" fill="#3b2618"/>
+        <!-- Warm Cheek Blush -->
+        <ellipse cx="24" cy="37" rx="3.2" ry="1.8" fill="#d49a6a" fill-opacity="0.45"/>
+        <ellipse cx="56" cy="37" rx="3.2" ry="1.8" fill="#d49a6a" fill-opacity="0.45"/>
+        <!-- Smile -->
+        <path d="M36.5 38.5C37.6 40.6 42.4 40.6 43.5 38.5" stroke="#3b2618" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const chips = document.querySelectorAll('.tool-chip');
+      const inspectorText = document.getElementById('toolInspectorText');
+      const resetBtn = document.getElementById('resetToolBtn');
+      const chibi = document.getElementById('chibiCompanion');
+      const chibiBubble = document.getElementById('chibiBubble');
+      let lockedChip = null;
+
+      const chibiLines = [
+        "Hi! Tap me ✨",
+        "Multimedia @ UMSKAL",
+        "3D, Posters & Video",
+        "Click a tool below!"
+      ];
+      let chibiIndex = 0;
+
+      function cycleChibiLine() {
+        chibiIndex = (chibiIndex + 1) % chibiLines.length;
+        chibiBubble.textContent = chibiLines[chibiIndex];
+      }
+
+      if (chibi && chibiBubble) {
+        chibi.addEventListener('click', cycleChibiLine);
+        chibi.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            cycleChibiLine();
+          }
+        });
+      }
+
+      const defaultMessage = `
+        <span class="tool-badge-pill">INTERACTIVE TOOLKIT</span>
+        <span>Hover or click any tool badge to preview how it powers my workflow.</span>
+      `;
+
+      function updateInspector(chip) {
+        const toolName = chip.dataset.tool;
+        const category = chip.dataset.category;
+        const note = chip.dataset.note;
+        inspectorText.innerHTML = `
+          <span class="tool-badge-pill">${category} • ${toolName}</span>
+          <span>${note}</span>
+        `;
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener('mouseenter', () => {
+          if (!lockedChip) updateInspector(chip);
+        });
+
+        chip.addEventListener('mouseleave', () => {
+          if (!lockedChip) {
+            inspectorText.innerHTML = defaultMessage;
+          }
+        });
+
+        chip.addEventListener('click', () => {
+          if (lockedChip === chip) {
+            chip.classList.remove('selected');
+            lockedChip = null;
+            resetBtn.style.display = 'none';
+            inspectorText.innerHTML = defaultMessage;
+            return;
+          }
+
+          chips.forEach((c) => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          lockedChip = chip;
+          resetBtn.style.display = 'inline-block';
+          updateInspector(chip);
+        });
+      });
+
+      resetBtn.addEventListener('click', () => {
+        if (lockedChip) {
+          lockedChip.classList.remove('selected');
+          lockedChip = null;
+        }
+        resetBtn.style.display = 'none';
+        inspectorText.innerHTML = defaultMessage;
+      });
+    });
+  </script>
+</body>
+</html>

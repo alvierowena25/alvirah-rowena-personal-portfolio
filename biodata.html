@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alvirah Rowena | Advanced Biodata &amp; CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #f4efe9;
+      --card-white: rgba(255, 255, 255, 0.78);
+      --border-taupe: #e4dcd3;
+      --brown-primary: #8b5a2b;
+      --brown-dark: #3b2618;
+      --brown-light: rgba(250, 246, 240, 0.85);
+      --text-main: #2c221e;
+      --text-muted: #75665e;
+      --accent-glow: rgba(139, 90, 43, 0.14);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .paper-grain {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .bg-video-container {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; opacity: 0.55;
+    }
+    .bg-video-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Animated White Container */
+    .main-wrapper {
+      position: relative; z-index: 10; width: 94%; max-width: 1350px; height: 92vh;
+      background: var(--card-white);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid var(--border-taupe);
+      border-radius: 32px; box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
+      display: flex; flex-direction: column; justify-content: space-between;
+      overflow: hidden; margin: auto;
+      opacity: 0;
+      transform: translateY(18px) scale(0.985);
+      animation:
+        wrapperReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        wrapperShadowBreath 6s ease-in-out 0.9s infinite;
+    }
+
+    @keyframes wrapperReveal {
+      0% { opacity: 0; transform: translateY(18px) scale(0.985); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes wrapperShadowBreath {
+      0%, 100% {
+        box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
+        border-color: var(--border-taupe);
+      }
+      50% {
+        box-shadow: 0 30px 75px var(--accent-glow);
+        border-color: #d6c9ba;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .main-wrapper,
+      .chibi-companion {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    header.logo-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px; border-bottom: 1px solid var(--border-taupe);
+      background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(10px); flex-shrink: 0;
+      z-index: 20; gap: 12px;
+    }
+    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; }
+    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 4px; border-radius: 30px; border: 1.5px solid var(--border-taupe); flex-wrap: wrap; }
+    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--brown-dark); background: #ffffff; }
+    nav a.active { background: #3b2618; color: #ffffff; }
+
+    .page-content {
+      padding: 25px 40px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; justify-content: flex-start; gap: 16px;
+      scrollbar-width: thin; scrollbar-color: var(--border-taupe) transparent;
+    }
+
+    .bio-header-row {
+      display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 6px; border-bottom: 2px solid var(--border-taupe); padding-bottom: 10px; flex-shrink: 0;
+    }
+    .page-title {
+      font-family: 'Instrument Serif', serif; font-size: 2.8rem; font-weight: 400; color: var(--brown-dark); line-height: 1;
+    }
+
+    .bio-layout-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .profile-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .profile-card-tilt {
+      width: 100%; background: var(--brown-light); border: 1.5px solid var(--border-taupe);
+      border-radius: 24px; padding: 10px; box-shadow: 0 12px 30px rgba(59, 38, 24, 0.08);
+      transform: rotate(-1deg); transition: transform 0.3s ease;
+    }
+    .profile-card-tilt:hover { transform: rotate(0deg) scale(1.02); }
+    .profile-img-box { width: 100%; height: 260px; border-radius: 16px; overflow: hidden; background: #e8dcd0; }
+    .profile-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .profile-quick-badge {
+      background: var(--brown-light); border: 1px solid var(--border-taupe);
+      border-radius: 16px; padding: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted);
+      text-align: center; line-height: 1.5;
+    }
+    .profile-quick-badge strong { color: var(--brown-dark); display: block; font-size: 0.8rem; margin-bottom: 2px; }
+
+    .bio-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--brown-light); border: 1.5px solid var(--border-taupe); padding: 6px 16px;
+      border-radius: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
+      color: var(--text-muted); cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tab-btn:hover { color: var(--brown-dark); background: #fff; border-color: var(--brown-primary); }
+    .tab-btn.active { background: var(--brown-dark); color: #fff; border-color: var(--brown-dark); box-shadow: 0 4px 12px rgba(59,38,24,0.15); }
+
+    .tab-pane { display: none; opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .tab-pane.active#tab-skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; opacity: 1; transform: translateY(0); }
+    .tab-pane.active#tab-timetable { display: grid; grid-template-columns: 1fr; gap: 16px; opacity: 1; transform: translateY(0); }
+    .tab-pane.active { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; opacity: 1; transform: translateY(0); }
+
+    .bio-card {
+      background: var(--brown-light); border: 1.5px solid var(--border-taupe); border-radius: 20px; padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .bio-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(139, 90, 43, 0.08);
+      border-color: var(--brown-primary);
+    }
+    .bio-card h3 {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; color: var(--brown-primary);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid var(--border-taupe); padding-bottom: 6px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+
+    .bio-unique-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .bio-unique-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-left: 2.5px solid var(--brown-primary);
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+      background: rgba(255,255,255,0.55);
+      padding: 8px 10px;
+      border-radius: 0 10px 10px 0;
+    }
+    .bio-unique-list li:hover { transform: translateX(3px); background: #ffffff; border-color: var(--brown-dark); }
+    .bio-unique-list li span.label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: var(--brown-primary);
+      font-weight: 700;
+    }
+    .bio-unique-list li span.value {
+      color: var(--brown-dark);
+      font-weight: 600;
+    }
+
+    .timetable-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 14px;
+      border: 1px solid var(--border-taupe);
+      background: rgba(255, 255, 255, 0.72);
+    }
+    table.timetable-grid {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 0.78rem;
+    }
+    table.timetable-grid th {
+      background: var(--brown-dark);
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.6px;
+      padding: 10px 12px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    table.timetable-grid td.time-col {
+      background: #c86d2d;
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 10px;
+      width: 115px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      white-space: nowrap;
+    }
+    table.timetable-grid td.slot-cell {
+      padding: 8px;
+      border: 1px solid var(--border-taupe);
+      vertical-align: middle;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.45);
+      transition: background 0.2s ease, opacity 0.25s ease;
+    }
+    table.timetable-grid td.slot-cell.dimmed {
+      opacity: 0.28;
+    }
+    .class-pill {
+      border-radius: 10px;
+      padding: 8px 9px;
+      line-height: 1.35;
+      color: var(--brown-dark);
+      border: 1px solid rgba(59, 38, 24, 0.14);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .class-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(59, 38, 24, 0.1);
+    }
+    .class-pill strong {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      margin-bottom: 2px;
+    }
+    .class-pill span {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+    .slot-grey { background: #e2e2e2; }
+    .slot-cream { background: #f8f5dc; }
+    .slot-tan { background: #e3c48d; }
+    .slot-gold { background: #f8dd56; }
+
+    .skill-filter-btns {
+      display: flex; gap: 4px; margin-bottom: 0; flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: #ffffff; border: 1px solid var(--border-taupe); padding: 2px 8px; border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700; color: var(--text-muted); cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--brown-primary); color: #fff; border-color: var(--brown-primary); }
+
+    .skill-container { display: flex; flex-direction: column; gap: 12px; }
+    .skill-item {
+      margin-bottom: 4px; padding: 8px 10px; background: rgba(255,255,255,0.7); border-radius: 12px; border: 1px solid transparent;
+      transition: all 0.3s ease; cursor: pointer;
+    }
+    .skill-item:hover {
+      background: #ffffff; border-color: var(--brown-primary); transform: scale(1.02); box-shadow: 0 4px 12px rgba(139,90,43,0.1);
+    }
+    .skill-info { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; font-weight: 700; color: var(--brown-dark); margin-bottom: 4px; }
+    .skill-badge {
+      font-size: 0.6rem; padding: 1px 6px; border-radius: 6px; background: var(--brown-primary); color: #fff; text-transform: uppercase;
+    }
+    .skill-bar-bg { width: 100%; height: 6px; background: #e8dcd0; border-radius: 10px; overflow: hidden; }
+    .skill-bar-fill { height: 100%; background: var(--brown-primary); border-radius: 10px; width: 0; transition: width 1s cubic-bezier(0.1, 0.9, 0.2, 1); }
+
+    /* Pure White Chibi Companion */
+    .chibi-companion {
+      position: fixed;
+      right: 28px;
+      bottom: 64px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+      animation: chibiFloat 3.4s ease-in-out infinite;
+    }
+
+    @keyframes chibiFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .chibi-bubble {
+      background: #ffffff;
+      color: var(--brown-dark);
+      border: 1.5px solid var(--border-taupe);
+      box-shadow: 0 8px 20px rgba(59, 38, 24, 0.1);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .chibi-companion:hover .chibi-bubble {
+      transform: translateY(-2px);
+      border-color: var(--brown-primary);
+    }
+
+    .chibi-avatar-shell {
+      width: 68px;
+      height: 68px;
+      border-radius: 22px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-taupe);
+      box-shadow: 0 12px 26px rgba(59, 38, 24, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .chibi-companion:hover .chibi-avatar-shell {
+      transform: scale(1.07) rotate(-2deg);
+      border-color: var(--brown-primary);
+      box-shadow: 0 14px 30px var(--accent-glow);
+    }
+
+    .chibi-companion:active .chibi-avatar-shell {
+      transform: scale(0.95);
+    }
+
+    .chibi-svg {
+      width: 56px;
+      height: 56px;
+      overflow: visible;
+    }
+
+    .chibi-eye {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: chibiBlink 4.2s infinite;
+    }
+
+    @keyframes chibiBlink {
+      0%, 94%, 100% { transform: scaleY(1); }
+      97% { transform: scaleY(0.12); }
+    }
+
+    footer.footer-area {
+      padding: 14px 40px; border-top: 1px solid var(--border-taupe); background: rgba(255, 255, 255, 0.88);
+      display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
+    }
+    .footer-links { display: flex; gap: 12px; }
+    .footer-links a { color: var(--brown-dark); text-decoration: none; font-weight: 600; }
+    .footer-links a:hover { color: var(--brown-primary); }
+
+    /* Tablet Breakpoint (641px to 1024px) */
+    @media (max-width: 1024px) {
+      body {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        display: block;
+        padding: 14px;
+      }
+      .main-wrapper {
+        width: 100%;
+        height: auto;
+        min-height: calc(100vh - 28px);
+        border-radius: 26px;
+        overflow: visible;
+      }
+      header.logo-nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px 24px;
+      }
+      .page-content {
+        padding: 20px 24px;
+        overflow: visible;
+      }
+      .bio-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .profile-sidebar {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        align-items: center;
+        gap: 18px;
+      }
+      .profile-card-tilt {
+        max-width: 200px;
+        margin: 0;
+      }
+      .profile-img-box {
+        height: 200px;
+      }
+      .profile-quick-badge {
+        text-align: left;
+        padding: 16px;
+      }
+      .tab-pane.active#tab-skills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .tab-pane.active {
+        grid-template-columns: 1fr;
+      }
+      .bio-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .chibi-companion {
+        right: 18px;
+        bottom: 18px;
+        transform: scale(0.9);
+        transform-origin: bottom right;
+      }
+    }
+
+    /* Phone Breakpoint (up to 640px) */
+    @media (max-width: 640px) {
+      body {
+        padding: 10px;
+      }
+      .main-wrapper {
+        border-radius: 20px;
+        min-height: calc(100vh - 20px);
+      }
+      header.logo-nav {
+        padding: 14px;
+        gap: 10px;
+      }
+      .logo-text {
+        font-size: 0.82rem;
+        text-align: center;
+      }
+      nav {
+        width: 100%;
+        justify-content: center;
+        border-radius: 16px;
+        gap: 4px;
+        padding: 5px;
+      }
+      nav a {
+        font-size: 0.74rem;
+        padding: 6px 11px;
+      }
+      .page-content {
+        padding: 16px 14px 80px;
+        gap: 14px;
+      }
+      .page-title {
+        font-size: 2.1rem;
+      }
+      .bio-tabs {
+        gap: 6px;
+      }
+      .tab-btn {
+        font-size: 0.68rem;
+        padding: 5px 12px;
+      }
+      .profile-sidebar {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .profile-card-tilt {
+        max-width: 210px;
+        margin: 0 auto;
+      }
+      .profile-img-box {
+        height: 210px;
+      }
+      .profile-quick-badge {
+        text-align: center;
+        padding: 12px;
+      }
+      .tab-pane.active,
+      .tab-pane.active#tab-skills,
+      .tab-pane.active#tab-timetable {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .bio-card {
+        padding: 15px;
+        border-radius: 16px;
+      }
+      .chibi-companion {
+        right: 12px;
+        bottom: 12px;
+        transform: scale(0.78);
+        transform-origin: bottom right;
+      }
+      .chibi-avatar-shell { width: 58px; height: 58px; border-radius: 18px; }
+      .chibi-svg { width: 48px; height: 48px; }
+      footer.footer-area {
+        padding: 14px;
+        flex-direction: column;
+        text-align: center;
+        font-size: 0.68rem;
+      }
+    }
+  </style>
+  <script>
+    function switchTab(evt, tabId) {
+      const panes = document.querySelectorAll('.tab-pane');
+      panes.forEach(p => p.classList.remove('active'));
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+
+      const target = document.getElementById(tabId);
+      target.classList.add('active');
+      evt.currentTarget.classList.add('active');
+
+      if (tabId === 'tab-skills') {
+        setTimeout(() => {
+          document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            bar.style.width = bar.getAttribute('data-width');
+          });
+        }, 100);
+      }
+    }
+
+    function filterCardSkills(containerId, level, btnElement) {
+      const parentCard = document.getElementById(containerId);
+      parentCard.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      const items = parentCard.querySelectorAll('.skill-item');
+      items.forEach(item => {
+        const itemLevel = item.getAttribute('data-level');
+        if (level === 'all' || itemLevel === level) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function filterLeadershipByYear(containerId, year, btnElement) {
+      const parentCard = document.getElementById(containerId);
+      parentCard.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      const listItems = parentCard.querySelectorAll('.bio-unique-list li');
+      listItems.forEach(li => {
+        const itemYear = li.getAttribute('data-year');
+        if (year === 'all' || itemYear === year) {
+          li.style.display = 'flex';
+        } else {
+          li.style.display = 'none';
+        }
+      });
+    }
+
+    function filterTimetableDay(day, btnElement) {
+      const card = document.getElementById('card-class-timetable');
+      card.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      const cells = card.querySelectorAll('td.slot-cell');
+      cells.forEach(cell => {
+        const cellDay = cell.getAttribute('data-day');
+        if (day === 'all' || cellDay === day) {
+          cell.classList.remove('dimmed');
+        } else {
+          cell.classList.add('dimmed');
+        }
+      });
+    }
+
+    window.onload = function() {
+      setTimeout(() => {
+        document.querySelectorAll('.tab-pane.active .skill-bar-fill').forEach(bar => {
+          bar.style.width = bar.getAttribute('data-width');
+        });
+      }, 200);
+
+      const chibi = document.getElementById('chibiCompanion');
+      const chibiBubble = document.getElementById('chibiBubble');
+      const chibiLines = [
+        "Hi! Tap me ✨",
+        "Check my CV & skills!",
+        "Timetable tab is ready!",
+        "UMSKAL Multimedia"
+      ];
+      let chibiIndex = 0;
+
+      function cycleChibiLine() {
+        chibiIndex = (chibiIndex + 1) % chibiLines.length;
+        chibiBubble.textContent = chibiLines[chibiIndex];
+      }
+
+      if (chibi && chibiBubble) {
+        chibi.addEventListener('click', cycleChibiLine);
+        chibi.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            cycleChibiLine();
+          }
+        });
+      }
+    };
+  </script>
+</head>
+<body>
+<div class="paper-grain"></div>
+<div class="bg-video-container">
+  <img src="https://drive.google.com/thumbnail?id=1bNPZwzJBS1UO__WUuqtxpzjgOpq4CXgw&sz=w1920" alt="" aria-hidden="true">
+</div>
+  <div class="main-wrapper">
+    <header class="logo-nav">
+      <div class="logo-text">MY WEBSITE PORTFOLIO</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="biodata.html" class="active">Biodata</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="video.html">Video</a>
+        <a href="comments.html">Comments</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <div>
+        <h1 class="page-title">Who Am I?</h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
+          Multimedia Technology student, designer, content creator, and aspiring digital innovator.
+        </p>
+      </div>
+
+      <div class="bio-header-row">
+        <div class="bio-tabs">
+          <button class="tab-btn active" onclick="switchTab(event, 'tab-academic')">Academic &amp; Bio</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-skills')">Technical Skills</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-leadership')">Leadership &amp; Track</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-timetable')">Class Timetable</button>
+        </div>
+      </div>
+
+      <div class="bio-layout-grid">
+        <div class="profile-sidebar">
+          <div class="profile-card-tilt">
+            <div class="profile-img-box">
+              <img
+                src="https://drive.google.com/thumbnail?id=1Ly952FjpA66JGSxGXEfLEeLapgKRRUUO&sz=w800"
+                alt="Alvirah Rowena"
+                onerror="this.onerror=null; this.src='media/profile.jpg.jpeg';"
+              >
+            </div>
+          </div>
+          <div class="profile-quick-badge">
+            <strong>Alvirah Rowena Wong Siew Li</strong>
+            BI24110060 • UMSKAL <br>
+            UH6481003 Multimedia Technology (HC12)
+          </div>
+        </div>
+
+        <div>
+          <div id="tab-academic" class="tab-pane active">
+            <div class="bio-card">
+              <h3>Academic Details <span>✦</span></h3>
+              <ul class="bio-unique-list">
+                <li>
+                  <span class="label">Full Name</span>
+                  <span class="value">Alvirah Rowena Wong Siew Li</span>
+                </li>
+                <li>
+                  <span class="label">Degree Programme</span>
+                  <span class="value">Bachelor of Information Technology with Honours (Multimedia Technology)</span>
+                </li>
+                <li>
+                  <span class="label">Standing &amp; CGPA</span>
+                  <span class="value">Undergraduate | Year 3</span>
+                </li>
+                <li>
+                  <span class="label">Institution</span>
+                  <span class="value">Universiti Malaysia Sabah Kampus Antarabangsa Labuan (UMSKAL)</span>
+                </li>
+                <li>
+                  <span class="label">Achievements</span>
+                  <span class="value">Innovatiot 2026, Smart Tech Innovation Exhibition</span><span>3rd Place</span>
+                  <span class="value">Academic Project Management, English for Occupational Purposes</span><span>1st Place</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bio-card">
+              <h3>Personal Background <span>✦</span></h3>
+              <ul class="bio-unique-list">
+                <li>
+                  <span class="label">Base Location</span>
+                  <span class="value">Kota Kinabalu &amp; Labuan, Sabah</span>
+                </li>
+                <li>
+                  <span class="label">Email</span>
+                  <span class="value">alvierowena25@gmail.com</span>
+                </li>
+                <li>
+                  <span class="label">Phone Number</span>
+                  <span class="value">011-69304352</span>
+                </li>
+                <li>
+                  <span class="label">Social Networks</span>
+                  <span class="value">IG: @alvieepii | TikTok: @alvieyy</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="tab-skills" class="tab-pane">
+            <div class="bio-card" id="card-software">
+              <h3>
+                <span>Software</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterCardSkills('card-software', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-software', 'expert', this)">Expert</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-software', 'intermediate', this)">intermediate</button>
+                </div>
+              </h3>
+
+              <div class="skill-container">
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>Blender &amp; Canva</span>
+                    <span class="skill-badge">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="intermediate">
+                  <div class="skill-info">
+                    <span>MS Word &amp; Excel</span>
+                    <span class="skill-badge" style="background: var(--text-muted);">Level 3</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="intermediate">
+                  <div class="skill-info">
+                    <span>Photoshop &amp; CapCut</span>
+                    <span class="skill-badge" style="background: var(--text-muted);">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bio-card" id="card-competencies">
+              <h3>
+                <span>Languages</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterCardSkills('card-competencies', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-competencies', 'expert', this)">Expert</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-competencies', 'intermediate', this)">intermediate</button>
+                </div>
+              </h3>
+
+              <div class="skill-container">
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>Bahasa Melayu</span>
+                    <span class="skill-badge">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="intermediate">
+                  <div class="skill-info">
+                    <span>English</span>
+                    <span class="skill-badge" style="background: var(--text-muted);">intermediate</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>Mandarin</span>
+                    <span class="skill-badge">intermediate</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bio-card" id="card-multimedia">
+              <h3>
+                <span>Multimedia &amp; AI</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterCardSkills('card-multimedia', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-multimedia', 'expert', this)">Expert</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-multimedia', 'intermediate', this)">intermediate</button>
+                </div>
+              </h3>
+
+              <div class="skill-container">
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>AI</span>
+                    <span class="skill-badge">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="intermediate">
+                  <div class="skill-info">
+                    <span>Video &amp; Motion Editing</span>
+                    <span class="skill-badge" style="background: var(--text-muted);">intermediate</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>Leadership &amp; Problem Solving</span>
+                    <span class="skill-badge">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="tab-leadership" class="tab-pane">
+            <div class="bio-card" id="card-lead-responsibilities">
+              <h3>
+                <span>Leadership &amp; Responsibilities</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterLeadershipByYear('card-lead-responsibilities', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterLeadershipByYear('card-lead-responsibilities', '2025', this)">2025/2026</button>
+                  <button class="filter-btn" onclick="filterLeadershipByYear('card-lead-responsibilities', '2024', this)">2024/2025</button>
+                </div>
+              </h3>
+              <ul class="bio-unique-list">
+                <li data-year="2025">
+                  <span class="label">Unit Komunikasi Korporat &amp; Kreatif Leader (2025/2026)</span>
+                  <span class="value">Kelab Sukarelawan Siswa UMSKAL (KESUWA-KAL)</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">PEMBIMBING SUAI MESRA KE-31 (PSM)</span>
+                  <span class="value">Unit Pendaftaran dan Informatik</span>
+                </li>
+                <li data-year="2024">
+                  <span class="label">Academic Coordination (2024/2025)</span>
+                  <span class="value">Interim Course Leader</span>
+                </li>
+                <li data-year="2024">
+                  <span class="label">Faculty Secretariat (2024/2025)</span>
+                  <span class="value">Exco Media &amp; Publicity for PMFKI</span>
+                </li>
+                <li data-year="2019">
+                  <span class="label">Pre-University Era, Majlis Pemimpin Pelajar (2019-2021)</span>
+                  <span class="value">Biro Photographer, Multimedia &amp; Publicity (STPM)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bio-card" id="card-event-advisor">
+              <h3>
+                <span>Event Management &amp; Advisor</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterLeadershipByYear('card-event-advisor', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterLeadershipByYear('card-event-advisor', '2025', this)">2025</button>
+                  <button class="filter-btn" onclick="filterLeadershipByYear('card-event-advisor', '2026', this)">2026</button>
+                </div>
+              </h3>
+              <ul class="bio-unique-list">
+                <li data-year="2025">
+                  <span class="label">Program Advisor (2024/2025)</span>
+                  <span class="value">UMS-PRINT and Cat Show</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">AJK PROTOKOL &amp; AJK MEDIA DAN PUBLISITI (2025)</span>
+                  <span class="value">FKI Open Day 2025 (Media, Publicity &amp; Protocol Unit)</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">Representing Kelab Rakan Muda (2025)</span>
+                  <span class="value">Program Training Skuad Kita Pengguna (TOS)</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">Unit 3K &amp; Informal MC (2025)</span>
+                  <span class="value">Program Perdana: Perangi Denggi, Anak Muda!</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">AJK TEKNIKAL &amp; AJK LOGISTIK (2025)</span>
+                  <span class="value">Program RHB Finance XP</span>
+                </li>
+                <li data-year="2026">
+                  <span class="label">Leader Unit 3K, Informal MC &amp; Supervise Media &amp; Publisiti (2026)</span>
+                  <span class="value">Program EduSahabat</span>
+                </li>
+                <li data-year="2026">
+                  <span class="label">Leader Unit 3K &amp; Informal MC (2026)</span>
+                  <span class="value">Program Inside Out</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="tab-timetable" class="tab-pane">
+            <div class="bio-card" id="card-class-timetable">
+              <h3>
+                <span>Class Timetable Schedule <span>✦</span></span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterTimetableDay('all', this)">All Days</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('mon', this)">Mon</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('tues', this)">Tues</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('wed', this)">Wed</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('thurs', this)">Thurs</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('fri', this)">Fri</button>
+                </div>
+              </h3>
+
+              <div class="timetable-wrap">
+                <table class="timetable-grid">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>MON</th>
+                      <th>TUES</th>
+                      <th>WED</th>
+                      <th>THURS</th>
+                      <th>FRI</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="time-col">08:00 - 09:00<br>09:00 - 10:00</td>
+                      <td class="slot-cell" data-day="mon">
+                        <div class="class-pill slot-grey">
+                          <strong>IM22503</strong>
+                          <span>MULTIMEDIA WEB PROGRAMMING</span>
+                          <span>DR. NUR FARAH</span>
+                          <span>P1G | SEC01</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="tues">
+                        <div class="class-pill slot-cream">
+                          <strong>AUGMENTED REALITY</strong>
+                          <span>(LAB, BESIDE TOILET)</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="wed">
+                        <div class="class-pill slot-tan">
+                          <strong>IM32303</strong>
+                          <span>COMPUTER GRAPHIC</span>
+                          <span>DR. WAN</span>
+                          <span>PODIUM C | SEC01</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="thurs">
+                        <div class="class-pill slot-cream">
+                          <strong>IP01903</strong>
+                          <span>TENAGA KERJA REALITY</span>
+                          <span>DR. TAMBRIN</span>
+                          <span>BT1 | SEC01</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="fri"></td>
+                    </tr>
+                    <tr>
+                      <td class="time-col">11:00 - 12:30</td>
+                      <td class="slot-cell" data-day="mon"></td>
+                      <td class="slot-cell" data-day="tues"></td>
+                      <td class="slot-cell" data-day="wed"></td>
+                      <td class="slot-cell" data-day="thurs">
+                        <div class="class-pill slot-tan">
+                          <strong>- LAB CLASS -</strong>
+                          <span>Computer Graphic</span>
+                          <span>(LAB GAMES)</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="fri"></td>
+                    </tr>
+                    <tr>
+                      <td class="time-col">02:00 - 03:00<br>03:00 - 04:00</td>
+                      <td class="slot-cell" data-day="mon">
+                        <div class="class-pill slot-grey">
+                          <strong>- LAB CLASS -</strong>
+                          <span>MULTIMEDIA WEB PROGRAMMING</span>
+                          <span>(E-COM)</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="tues"></td>
+                      <td class="slot-cell" data-day="wed"></td>
+                      <td class="slot-cell" data-day="thurs">
+                        <div class="class-pill slot-cream">
+                          <strong>IT32603</strong>
+                          <span>AUGMENTED REALITY</span>
+                          <span>DR. RYAN MACDONELL</span>
+                          <span>DKP3 | SEC01</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="fri">
+                        <div class="class-pill slot-gold">
+                          <strong>IT32503</strong>
+                          <span>CYBERSECURITY</span>
+                          <span>DR. AINNUR HAFIZAH</span>
+                          <span>DKP2 | SEC01</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="time-col">04:00 - 05:00</td>
+                      <td class="slot-cell" data-day="mon"></td>
+                      <td class="slot-cell" data-day="tues"></td>
+                      <td class="slot-cell" data-day="wed"></td>
+                      <td class="slot-cell" data-day="thurs"></td>
+                      <td class="slot-cell" data-day="fri">
+                        <div class="class-pill slot-gold">
+                          <strong>- LAB CLASS -</strong>
+                          <span>CYBERSECURITY</span>
+                          <span>(DKP 2)</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="bio-card">
+              <h3>Weekly Course &amp; Lab Summary <span>✦</span></h3>
+              <ul class="bio-unique-list">
+                <li>
+                  <span class="label">IM22503 — Multimedia Web Programming</span>
+                  <span class="value">Mon 08:00–10:00 (Dr. Nur Farah, P1G | SEC01) + Lab Mon 02:00–04:00 (E-COM)</span>
+                </li>
+                <li>
+                  <span class="label">IM32303 — Computer Graphic</span>
+                  <span class="value">Wed 08:00–10:00 (Dr. Wan, Podium C | SEC01) + Lab Thurs 11:00–12:30 (Lab Games)</span>
+                </li>
+                <li>
+                  <span class="label">Augmented Reality &amp; IT32603</span>
+                  <span class="value">Tues 08:00–10:00 (Lab, Beside Toilet) • Thurs 02:00–04:00 (Dr. Ryan Macdonell, DKP3 | SEC01)</span>
+                </li>
+                <li>
+                  <span class="label">IP01903 — Tenaga Kerja Reality</span>
+                  <span class="value">Thurs 08:00–10:00 (Dr. Tambrin, BT1 | SEC01)</span>
+                </li>
+                <li>
+                  <span class="label">IT32503 — Cybersecurity</span>
+                  <span class="value">Fri 02:00–04:00 (Dr. Ainnur Hafizah, DKP2 | SEC01) + Lab Fri 04:00–05:00 (DKP 2)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer-area">
+      <span>&copy; 2026 Alvirah Rowena Wong Siew Li (BI24110060). All Rights Reserved.</span>
+      <div class="footer-links">
+        <a href="mailto:alvierowena25@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/alvirah-rowena-81855a288/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Pure White Chibi Companion -->
+  <div class="chibi-companion" id="chibiCompanion" role="button" tabindex="0" aria-label="Pure White Chibi Companion">
+    <div class="chibi-bubble" id="chibiBubble">Hi! Tap me ✨</div>
+    <div class="chibi-avatar-shell">
+      <svg class="chibi-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="40" cy="73" rx="18" ry="4" fill="#3b2618" fill-opacity="0.12"/>
+        <path d="M26 54C26 47.5 32.2 44 40 44C47.8 44 54 47.5 54 54V65C54 67.2 52.2 69 50 69H30C27.8 69 26 67.2 26 65V54Z" fill="#ffffff" stroke="#3b2618" stroke-width="2.2"/>
+        <rect x="16" y="15" width="48" height="36" rx="18" fill="#ffffff" stroke="#3b2618" stroke-width="2.2"/>
+        <path d="M23 17L20 10L29 15" fill="#ffffff" stroke="#3b2618" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M57 17L60 10L51 15" fill="#ffffff" stroke="#3b2618" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="chibi-eye" cx="31" cy="33" r="3.4" fill="#3b2618"/>
+        <circle class="chibi-eye" cx="49" cy="33" r="3.4" fill="#3b2618"/>
+        <ellipse cx="24" cy="37" rx="3.2" ry="1.8" fill="#d49a6a" fill-opacity="0.45"/>
+        <ellipse cx="56" cy="37" rx="3.2" ry="1.8" fill="#d49a6a" fill-opacity="0.45"/>
+        <path d="M36.5 38.5C37.6 40.6 42.4 40.6 43.5 38.5" stroke="#3b2618" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
