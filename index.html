@@ -131,7 +131,7 @@
     .stat-card:hover { transform: translateY(-2px); border-color: var(--brown-primary); }
     .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 800; color: var(--brown-dark); display: block; }
     .stat-label { font-size: 0.65rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
-    .hero-btns { display: flex; gap: 10px; margin-top: 2px; }
+    .hero-btns { display: flex; gap: 10px; margin-top: 2px; flex-wrap: wrap; }
     .btn-primary {
       background: var(--brown-dark); color: #fff; text-decoration: none; font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem; font-weight: 700; padding: 8px 18px; border-radius: 30px; transition: all 0.25s ease;
@@ -141,7 +141,7 @@
       background: transparent; color: var(--brown-dark); text-decoration: none; font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem; font-weight: 700; padding: 8px 18px; border-radius: 30px; border: 1.5px solid var(--border-taupe); transition: all 0.25s ease;
     }
-    .btn-outline:hover { border-color: var(--brown-dark); background: var(--brown-light); }
+    .btn-outline:hover { border-color: var(--brown-dark); background: var(--brown-light); transform: translateY(-2px); }
 
     /* Refined Editorial Portrait Frame */
     .hero-right { display: flex; justify-content: center; align-items: center; }
@@ -496,7 +496,8 @@
           </div>
           <div class="hero-btns">
             <a href="portfolio.html" class="btn-primary">View Projects &rarr;</a>
-            <a href="comments.html" class="btn-outline">Contact Me</a>
+            <a href="biodata.html" class="btn-outline">Know Me More</a>
+            <a href="video.html" class="btn-outline">Watch Reel</a>
           </div>
         </div>
         <div class="hero-right">
@@ -505,7 +506,7 @@
               <img src="https://drive.google.com/thumbnail?id=1Ly952FjpA66JGSxGXEfLEeLapgKRRUUO&sz=w800" alt="Alvirah Rowena">
             </div>
             <div class="profile-caption-strip">
-              <span><strong>Multimedia Tech</strong> &bull; UMS</span>
+              <span><strong>Multimedia</strong> &bull; Visuals</span>
               <span style="display:inline-flex;align-items:center;gap:5px;">
                 <span class="profile-status-dot"></span>Year 3
               </span>
