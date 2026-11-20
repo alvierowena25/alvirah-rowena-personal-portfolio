@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alvirah Rowena | Portfolio</title>
+  <title>Alvirah Rowena | Advanced Biodata &amp; CV</title>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -41,22 +41,18 @@
     .bg-video-container {
       position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; opacity: 0.55;
     }
-    .bg-video-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .bg-video-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+    /* Animated White Container */
     .main-wrapper {
-      position: relative; z-index: 10; width: 94%; max-width: 1400px; height: 92vh;
+      position: relative; z-index: 10; width: 94%; max-width: 1350px; height: 92vh;
       background: var(--card-white);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: 1.5px solid var(--border-taupe);
-      border-radius: 36px; box-shadow: 0 20px 50px rgba(44, 34, 30, 0.06);
+      border-radius: 32px; box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
       display: flex; flex-direction: column; justify-content: space-between;
-      overflow: hidden; isolation: isolate; margin: auto;
+      overflow: hidden; margin: auto;
       opacity: 0;
       transform: translateY(18px) scale(0.985);
       animation:
@@ -71,7 +67,7 @@
 
     @keyframes wrapperShadowBreath {
       0%, 100% {
-        box-shadow: 0 20px 50px rgba(44, 34, 30, 0.06);
+        box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
         border-color: var(--border-taupe);
       }
       50% {
@@ -91,58 +87,75 @@
 
     header.logo-nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 45px; border-bottom: 1px solid var(--border-taupe);
-      background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); flex-shrink: 0;
-      gap: 12px; z-index: 20;
-      border-top-left-radius: 34px;
-      border-top-right-radius: 34px;
+      padding: 18px 40px; border-bottom: 1px solid var(--border-taupe);
+      background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(10px); flex-shrink: 0;
+      z-index: 20; gap: 12px;
     }
-    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1.5px; }
-    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 5px; border-radius: 30px; border: 1.5px solid var(--border-taupe); flex-wrap: wrap; }
-    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 7px 18px; border-radius: 20px; transition: all 0.25s ease; }
+    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; }
+    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 4px; border-radius: 30px; border: 1.5px solid var(--border-taupe); flex-wrap: wrap; }
+    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: all 0.25s ease; }
     nav a:hover { color: var(--brown-dark); background: #ffffff; }
-    nav a.active { background: var(--brown-dark); color: #ffffff; box-shadow: 0 4px 12px rgba(44,29,17,0.15); }
+    nav a.active { background: #3b2618; color: #ffffff; }
 
     .page-content {
-      padding: 28px 45px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 22px;
+      padding: 25px 40px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; justify-content: flex-start; gap: 16px;
       scrollbar-width: thin; scrollbar-color: var(--border-taupe) transparent;
     }
 
-    .page-header-flex {
-      display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap;
-      border-bottom: 2px solid var(--border-taupe); padding-bottom: 12px; gap: 12px;
+    .bio-header-row {
+      display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 6px; border-bottom: 2px solid var(--border-taupe); padding-bottom: 10px; flex-shrink: 0;
     }
     .page-title {
       font-family: 'Instrument Serif', serif; font-size: 2.8rem; font-weight: 400; color: var(--brown-dark); line-height: 1;
     }
-    .page-subtitle {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-muted); margin-top: 6px;
-    }
 
-    .portfolio-filter-bar {
-      display: flex; gap: 6px; flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: #ffffff; border: 1px solid var(--border-taupe); padding: 4px 11px; border-radius: 12px;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; color: var(--text-muted); cursor: pointer;
-      transition: all 0.2s;
-    }
-    .filter-btn:hover, .filter-btn.active { background: var(--brown-primary); color: #fff; border-color: var(--brown-primary); }
-
-    .portfolio-cards-grid {
+    .bio-layout-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      grid-template-columns: 260px 1fr;
+      gap: 25px;
       align-items: start;
     }
+
+    .profile-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .profile-card-tilt {
+      width: 100%; background: var(--brown-light); border: 1.5px solid var(--border-taupe);
+      border-radius: 24px; padding: 10px; box-shadow: 0 12px 30px rgba(59, 38, 24, 0.08);
+      transform: rotate(-1deg); transition: transform 0.3s ease;
+    }
+    .profile-card-tilt:hover { transform: rotate(0deg) scale(1.02); }
+    .profile-img-box { width: 100%; height: 260px; border-radius: 16px; overflow: hidden; background: #e8dcd0; }
+    .profile-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .profile-quick-badge {
+      background: var(--brown-light); border: 1px solid var(--border-taupe);
+      border-radius: 16px; padding: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted);
+      text-align: center; line-height: 1.5;
+    }
+    .profile-quick-badge strong { color: var(--brown-dark); display: block; font-size: 0.8rem; margin-bottom: 2px; }
+
+    .bio-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--brown-light); border: 1.5px solid var(--border-taupe); padding: 6px 16px;
+      border-radius: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
+      color: var(--text-muted); cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tab-btn:hover { color: var(--brown-dark); background: #fff; border-color: var(--brown-primary); }
+    .tab-btn.active { background: var(--brown-dark); color: #fff; border-color: var(--brown-dark); box-shadow: 0 4px 12px rgba(59,38,24,0.15); }
+
+    .tab-pane { display: none; opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .tab-pane.active#tab-skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; opacity: 1; transform: translateY(0); }
+    .tab-pane.active#tab-timetable { display: grid; grid-template-columns: 1fr; gap: 16px; opacity: 1; transform: translateY(0); }
+    .tab-pane.active { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; opacity: 1; transform: translateY(0); }
 
     .bio-card {
       background: var(--brown-light); border: 1.5px solid var(--border-taupe); border-radius: 20px; padding: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      min-width: 0;
-    }
-    .bio-card.hidden-card {
-      display: none;
     }
     .bio-card:hover {
       transform: translateY(-3px);
@@ -159,20 +172,19 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     .bio-unique-list li {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      font-size: 0.82rem;
+      gap: 2px;
+      font-size: 0.85rem;
       color: var(--text-muted);
       border-left: 2.5px solid var(--brown-primary);
       transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
-      background: rgba(255,255,255,0.68);
-      padding: 10px 12px;
-      border-radius: 0 12px 12px 0;
-      overflow-wrap: anywhere;
+      background: rgba(255,255,255,0.55);
+      padding: 8px 10px;
+      border-radius: 0 10px 10px 0;
     }
     .bio-unique-list li:hover { transform: translateX(3px); background: #ffffff; border-color: var(--brown-dark); }
     .bio-unique-list li span.label {
@@ -184,62 +196,110 @@
     }
     .bio-unique-list li span.value {
       color: var(--brown-dark);
-      font-weight: 700;
-      font-size: 0.86rem;
+      font-weight: 600;
     }
 
-    .work-thumbs-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 2px;
-    }
-
-    .gallery-item {
-      position: relative;
-      width: 150px;
-      height: 112px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #eae2d8;
-      border: 1.5px solid var(--brown-dark);
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(59, 38, 24, 0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      flex-shrink: 0;
-    }
-    .gallery-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(139, 90, 43, 0.14);
-      border-color: var(--brown-primary);
-    }
-    .gallery-item img {
+    .timetable-wrap {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.35s ease;
-    }
-    .gallery-item img:hover {
-      transform: scale(1.05);
-    }
-
-    #imageModal {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(44, 29, 17, 0.85);
-      z-index: 1000;
-      justify-content: center; align-items: center;
-      backdrop-filter: blur(8px);
-      padding: 16px;
-    }
-    #imageModal img {
-      max-width: 88vw; max-height: 88vh;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border-radius: 14px;
-      border: 2px solid var(--border-taupe);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      border: 1px solid var(--border-taupe);
+      background: rgba(255, 255, 255, 0.72);
     }
+    table.timetable-grid {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 0.78rem;
+    }
+    table.timetable-grid th {
+      background: var(--brown-dark);
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.6px;
+      padding: 10px 12px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    table.timetable-grid td.time-col {
+      background: #c86d2d;
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 10px;
+      width: 115px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      white-space: nowrap;
+    }
+    table.timetable-grid td.slot-cell {
+      padding: 8px;
+      border: 1px solid var(--border-taupe);
+      vertical-align: middle;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.45);
+      transition: background 0.2s ease, opacity 0.25s ease;
+    }
+    table.timetable-grid td.slot-cell.dimmed {
+      opacity: 0.28;
+    }
+    .class-pill {
+      border-radius: 10px;
+      padding: 8px 9px;
+      line-height: 1.35;
+      color: var(--brown-dark);
+      border: 1px solid rgba(59, 38, 24, 0.14);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .class-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(59, 38, 24, 0.1);
+    }
+    .class-pill strong {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      margin-bottom: 2px;
+    }
+    .class-pill span {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+    .slot-grey { background: #e2e2e2; }
+    .slot-cream { background: #f8f5dc; }
+    .slot-tan { background: #e3c48d; }
+    .slot-gold { background: #f8dd56; }
 
+    .skill-filter-btns {
+      display: flex; gap: 4px; margin-bottom: 0; flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: #ffffff; border: 1px solid var(--border-taupe); padding: 2px 8px; border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700; color: var(--text-muted); cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--brown-primary); color: #fff; border-color: var(--brown-primary); }
+
+    .skill-container { display: flex; flex-direction: column; gap: 12px; }
+    .skill-item {
+      margin-bottom: 4px; padding: 8px 10px; background: rgba(255,255,255,0.7); border-radius: 12px; border: 1px solid transparent;
+      transition: all 0.3s ease; cursor: pointer;
+    }
+    .skill-item:hover {
+      background: #ffffff; border-color: var(--brown-primary); transform: scale(1.02); box-shadow: 0 4px 12px rgba(139,90,43,0.1);
+    }
+    .skill-info { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; font-weight: 700; color: var(--brown-dark); margin-bottom: 4px; }
+    .skill-badge {
+      font-size: 0.6rem; padding: 1px 6px; border-radius: 6px; background: var(--brown-primary); color: #fff; text-transform: uppercase;
+    }
+    .skill-bar-bg { width: 100%; height: 6px; background: #e8dcd0; border-radius: 10px; overflow: hidden; }
+    .skill-bar-fill { height: 100%; background: var(--brown-primary); border-radius: 10px; width: 0; transition: width 1s cubic-bezier(0.1, 0.9, 0.2, 1); }
+
+    /* Pure White Chibi Companion */
     .chibi-companion {
       position: fixed;
       right: 28px;
@@ -319,13 +379,11 @@
     }
 
     footer.footer-area {
-      padding: 16px 45px; border-top: 1px solid var(--border-taupe); background: rgba(255, 255, 255, 0.88);
-      display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
-      border-bottom-left-radius: 34px;
-      border-bottom-right-radius: 34px;
+      padding: 14px 40px; border-top: 1px solid var(--border-taupe); background: rgba(255, 255, 255, 0.88);
+      display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
     }
-    .footer-links { display: flex; gap: 15px; }
-    .footer-links a { color: var(--brown-dark); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-links { display: flex; gap: 12px; }
+    .footer-links a { color: var(--brown-dark); text-decoration: none; font-weight: 600; }
     .footer-links a:hover { color: var(--brown-primary); }
 
     /* Tablet Breakpoint (641px to 1024px) */
@@ -343,33 +401,55 @@
         width: 100%;
         height: auto;
         min-height: calc(100vh - 28px);
-        border-radius: 28px;
-        overflow: hidden;
+        border-radius: 26px;
+        overflow: visible;
       }
       header.logo-nav {
         flex-direction: column;
         gap: 10px;
         padding: 16px 24px;
-        border-top-left-radius: 26px;
-        border-top-right-radius: 26px;
       }
       .page-content {
-        padding: 22px 24px 80px;
+        padding: 20px 24px;
         overflow: visible;
       }
-      .portfolio-cards-grid {
+      .bio-layout-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 20px;
+      }
+      .profile-sidebar {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        align-items: center;
+        gap: 18px;
+      }
+      .profile-card-tilt {
+        max-width: 200px;
+        margin: 0;
+      }
+      .profile-img-box {
+        height: 200px;
+      }
+      .profile-quick-badge {
+        text-align: left;
+        padding: 16px;
+      }
+      .tab-pane.active#tab-skills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .tab-pane.active {
+        grid-template-columns: 1fr;
+      }
+      .bio-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
       }
       .chibi-companion {
         right: 18px;
         bottom: 18px;
         transform: scale(0.9);
         transform-origin: bottom right;
-      }
-      footer.footer-area {
-        border-bottom-left-radius: 26px;
-        border-bottom-right-radius: 26px;
       }
     }
 
@@ -379,48 +459,60 @@
         padding: 10px;
       }
       .main-wrapper {
-        border-radius: 22px;
+        border-radius: 20px;
         min-height: calc(100vh - 20px);
       }
       header.logo-nav {
-        padding: 12px 14px;
-        gap: 8px;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
+        padding: 14px;
+        gap: 10px;
       }
       .logo-text {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         text-align: center;
-        letter-spacing: 0.8px;
       }
       nav {
         width: 100%;
-        max-width: 100%;
         justify-content: center;
         border-radius: 16px;
         gap: 4px;
-        padding: 4px;
+        padding: 5px;
       }
       nav a {
-        font-size: 0.72rem;
-        padding: 5px 10px;
-        white-space: nowrap;
+        font-size: 0.74rem;
+        padding: 6px 11px;
       }
       .page-content {
-        padding: 16px 14px 84px;
-        gap: 16px;
-      }
-      .page-header-flex {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 16px 14px 80px;
+        gap: 14px;
       }
       .page-title {
         font-size: 2.1rem;
       }
-      .page-subtitle {
-        font-size: 0.7rem;
+      .bio-tabs {
+        gap: 6px;
       }
-      .portfolio-cards-grid {
+      .tab-btn {
+        font-size: 0.68rem;
+        padding: 5px 12px;
+      }
+      .profile-sidebar {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .profile-card-tilt {
+        max-width: 210px;
+        margin: 0 auto;
+      }
+      .profile-img-box {
+        height: 210px;
+      }
+      .profile-quick-badge {
+        text-align: center;
+        padding: 12px;
+      }
+      .tab-pane.active,
+      .tab-pane.active#tab-skills,
+      .tab-pane.active#tab-timetable {
         grid-template-columns: 1fr;
         gap: 14px;
       }
@@ -428,14 +520,10 @@
         padding: 15px;
         border-radius: 16px;
       }
-      .gallery-item {
-        width: calc(50% - 5px);
-        height: 98px;
-      }
       .chibi-companion {
-        right: 10px;
+        right: 12px;
         bottom: 12px;
-        transform: scale(0.72);
+        transform: scale(0.78);
         transform-origin: bottom right;
       }
       .chibi-avatar-shell { width: 58px; height: 58px; border-radius: 18px; }
@@ -445,214 +533,91 @@
         flex-direction: column;
         text-align: center;
         font-size: 0.68rem;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
       }
     }
   </style>
   <script>
-    const rawBaseUrl = "https://raw.githubusercontent.com/alvierowena25/Alvirah-Rowena-Portfolio/main";
+    function switchTab(evt, tabId) {
+      const panes = document.querySelectorAll('.tab-pane');
+      panes.forEach(p => p.classList.remove('active'));
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(b => b.classList.remove('active'));
 
-    const portfolioCards = [
-      {
-        id: "card-cover-slides",
-        category: "slides",
-        heading: "Cover Page Slides",
-        items: [
-          {
-            label: "Portfolio Cover Slide",
-            name: "Portfolio Cover Design",
-            files: ["https://drive.google.com/thumbnail?id=163H9svy7raPnFguus1uIizGbJ-7y1H10&sz=w1200"]
-          },
-          {
-            label: "Program Cover Slide",
-            name: "Program Cover Design",
-            files: ["https://drive.google.com/thumbnail?id=1g-MKNNOcKT_sIEkREOKuPZcsLkvxufTy&sz=w1200"]
-          },
-          {
-            label: "Celebration Cover Slide",
-            name: "Celebration Cover Design",
-            files: ["https://drive.google.com/thumbnail?id=1jficigPWocYdA22tVGnB25oDzIhJyhhN&sz=w1200"]
-          }
-        ]
-      },
-      {
-        id: "card-project-works",
-        category: "projects",
-        heading: "Project & 3D Works",
-        items: [
-          {
-            label: "Animations",
-            name: "3D & Motion Animation Showcase",
-            files: ["https://drive.google.com/thumbnail?id=14r0clfrwJCslHUx_rYiMzBDEut-0QEJi&sz=w1200"]
-          },
-          {
-            label: "IoT Smart Chili Plant",
-            name: "Innovatiot Smart Chili Plant Visuals",
-            files: [
-              "https://drive.google.com/thumbnail?id=1Fldtv4kXnOKVw3pgJiRVtTWUlf5rXbZc&sz=w1200",
-              "https://drive.google.com/thumbnail?id=1_5_jxWD2B0ZSSYksajy8fXdWezYrV-8G&sz=w1200"
-            ]
-          }
-        ]
-      },
-      {
-        id: "card-merch-syabas",
-        category: "posters",
-        heading: "Merchandise & Congratulatory Posters",
-        items: [
-          {
-            label: "Merchandise Posters",
-            name: "Event & Club Merchandise Posters",
-            files: [
-              "https://drive.google.com/thumbnail?id=1QtOp_ZG-niPHOxcGtaioamCyPdrRV9xW&sz=w1200",
-              "https://drive.google.com/thumbnail?id=19BRY3crrcTE6BgEVP_XMgyRV6D2MK1R0&sz=w1200"
-            ]
-          },
-          {
-            label: "Syabas & Tahniah Posters",
-            name: "Syabas & Tahniah Appreciation Posters",
-            files: [
-              "https://drive.google.com/thumbnail?id=1dPHlLCfj1ugUyBvP8E2NtB6PSZRCLRcp&sz=w1200",
-              "https://drive.google.com/thumbnail?id=1UoAo8Ep2PeMTZBj0D8ZhbrTK5-kfnYQE&sz=w1200"
-            ]
-          }
-        ]
-      },
-      {
-        id: "card-program-celebrations",
-        category: "posters",
-        heading: "Program & Celebrations Posters",
-        items: [
-          {
-            label: "Program Posters",
-            name: "Campus & Student Program Posters",
-            files: ["https://drive.google.com/thumbnail?id=18onVyxC3fbVr0lMZVVd2fZtj9YHa52vc&sz=w1200"]
-          },
-          {
-            label: "Celebrations Posters",
-            name: "Festive & Celebration Posters",
-            files: ["https://drive.google.com/thumbnail?id=1uB2bvZ-Y_fTUmiQ5AE2TZOnKMxr0sboC&sz=w1200"]
-          }
-        ]
-      }
-    ];
+      const target = document.getElementById(tabId);
+      target.classList.add('active');
+      evt.currentTarget.classList.add('active');
 
-    function resolveImageSrc(baseUrl, filename) {
-      if (/^https?:\/\//i.test(filename)) {
-        return filename;
+      if (tabId === 'tab-skills') {
+        setTimeout(() => {
+          document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            bar.style.width = bar.getAttribute('data-width');
+          });
+        }, 100);
       }
-      return `${baseUrl}/${filename}`;
     }
 
-    function filterPortfolio(category, btnElement) {
-      document.querySelectorAll(".portfolio-filter-bar .filter-btn").forEach((b) => b.classList.remove("active"));
-      btnElement.classList.add("active");
+    function filterCardSkills(containerId, level, btnElement) {
+      const parentCard = document.getElementById(containerId);
+      parentCard.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
 
-      document.querySelectorAll("#portfolioCardsGrid .bio-card").forEach((card) => {
-        const cardCat = card.getAttribute("data-category");
-        if (category === "all" || cardCat === category) {
-          card.classList.remove("hidden-card");
+      const items = parentCard.querySelectorAll('.skill-item');
+      items.forEach(item => {
+        const itemLevel = item.getAttribute('data-level');
+        if (level === 'all' || itemLevel === level) {
+          item.style.display = 'block';
         } else {
-          card.classList.add("hidden-card");
+          item.style.display = 'none';
         }
       });
     }
 
-    function buildPortfolioCards() {
-      const gridContainer = document.getElementById("portfolioCardsGrid");
-      if (!gridContainer) return;
-      gridContainer.innerHTML = "";
+    function filterLeadershipByYear(containerId, year, btnElement) {
+      const parentCard = document.getElementById(containerId);
+      parentCard.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
 
-      portfolioCards.forEach((cardData) => {
-        const card = document.createElement("div");
-        card.className = "bio-card";
-        card.id = cardData.id;
-        card.setAttribute("data-category", cardData.category);
-
-        const heading = document.createElement("h3");
-        heading.innerHTML = `<span>${cardData.heading}</span><span>✦</span>`;
-        card.appendChild(heading);
-
-        const list = document.createElement("ul");
-        list.className = "bio-unique-list";
-
-        cardData.items.forEach((item) => {
-          const li = document.createElement("li");
-
-          const labelEl = document.createElement("span");
-          labelEl.className = "label";
-          labelEl.textContent = item.label;
-
-          const valueEl = document.createElement("span");
-          valueEl.className = "value";
-          valueEl.textContent = item.name;
-
-          const thumbsRow = document.createElement("div");
-          thumbsRow.className = "work-thumbs-row";
-
-          item.files.forEach((filename) => {
-            const itemDiv = document.createElement("div");
-            itemDiv.className = "gallery-item";
-
-            const img = document.createElement("img");
-            img.src = resolveImageSrc(rawBaseUrl, filename);
-            img.alt = `${item.name} — ${filename.split("/").pop()}`;
-            img.loading = "lazy";
-            img.onclick = () => openModal(img.src);
-            img.onerror = () => {
-              itemDiv.style.display = "flex";
-              itemDiv.style.alignItems = "center";
-              itemDiv.style.justifyContent = "center";
-              itemDiv.style.padding = "8px";
-              itemDiv.style.fontSize = "0.62rem";
-              itemDiv.style.fontFamily = "'JetBrains Mono', monospace";
-              itemDiv.style.textAlign = "center";
-              itemDiv.style.wordBreak = "break-all";
-              itemDiv.textContent = `Missing: ${filename}`;
-            };
-
-            itemDiv.appendChild(img);
-            thumbsRow.appendChild(itemDiv);
-          });
-
-          li.appendChild(labelEl);
-          li.appendChild(valueEl);
-          li.appendChild(thumbsRow);
-          list.appendChild(li);
-        });
-
-        card.appendChild(list);
-        gridContainer.appendChild(card);
+      const listItems = parentCard.querySelectorAll('.bio-unique-list li');
+      listItems.forEach(li => {
+        const itemYear = li.getAttribute('data-year');
+        if (year === 'all' || itemYear === year) {
+          li.style.display = 'flex';
+        } else {
+          li.style.display = 'none';
+        }
       });
     }
 
-    function openModal(imgSrc) {
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImg");
-      modalImg.src = imgSrc;
-      modal.style.display = "flex";
-    }
+    function filterTimetableDay(day, btnElement) {
+      const card = document.getElementById('card-class-timetable');
+      card.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
 
-    function closeModal() {
-      document.getElementById("imageModal").style.display = "none";
-      document.getElementById("modalImg").src = "";
+      const cells = card.querySelectorAll('td.slot-cell');
+      cells.forEach(cell => {
+        const cellDay = cell.getAttribute('data-day');
+        if (day === 'all' || cellDay === day) {
+          cell.classList.remove('dimmed');
+        } else {
+          cell.classList.add('dimmed');
+        }
+      });
     }
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
 
     window.onload = function() {
-      buildPortfolioCards();
+      setTimeout(() => {
+        document.querySelectorAll('.tab-pane.active .skill-bar-fill').forEach(bar => {
+          bar.style.width = bar.getAttribute('data-width');
+        });
+      }, 200);
 
-      const chibi = document.getElementById("chibiCompanion");
-      const chibiBubble = document.getElementById("chibiBubble");
+      const chibi = document.getElementById('chibiCompanion');
+      const chibiBubble = document.getElementById('chibiBubble');
       const chibiLines = [
         "Hi! Tap me ✨",
-        "Tap any poster to zoom!",
-        "3D renders & posters inside",
-        "Designed by Alvirah"
+        "Check my CV & skills!",
+        "Timetable tab is ready!",
+        "UMSKAL Multimedia"
       ];
       let chibiIndex = 0;
 
@@ -662,9 +627,9 @@
       }
 
       if (chibi && chibiBubble) {
-        chibi.addEventListener("click", cycleChibiLine);
-        chibi.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
+        chibi.addEventListener('click', cycleChibiLine);
+        chibi.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             cycleChibiLine();
           }
@@ -674,43 +639,448 @@
   </script>
 </head>
 <body>
-  <div class="paper-grain"></div>
-  <div class="bg-video-container">
-    <img src="https://drive.google.com/thumbnail?id=1bNPZwzJBS1UO__WUuqtxpzjgOpq4CXgw&sz=w1920" alt="" aria-hidden="true">
-  </div>
-
+<div class="paper-grain"></div>
+<div class="bg-video-container">
+  <img src="https://drive.google.com/thumbnail?id=1bNPZwzJBS1UO__WUuqtxpzjgOpq4CXgw&sz=w1920" alt="" aria-hidden="true">
+</div>
   <div class="main-wrapper">
     <header class="logo-nav">
-      <div class="logo-text">ALVIRAH ROWENA / PORTFOLIO</div>
+      <div class="logo-text">MY WEBSITE PORTFOLIO</div>
       <nav>
         <a href="index.html">Home</a>
-        <a href="biodata.html">Biodata</a>
-        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="biodata.html" class="active">Biodata</a>
+        <a href="portfolio.html">Portfolio</a>
         <a href="video.html">Video</a>
         <a href="comments.html">Comments</a>
       </nav>
     </header>
 
     <main class="page-content">
-      <div class="page-header-flex">
-        <div>
-          <h1 class="page-title">MY Designs &amp; Works</h1>
-          <p class="page-subtitle">Organized in the same structured card &amp; detail layout as Leadership &amp; Track.</p>
-        </div>
-        <div class="portfolio-filter-bar">
-          <button class="filter-btn active" onclick="filterPortfolio('all', this)">All</button>
-          <button class="filter-btn" onclick="filterPortfolio('slides', this)">Cover Slides</button>
-          <button class="filter-btn" onclick="filterPortfolio('projects', this)">Projects &amp; 3D</button>
-          <button class="filter-btn" onclick="filterPortfolio('posters', this)">Posters</button>
+      <div>
+        <h1 class="page-title">Who Am I?</h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
+          Multimedia Technology student, designer, content creator, and aspiring digital innovator.
+        </p>
+      </div>
+
+      <div class="bio-header-row">
+        <div class="bio-tabs">
+          <button class="tab-btn active" onclick="switchTab(event, 'tab-academic')">Academic &amp; Bio</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-skills')">Technical Skills</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-leadership')">Leadership &amp; Track</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-timetable')">Class Timetable</button>
         </div>
       </div>
 
-      <div id="portfolioCardsGrid" class="portfolio-cards-grid"></div>
-    </main>
+      <div class="bio-layout-grid">
+        <div class="profile-sidebar">
+          <div class="profile-card-tilt">
+            <div class="profile-img-box">
+              <img
+                src="https://drive.google.com/thumbnail?id=1Ly952FjpA66JGSxGXEfLEeLapgKRRUUO&sz=w800"
+                alt="Alvirah Rowena"
+                onerror="this.onerror=null; this.src='media/profile.jpg.jpeg';"
+              >
+            </div>
+          </div>
+          <div class="profile-quick-badge">
+            <strong>Alvirah Rowena Wong Siew Li</strong>
+            BI24110060 • UMSKAL <br>
+            UH6481003 Multimedia Technology (HC12)
+          </div>
+        </div>
 
-    <div id="imageModal" onclick="closeModal()">
-      <img id="modalImg" src="" alt="Full Resolution View">
-    </div>
+        <div>
+          <div id="tab-academic" class="tab-pane active">
+            <div class="bio-card">
+              <h3>Academic Details <span>✦</span></h3>
+              <ul class="bio-unique-list">
+                <li>
+                  <span class="label">Full Name</span>
+                  <span class="value">Alvirah Rowena Wong Siew Li</span>
+                </li>
+                <li>
+                  <span class="label">Degree Programme</span>
+                  <span class="value">Bachelor of Information Technology with Honours (Multimedia Technology)</span>
+                </li>
+                <li>
+                  <span class="label">Standing &amp; CGPA</span>
+                  <span class="value">Undergraduate | Year 3</span>
+                </li>
+                <li>
+                  <span class="label">Institution</span>
+                  <span class="value">Universiti Malaysia Sabah Kampus Antarabangsa Labuan (UMSKAL)</span>
+                </li>
+                <li>
+                  <span class="label">Achievements</span>
+                  <span class="value">Innovatiot 2026, Smart Tech Innovation Exhibition</span><span>3rd Place</span>
+                  <span class="value">Academic Project Management, English for Occupational Purposes</span><span>1st Place</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bio-card">
+              <h3>Personal Background <span>✦</span></h3>
+              <ul class="bio-unique-list">
+                <li>
+                  <span class="label">Base Location</span>
+                  <span class="value">Kota Kinabalu &amp; Labuan, Sabah</span>
+                </li>
+                <li>
+                  <span class="label">Email</span>
+                  <span class="value">alvierowena25@gmail.com</span>
+                </li>
+                <li>
+                  <span class="label">Phone Number</span>
+                  <span class="value">011-69304352</span>
+                </li>
+                <li>
+                  <span class="label">Social Networks</span>
+                  <span class="value">IG: @alvieepii | TikTok: @alvieyy</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="tab-skills" class="tab-pane">
+            <div class="bio-card" id="card-software">
+              <h3>
+                <span>Software</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterCardSkills('card-software', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-software', 'expert', this)">Expert</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-software', 'intermediate', this)">intermediate</button>
+                </div>
+              </h3>
+
+              <div class="skill-container">
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>Blender &amp; Canva</span>
+                    <span class="skill-badge">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="intermediate">
+                  <div class="skill-info">
+                    <span>MS Word &amp; Excel</span>
+                    <span class="skill-badge" style="background: var(--text-muted);">Level 3</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="intermediate">
+                  <div class="skill-info">
+                    <span>Photoshop &amp; CapCut</span>
+                    <span class="skill-badge" style="background: var(--text-muted);">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bio-card" id="card-competencies">
+              <h3>
+                <span>Languages</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterCardSkills('card-competencies', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-competencies', 'expert', this)">Expert</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-competencies', 'intermediate', this)">intermediate</button>
+                </div>
+              </h3>
+
+              <div class="skill-container">
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>Bahasa Melayu</span>
+                    <span class="skill-badge">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="intermediate">
+                  <div class="skill-info">
+                    <span>English</span>
+                    <span class="skill-badge" style="background: var(--text-muted);">intermediate</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>Mandarin</span>
+                    <span class="skill-badge">intermediate</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bio-card" id="card-multimedia">
+              <h3>
+                <span>Multimedia &amp; AI</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterCardSkills('card-multimedia', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-multimedia', 'expert', this)">Expert</button>
+                  <button class="filter-btn" onclick="filterCardSkills('card-multimedia', 'intermediate', this)">intermediate</button>
+                </div>
+              </h3>
+
+              <div class="skill-container">
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>AI</span>
+                    <span class="skill-badge">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="intermediate">
+                  <div class="skill-info">
+                    <span>Video &amp; Motion Editing</span>
+                    <span class="skill-badge" style="background: var(--text-muted);">intermediate</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%"></div></div>
+                </div>
+
+                <div class="skill-item" data-level="expert">
+                  <div class="skill-info">
+                    <span>Leadership &amp; Problem Solving</span>
+                    <span class="skill-badge">Expert</span>
+                  </div>
+                  <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="tab-leadership" class="tab-pane">
+            <div class="bio-card" id="card-lead-responsibilities">
+              <h3>
+                <span>Leadership &amp; Responsibilities</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterLeadershipByYear('card-lead-responsibilities', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterLeadershipByYear('card-lead-responsibilities', '2025', this)">2025/2026</button>
+                  <button class="filter-btn" onclick="filterLeadershipByYear('card-lead-responsibilities', '2024', this)">2024/2025</button>
+                </div>
+              </h3>
+              <ul class="bio-unique-list">
+                <li data-year="2025">
+                  <span class="label">Unit Komunikasi Korporat &amp; Kreatif Leader (2025/2026)</span>
+                  <span class="value">Kelab Sukarelawan Siswa UMSKAL (KESUWA-KAL)</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">PEMBIMBING SUAI MESRA KE-31 (PSM)</span>
+                  <span class="value">Unit Pendaftaran dan Informatik</span>
+                </li>
+                <li data-year="2024">
+                  <span class="label">Academic Coordination (2024/2025)</span>
+                  <span class="value">Interim Course Leader</span>
+                </li>
+                <li data-year="2024">
+                  <span class="label">Faculty Secretariat (2024/2025)</span>
+                  <span class="value">Exco Media &amp; Publicity for PMFKI</span>
+                </li>
+                <li data-year="2019">
+                  <span class="label">Pre-University Era, Majlis Pemimpin Pelajar (2019-2021)</span>
+                  <span class="value">Biro Photographer, Multimedia &amp; Publicity (STPM)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bio-card" id="card-event-advisor">
+              <h3>
+                <span>Event Management &amp; Advisor</span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterLeadershipByYear('card-event-advisor', 'all', this)">All</button>
+                  <button class="filter-btn" onclick="filterLeadershipByYear('card-event-advisor', '2025', this)">2025</button>
+                  <button class="filter-btn" onclick="filterLeadershipByYear('card-event-advisor', '2026', this)">2026</button>
+                </div>
+              </h3>
+              <ul class="bio-unique-list">
+                <li data-year="2025">
+                  <span class="label">Program Advisor (2024/2025)</span>
+                  <span class="value">UMS-PRINT and Cat Show</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">AJK PROTOKOL &amp; AJK MEDIA DAN PUBLISITI (2025)</span>
+                  <span class="value">FKI Open Day 2025 (Media, Publicity &amp; Protocol Unit)</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">Representing Kelab Rakan Muda (2025)</span>
+                  <span class="value">Program Training Skuad Kita Pengguna (TOS)</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">Unit 3K &amp; Informal MC (2025)</span>
+                  <span class="value">Program Perdana: Perangi Denggi, Anak Muda!</span>
+                </li>
+                <li data-year="2025">
+                  <span class="label">AJK TEKNIKAL &amp; AJK LOGISTIK (2025)</span>
+                  <span class="value">Program RHB Finance XP</span>
+                </li>
+                <li data-year="2026">
+                  <span class="label">Leader Unit 3K, Informal MC &amp; Supervise Media &amp; Publisiti (2026)</span>
+                  <span class="value">Program EduSahabat</span>
+                </li>
+                <li data-year="2026">
+                  <span class="label">Leader Unit 3K &amp; Informal MC (2026)</span>
+                  <span class="value">Program Inside Out</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="tab-timetable" class="tab-pane">
+            <div class="bio-card" id="card-class-timetable">
+              <h3>
+                <span>Class Timetable Schedule <span>✦</span></span>
+                <div class="skill-filter-btns">
+                  <button class="filter-btn active" onclick="filterTimetableDay('all', this)">All Days</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('mon', this)">Mon</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('tues', this)">Tues</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('wed', this)">Wed</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('thurs', this)">Thurs</button>
+                  <button class="filter-btn" onclick="filterTimetableDay('fri', this)">Fri</button>
+                </div>
+              </h3>
+
+              <div class="timetable-wrap">
+                <table class="timetable-grid">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>MON</th>
+                      <th>TUES</th>
+                      <th>WED</th>
+                      <th>THURS</th>
+                      <th>FRI</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="time-col">08:00 - 09:00<br>09:00 - 10:00</td>
+                      <td class="slot-cell" data-day="mon">
+                        <div class="class-pill slot-grey">
+                          <strong>IM22503</strong>
+                          <span>MULTIMEDIA WEB PROGRAMMING</span>
+                          <span>DR. NUR FARAH</span>
+                          <span>P1G | SEC01</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="tues">
+                        <div class="class-pill slot-cream">
+                          <strong>AUGMENTED REALITY</strong>
+                          <span>(LAB, BESIDE TOILET)</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="wed">
+                        <div class="class-pill slot-tan">
+                          <strong>IM32303</strong>
+                          <span>COMPUTER GRAPHIC</span>
+                          <span>DR. WAN</span>
+                          <span>PODIUM C | SEC01</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="thurs">
+                        <div class="class-pill slot-cream">
+                          <strong>IP01903</strong>
+                          <span>TENAGA KERJA REALITY</span>
+                          <span>DR. TAMBRIN</span>
+                          <span>BT1 | SEC01</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="fri"></td>
+                    </tr>
+                    <tr>
+                      <td class="time-col">11:00 - 12:30</td>
+                      <td class="slot-cell" data-day="mon"></td>
+                      <td class="slot-cell" data-day="tues"></td>
+                      <td class="slot-cell" data-day="wed"></td>
+                      <td class="slot-cell" data-day="thurs">
+                        <div class="class-pill slot-tan">
+                          <strong>- LAB CLASS -</strong>
+                          <span>Computer Graphic</span>
+                          <span>(LAB GAMES)</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="fri"></td>
+                    </tr>
+                    <tr>
+                      <td class="time-col">02:00 - 03:00<br>03:00 - 04:00</td>
+                      <td class="slot-cell" data-day="mon">
+                        <div class="class-pill slot-grey">
+                          <strong>- LAB CLASS -</strong>
+                          <span>MULTIMEDIA WEB PROGRAMMING</span>
+                          <span>(E-COM)</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="tues"></td>
+                      <td class="slot-cell" data-day="wed"></td>
+                      <td class="slot-cell" data-day="thurs">
+                        <div class="class-pill slot-cream">
+                          <strong>IT32603</strong>
+                          <span>AUGMENTED REALITY</span>
+                          <span>DR. RYAN MACDONELL</span>
+                          <span>DKP3 | SEC01</span>
+                        </div>
+                      </td>
+                      <td class="slot-cell" data-day="fri">
+                        <div class="class-pill slot-gold">
+                          <strong>IT32503</strong>
+                          <span>CYBERSECURITY</span>
+                          <span>DR. AINNUR HAFIZAH</span>
+                          <span>DKP2 | SEC01</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="time-col">04:00 - 05:00</td>
+                      <td class="slot-cell" data-day="mon"></td>
+                      <td class="slot-cell" data-day="tues"></td>
+                      <td class="slot-cell" data-day="wed"></td>
+                      <td class="slot-cell" data-day="thurs"></td>
+                      <td class="slot-cell" data-day="fri">
+                        <div class="class-pill slot-gold">
+                          <strong>- LAB CLASS -</strong>
+                          <span>CYBERSECURITY</span>
+                          <span>(DKP 2)</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="bio-card">
+              <h3>Weekly Course &amp; Lab Summary <span>✦</span></h3>
+              <ul class="bio-unique-list">
+                <li>
+                  <span class="label">IM22503 — Multimedia Web Programming</span>
+                  <span class="value">Mon 08:00–10:00 (Dr. Nur Farah, P1G | SEC01) + Lab Mon 02:00–04:00 (E-COM)</span>
+                </li>
+                <li>
+                  <span class="label">IM32303 — Computer Graphic</span>
+                  <span class="value">Wed 08:00–10:00 (Dr. Wan, Podium C | SEC01) + Lab Thurs 11:00–12:30 (Lab Games)</span>
+                </li>
+                <li>
+                  <span class="label">Augmented Reality &amp; IT32603</span>
+                  <span class="value">Tues 08:00–10:00 (Lab, Beside Toilet) • Thurs 02:00–04:00 (Dr. Ryan Macdonell, DKP3 | SEC01)</span>
+                </li>
+                <li>
+                  <span class="label">IP01903 — Tenaga Kerja Reality</span>
+                  <span class="value">Thurs 08:00–10:00 (Dr. Tambrin, BT1 | SEC01)</span>
+                </li>
+                <li>
+                  <span class="label">IT32503 — Cybersecurity</span>
+                  <span class="value">Fri 02:00–04:00 (Dr. Ainnur Hafizah, DKP2 | SEC01) + Lab Fri 04:00–05:00 (DKP 2)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <footer class="footer-area">
       <span>&copy; 2026 Alvirah Rowena Wong Siew Li (BI24110060). All Rights Reserved.</span>
