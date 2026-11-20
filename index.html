@@ -7,15 +7,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-cream: #f4efe9;
-      --card-white: #ffffff;
+      --bg-cream: #f3ece4;
+      --card-white: #fcf9f5;
       --border-taupe: #e4dcd3;
       --brown-primary: #8b5a2b;
       --brown-dark: #3b2618;
-      --brown-light: #faf6f0;
+      --brown-light: #faf5ee;
       --text-main: #2c221e;
       --text-muted: #75665e;
       --accent-glow: rgba(139, 90, 43, 0.16);
+
+      /* Claymorphism Shadows */
+      --clay-main:
+        0 26px 55px rgba(59, 38, 24, 0.12),
+        0 8px 18px rgba(139, 90, 43, 0.08),
+        inset 0 6px 12px rgba(255, 255, 255, 0.95),
+        inset 0 -8px 16px rgba(139, 90, 43, 0.12);
+      --clay-card:
+        0 10px 22px rgba(59, 38, 24, 0.08),
+        0 3px 8px rgba(139, 90, 43, 0.06),
+        inset 0 4px 8px rgba(255, 255, 255, 0.92),
+        inset 0 -5px 10px rgba(139, 90, 43, 0.12);
+      --clay-chip:
+        0 6px 14px rgba(59, 38, 24, 0.07),
+        inset 0 3px 6px rgba(255, 255, 255, 0.95),
+        inset 0 -3px 7px rgba(139, 90, 43, 0.13);
+      --clay-pressed:
+        inset 0 4px 10px rgba(59, 38, 24, 0.18),
+        inset 0 -2px 5px rgba(255, 255, 255, 0.5);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,11 +67,11 @@
       display: block;
     }
 
-    /* Bingkai Putih Utama dengan Animasi Masuk & Ambient Shadow */
+    /* Claymorphism Main Frame */
     .main-wrapper {
       position: relative; z-index: 10; width: 94%; max-width: 1350px; height: 92vh;
-      background: var(--card-white); border: 1.5px solid var(--border-taupe);
-      border-radius: 32px; box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
+      background: var(--card-white); border: 2px solid rgba(255, 255, 255, 0.85);
+      border-radius: 36px; box-shadow: var(--clay-main);
       display: flex; flex-direction: column; justify-content: space-between;
       overflow: hidden; margin: auto;
       opacity: 0;
@@ -75,12 +94,14 @@
 
     @keyframes wrapperShadowBreath {
       0%, 100% {
-        box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
-        border-color: var(--border-taupe);
+        box-shadow: var(--clay-main);
       }
       50% {
-        box-shadow: 0 30px 75px rgba(139, 90, 43, 0.13);
-        border-color: #d6c9ba;
+        box-shadow:
+          0 30px 65px rgba(139, 90, 43, 0.15),
+          0 10px 20px rgba(59, 38, 24, 0.08),
+          inset 0 6px 12px rgba(255, 255, 255, 0.98),
+          inset 0 -8px 16px rgba(139, 90, 43, 0.14);
       }
     }
 
@@ -97,51 +118,80 @@
 
     header.logo-nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 40px; border-bottom: 1px solid var(--border-taupe);
-      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); flex-shrink: 0;
+      padding: 18px 40px; border-bottom: 1.5px solid var(--border-taupe);
+      background: rgba(252, 249, 245, 0.92); backdrop-filter: blur(10px); flex-shrink: 0;
       z-index: 20; gap: 12px;
+      box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.9);
     }
     .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; }
-    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 4px; border-radius: 30px; border: 1.5px solid var(--border-taupe); flex-wrap: wrap; }
-    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: all 0.25s ease; }
-    nav a:hover { color: var(--brown-dark); background: #ffffff; }
-    nav a.active { background: #3b2618; color: #ffffff; }
+    nav {
+      display: flex; gap: 6px; background: var(--brown-light); padding: 5px; border-radius: 999px;
+      border: 1.5px solid rgba(255, 255, 255, 0.8); flex-wrap: wrap; box-shadow: var(--clay-chip);
+    }
+    nav a {
+      text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600;
+      padding: 6px 16px; border-radius: 999px; transition: all 0.25s ease;
+    }
+    nav a:hover {
+      color: var(--brown-dark); background: #ffffff;
+      box-shadow: 0 4px 10px rgba(59, 38, 24, 0.08), inset 0 2px 4px #ffffff;
+    }
+    nav a.active {
+      background: linear-gradient(145deg, #4d3220, #3b2618); color: #ffffff;
+      box-shadow: 0 6px 14px rgba(59, 38, 24, 0.22), inset 0 2px 4px rgba(255, 255, 255, 0.25);
+    }
 
     .page-content {
-      padding: 25px 40px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; justify-content: center;
+      padding: 22px 40px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; justify-content: center;
       scrollbar-width: thin; scrollbar-color: var(--border-taupe) transparent;
     }
-    .hero-split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 30px; align-items: center; }
+    .hero-split { display: grid; grid-template-columns: 1.1fr 1.25fr; gap: 28px; align-items: center; }
     .hero-left { display: flex; flex-direction: column; gap: 12px; }
     .subtitle-badge {
       font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--brown-primary);
-      text-transform: uppercase; letter-spacing: 2px; background: var(--brown-light); padding: 4px 10px;
-      border-radius: 20px; border: 1px solid var(--border-taupe); align-self: flex-start;
+      text-transform: uppercase; letter-spacing: 2px; background: var(--brown-light); padding: 5px 12px;
+      border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.85); align-self: flex-start;
+      box-shadow: var(--clay-chip);
     }
     .hero-left h1 {
       font-family: 'Instrument Serif', serif; font-size: 3.2rem; font-weight: 400; color: var(--brown-dark); line-height: 0.95; text-transform: lowercase;
     }
     .hero-left h1 span { display: block; color: var(--brown-primary); font-style: italic; }
     .professional-bio { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-    .pro-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 2px 0; }
+    .pro-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 2px 0; }
     .stat-card {
-      background: var(--brown-light); border: 1px solid var(--border-taupe); padding: 6px 8px; border-radius: 10px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      background: var(--brown-light); border: 1.5px solid rgba(255, 255, 255, 0.85); padding: 8px 10px; border-radius: 18px;
+      box-shadow: var(--clay-card);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-    .stat-card:hover { transform: translateY(-2px); border-color: var(--brown-primary); }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 14px 26px rgba(59, 38, 24, 0.11),
+        inset 0 4px 8px rgba(255, 255, 255, 0.96),
+        inset 0 -5px 10px rgba(139, 90, 43, 0.15);
+    }
     .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 800; color: var(--brown-dark); display: block; }
     .stat-label { font-size: 0.65rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
     .hero-btns { display: flex; gap: 10px; margin-top: 2px; flex-wrap: wrap; }
     .btn-primary {
-      background: var(--brown-dark); color: #fff; text-decoration: none; font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem; font-weight: 700; padding: 8px 18px; border-radius: 30px; transition: all 0.25s ease;
+      background: linear-gradient(145deg, #4e3321, #3b2618); color: #fff; text-decoration: none; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 700; padding: 9px 20px; border-radius: 999px; transition: all 0.25s ease;
+      box-shadow: 0 8px 18px rgba(59, 38, 24, 0.22), inset 0 3px 6px rgba(255, 255, 255, 0.25), inset 0 -4px 8px rgba(0, 0, 0, 0.25);
     }
-    .btn-primary:hover { background: var(--brown-primary); transform: translateY(-2px); }
+    .btn-primary:hover {
+      background: linear-gradient(145deg, #9d6834, #8b5a2b); transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(139, 90, 43, 0.28), inset 0 3px 6px rgba(255, 255, 255, 0.35), inset 0 -4px 8px rgba(59, 38, 24, 0.25);
+    }
     .btn-outline {
-      background: transparent; color: var(--brown-dark); text-decoration: none; font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem; font-weight: 700; padding: 8px 18px; border-radius: 30px; border: 1.5px solid var(--border-taupe); transition: all 0.25s ease;
+      background: var(--brown-light); color: var(--brown-dark); text-decoration: none; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 700; padding: 9px 20px; border-radius: 999px;
+      border: 1.5px solid rgba(255, 255, 255, 0.85); transition: all 0.25s ease; box-shadow: var(--clay-chip);
     }
-    .btn-outline:hover { border-color: var(--brown-dark); background: var(--brown-light); }
+    .btn-outline:hover {
+      background: #ffffff; transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(59, 38, 24, 0.1), inset 0 3px 6px #ffffff, inset 0 -4px 8px rgba(139, 90, 43, 0.12);
+    }
 
     .hero-right {
       display: flex;
@@ -150,45 +200,40 @@
       gap: 14px;
     }
     .profile-card-tilt {
-      width: 100%; max-width: 245px; background: var(--brown-light); border: 1.5px solid var(--border-taupe);
-      border-radius: 22px; padding: 10px; box-shadow: 0 12px 30px rgba(59, 38, 24, 0.08); transform: rotate(2deg); transition: transform 0.3s ease;
+      width: 100%; max-width: 215px; background: var(--brown-light); border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px; padding: 9px; box-shadow: var(--clay-card); transform: rotate(2deg); transition: transform 0.3s ease;
     }
     .profile-card-tilt:hover { transform: rotate(0deg) scale(1.02); }
-    .profile-img-box { width: 100%; height: 220px; border-radius: 14px; overflow: hidden; background: #e8dcd0; }
+    .profile-img-box {
+      width: 100%; height: 185px; border-radius: 18px; overflow: hidden; background: #e8dcd0;
+      box-shadow: inset 0 4px 10px rgba(59, 38, 24, 0.16);
+    }
     .profile-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .under-profile-tools {
       width: 100%;
-      max-width: 390px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       background: var(--brown-light);
-      border: 1px solid var(--border-taupe);
-      border-radius: 16px;
-      padding: 10px 12px;
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      border-radius: 24px;
+      padding: 14px 16px 12px;
       text-align: left;
+      box-shadow: var(--clay-card);
     }
 
-    /* Bahagian Tools dengan Interaksi & Animasi */
-    .tools-section-shell {
-      background: var(--brown-light);
-      border-top: 1px solid var(--border-taupe);
-      flex-shrink: 0;
-      transition: background 0.3s ease;
-    }
-
-    .tools-container-wrapper {
+    .tools-grid-2x2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      padding: 14px 40px 10px;
+      gap: 12px 16px;
     }
 
     .tools-column {
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 6px;
       opacity: 0;
       transform: translateY(12px);
       animation: toolColEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -203,7 +248,7 @@
 
     .tools-title {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       color: var(--brown-primary);
       text-transform: uppercase;
@@ -234,18 +279,18 @@
     .tool-chip {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: #ffffff;
-      border: 1px solid var(--border-taupe);
-      padding: 5px 10px;
-      border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
+      padding: 5px 9px;
+      border-radius: 13px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       font-weight: 700;
       color: var(--brown-dark);
       cursor: pointer;
+      box-shadow: var(--clay-chip);
       transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  border-color 0.22s ease,
                   box-shadow 0.22s ease,
                   background-color 0.22s ease,
                   color 0.22s ease;
@@ -253,26 +298,29 @@
 
     .tool-chip:hover {
       transform: translateY(-3px) scale(1.03);
-      border-color: var(--brown-primary);
-      box-shadow: 0 6px 14px var(--accent-glow);
+      box-shadow:
+        0 9px 18px var(--accent-glow),
+        inset 0 3px 6px #ffffff,
+        inset 0 -4px 8px rgba(139, 90, 43, 0.16);
       background: #fffdfb;
     }
 
     .tool-chip:active {
-      transform: translateY(-1px) scale(0.98);
+      transform: translateY(0) scale(0.98);
+      box-shadow: var(--clay-pressed);
     }
 
     .tool-chip.selected {
-      background: var(--brown-dark);
+      background: linear-gradient(145deg, #4e3321, #3b2618);
       color: #ffffff;
-      border-color: var(--brown-dark);
+      border-color: rgba(255, 255, 255, 0.35);
       transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(59, 38, 24, 0.2);
+      box-shadow: 0 8px 18px rgba(59, 38, 24, 0.22), inset 0 2px 5px rgba(255, 255, 255, 0.25);
     }
 
     .tool-logo {
-      width: 14px;
-      height: 14px;
+      width: 13px;
+      height: 13px;
       object-fit: contain;
       border-radius: 2px;
       transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -283,15 +331,16 @@
       transform: rotate(-10deg) scale(1.15);
     }
 
-    /* Bar Status Interaktif di bawah Tools */
+    /* Bar Status Interaktif di dalam kad yang sama */
     .tool-inspector-bar {
-      padding: 6px 150px 12px 40px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-taupe);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       color: var(--text-muted);
     }
     .tool-inspector-text {
@@ -303,32 +352,34 @@
     }
     .tool-badge-pill {
       background: #ffffff;
-      border: 1px solid var(--border-taupe);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
       color: var(--brown-primary);
-      padding: 2px 8px;
+      padding: 2px 9px;
       border-radius: 999px;
       font-weight: 700;
-      font-size: 0.63rem;
+      font-size: 0.62rem;
+      box-shadow: var(--clay-chip);
     }
     .tool-reset-btn {
-      background: transparent;
-      border: 1px solid var(--border-taupe);
+      background: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
       color: var(--brown-dark);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.62rem;
       font-weight: 700;
-      padding: 2px 9px;
+      padding: 2px 10px;
       border-radius: 999px;
       cursor: pointer;
+      box-shadow: var(--clay-chip);
       transition: all 0.2s ease;
+      flex-shrink: 0;
     }
     .tool-reset-btn:hover {
       background: var(--brown-dark);
       color: #ffffff;
-      border-color: var(--brown-dark);
     }
 
-    /* Pure White Chibi Companion */
+    /* Clay Pure White Chibi Companion */
     .chibi-companion {
       position: fixed;
       right: 28px;
@@ -351,43 +402,48 @@
     .chibi-bubble {
       background: #ffffff;
       color: var(--brown-dark);
-      border: 1.5px solid var(--border-taupe);
-      box-shadow: 0 8px 20px rgba(59, 38, 24, 0.1);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--clay-chip);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.64rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
       white-space: nowrap;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.2s ease;
     }
 
     .chibi-companion:hover .chibi-bubble {
       transform: translateY(-2px);
-      border-color: var(--brown-primary);
     }
 
     .chibi-avatar-shell {
       width: 68px;
       height: 68px;
-      border-radius: 22px;
+      border-radius: 26px;
       background: #ffffff;
-      border: 1.5px solid var(--border-taupe);
-      box-shadow: 0 12px 26px rgba(59, 38, 24, 0.12);
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      box-shadow:
+        0 14px 28px rgba(59, 38, 24, 0.14),
+        inset 0 4px 8px rgba(255, 255, 255, 0.98),
+        inset 0 -6px 12px rgba(139, 90, 43, 0.14);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
     }
 
     .chibi-companion:hover .chibi-avatar-shell {
       transform: scale(1.07) rotate(-2deg);
-      border-color: var(--brown-primary);
-      box-shadow: 0 14px 30px var(--accent-glow);
+      box-shadow:
+        0 16px 32px var(--accent-glow),
+        inset 0 4px 8px rgba(255, 255, 255, 1),
+        inset 0 -6px 12px rgba(139, 90, 43, 0.18);
     }
 
     .chibi-companion:active .chibi-avatar-shell {
       transform: scale(0.95);
+      box-shadow: var(--clay-pressed);
     }
 
     .chibi-svg {
@@ -408,7 +464,7 @@
     }
 
     footer.footer-area {
-      padding: 12px 40px; border-top: 1px solid var(--border-taupe); background: #ffffff;
+      padding: 12px 40px; border-top: 1.5px solid var(--border-taupe); background: rgba(252, 249, 245, 0.95);
       display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
     }
     .footer-links { display: flex; gap: 12px; }
@@ -430,7 +486,7 @@
         width: 100%;
         height: auto;
         min-height: calc(100vh - 28px);
-        border-radius: 26px;
+        border-radius: 28px;
         overflow: visible;
       }
       header.logo-nav {
@@ -451,8 +507,6 @@
       .hero-btns { justify-content: center; }
       .pro-stats-grid { text-align: left; }
       .under-profile-tools { max-width: 100%; }
-      .tools-container-wrapper { grid-template-columns: repeat(2, 1fr); padding: 14px 24px 8px; }
-      .tool-inspector-bar { padding: 6px 120px 12px 24px; flex-direction: column; align-items: flex-start; }
       .chibi-companion { right: 18px; bottom: 20px; transform: scale(0.9); transform-origin: bottom right; }
     }
 
@@ -463,7 +517,7 @@
       }
       .main-wrapper {
         width: 100%;
-        border-radius: 20px;
+        border-radius: 22px;
         min-height: calc(100vh - 20px);
       }
       header.logo-nav {
@@ -478,7 +532,7 @@
         width: 100%;
         max-width: 100%;
         justify-content: center;
-        border-radius: 16px;
+        border-radius: 18px;
         gap: 4px;
         padding: 4px;
       }
@@ -488,7 +542,7 @@
         white-space: nowrap;
       }
       .page-content {
-        padding: 16px 14px 20px;
+        padding: 16px 14px 84px;
       }
       .hero-left h1 {
         font-size: 2.35rem;
@@ -515,16 +569,13 @@
       .profile-img-box {
         height: 210px;
       }
-      .under-profile-tools {
+      .tools-grid-2x2 {
         grid-template-columns: 1fr;
-      }
-      .tools-container-wrapper {
-        grid-template-columns: 1fr;
-        padding: 14px 14px 8px;
         gap: 12px;
       }
       .tool-inspector-bar {
-        padding: 6px 96px 84px 14px;
+        flex-direction: column;
+        align-items: flex-start;
       }
       .chibi-companion {
         right: 12px;
@@ -532,7 +583,7 @@
         transform: scale(0.72);
         transform-origin: bottom right;
       }
-      .chibi-avatar-shell { width: 58px; height: 58px; border-radius: 18px; }
+      .chibi-avatar-shell { width: 58px; height: 58px; border-radius: 20px; }
       .chibi-svg { width: 48px; height: 48px; }
       footer.footer-area {
         padding: 14px;
@@ -582,86 +633,83 @@
             </div>
           </div>
 
-          <div class="under-profile-tools">
-            <div class="tools-column">
-              <span class="tools-title">AI Tools</span>
-              <div class="tools-items-flex">
-                <button type="button" class="tool-chip" data-tool="ChatGPT" data-category="AI Tools" data-note="Brainstorming concepts, copywriting drafts &amp; workflow ideation.">
-                  <img src="https://drive.google.com/thumbnail?id=1pOUjP8iA1i81VEzx2WHARd3E_ZULMFm-&sz=w128" alt="ChatGPT" class="tool-logo"><span>ChatGPT</span>
-                </button>
-                <button type="button" class="tool-chip" data-tool="Gemini" data-category="AI Tools" data-note="Creative structuring, visual planning &amp; fast research synthesis.">
-                  <img src="https://drive.google.com/thumbnail?id=11LhL4F3guyKOmvNY-t4DIrcuDyGVn9wb&sz=w128" alt="Gemini" class="tool-logo"><span>Gemini</span>
-                </button>
-                <button type="button" class="tool-chip" data-tool="NotebookLM" data-category="AI Tools" data-note="Organizing study notes, project references &amp; source summaries.">
-                  <img src="https://drive.google.com/thumbnail?id=1lkjeEvxeIulsHz3tR3w-yUKa65p8P7c7&sz=w128" alt="NotebookLM" class="tool-logo"><span>NotebookLM</span>
-                </button>
+          <div class="under-profile-tools" aria-label="Toolkit & Workflow">
+            <div class="tools-grid-2x2">
+              <div class="tools-column">
+                <span class="tools-title">AI Tools</span>
+                <div class="tools-items-flex">
+                  <button type="button" class="tool-chip" data-tool="ChatGPT" data-category="AI Tools" data-note="Brainstorming concepts, copywriting drafts &amp; workflow ideation.">
+                    <img src="https://drive.google.com/thumbnail?id=1pOUjP8iA1i81VEzx2WHARd3E_ZULMFm-&sz=w128" alt="ChatGPT" class="tool-logo"><span>ChatGPT</span>
+                  </button>
+                  <button type="button" class="tool-chip" data-tool="Gemini" data-category="AI Tools" data-note="Creative structuring, visual planning &amp; fast research synthesis.">
+                    <img src="https://drive.google.com/thumbnail?id=11LhL4F3guyKOmvNY-t4DIrcuDyGVn9wb&sz=w128" alt="Gemini" class="tool-logo"><span>Gemini</span>
+                  </button>
+                  <button type="button" class="tool-chip" data-tool="NotebookLM" data-category="AI Tools" data-note="Organizing study notes, project references &amp; source summaries.">
+                    <img src="https://drive.google.com/thumbnail?id=1lkjeEvxeIulsHz3tR3w-yUKa65p8P7c7&sz=w128" alt="NotebookLM" class="tool-logo"><span>NotebookLM</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="tools-column">
+                <span class="tools-title">Coding</span>
+                <div class="tools-items-flex">
+                  <button type="button" class="tool-chip" data-tool="Code::Blocks" data-category="Coding" data-note="C/C++ logic practice, algorithms &amp; foundational programming.">
+                    <img src="https://drive.google.com/thumbnail?id=1vxFaL54oMEExBIGV36E6CneUSygjuWhu&sz=w128" alt="Code::Blocks" class="tool-logo"><span>Code::Blocks</span>
+                  </button>
+                  <button type="button" class="tool-chip" data-tool="VS Code" data-category="Coding" data-note="Building &amp; refining responsive HTML, CSS &amp; JavaScript pages.">
+                    <img src="https://drive.google.com/thumbnail?id=1zS1hYzVdBHDp03sZsaEpgW7nugJhVWQ4&sz=w128" alt="VS Code" class="tool-logo"><span>VS Code</span>
+                  </button>
+                  <button type="button" class="tool-chip" data-tool="XAMPP" data-category="Coding" data-note="Local web server testing, Apache &amp; database development.">
+                    <img src="https://drive.google.com/thumbnail?id=1YWInQnAdNQixkE7zjTJeiMvaEtdLdox3&sz=w128" alt="XAMPP" class="tool-logo"><span>XAMPP</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="tools-column">
+                <span class="tools-title">Microsoft</span>
+                <div class="tools-items-flex">
+                  <button type="button" class="tool-chip" data-tool="Word" data-category="Microsoft" data-note="Formatted documentation, reports, proposals &amp; event paperwork.">
+                    <img src="https://drive.google.com/thumbnail?id=1w2rg0mQUO0l3-Q9uhZHY7iidcZEAMVCO&sz=w128" alt="Word" class="tool-logo"><span>Word</span>
+                  </button>
+                  <button type="button" class="tool-chip" data-tool="Sheets" data-category="Microsoft" data-note="Collaborative tracking, schedules &amp; shared project lists.">
+                    <img src="https://drive.google.com/thumbnail?id=1iax8l6bgapwFmnDGrDXd_MIABRbRdQ3N&sz=w128" alt="Sheets" class="tool-logo"><span>Sheets</span>
+                  </button>
+                  <button type="button" class="tool-chip" data-tool="Excel" data-category="Microsoft" data-note="Structured data tables, timelines &amp; budget/progress tracking.">
+                    <img src="https://drive.google.com/thumbnail?id=1g3PpiYP19C3Qxuo5035UEDGF4VG_rIpz&sz=w128" alt="Excel" class="tool-logo"><span>Excel</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="tools-column">
+                <span class="tools-title">Design</span>
+                <div class="tools-items-flex">
+                  <button type="button" class="tool-chip" data-tool="Blender" data-category="Design" data-note="3D modeling, texturing, rigging &amp; product/scene renders.">
+                    <img src="https://drive.google.com/thumbnail?id=1krDv0O6Hp2PYi0OzRJ45r_6vyXICYdcA&sz=w128" alt="Blender" class="tool-logo"><span>Blender</span>
+                  </button>
+                  <button type="button" class="tool-chip" data-tool="Canva" data-category="Design" data-note="Social media posters, event publicity &amp; cover page slides.">
+                    <img src="https://drive.google.com/thumbnail?id=1Xtt2rzCF5YE8y8ZcSmx-RGfqiU84-V9p&sz=w128" alt="Canva" class="tool-logo"><span>Canva</span>
+                  </button>
+                  <button type="button" class="tool-chip" data-tool="Photoshop" data-category="Design" data-note="Photo retouching, visual compositing &amp; crisp graphic artwork.">
+                    <img src="https://drive.google.com/thumbnail?id=18UDPOIktfB2xpvHqGlirWEM17ADW9Xbe&sz=w128" alt="Photoshop" class="tool-logo"><span>Photoshop</span>
+                  </button>
+                  <button type="button" class="tool-chip" data-tool="CapCut" data-category="Design" data-note="Short-form video editing, pacing, captions &amp; visual transitions.">
+                    <img src="https://drive.google.com/thumbnail?id=1iBZa-hySR8dYEFEZrz5KWQPtvRBqCXOU&sz=w128" alt="CapCut" class="tool-logo"><span>CapCut</span>
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div class="tools-column">
-              <span class="tools-title">Coding</span>
-              <div class="tools-items-flex">
-                <button type="button" class="tool-chip" data-tool="Code::Blocks" data-category="Coding" data-note="C/C++ logic practice, algorithms &amp; foundational programming.">
-                  <img src="https://drive.google.com/thumbnail?id=1vxFaL54oMEExBIGV36E6CneUSygjuWhu&sz=w128" alt="Code::Blocks" class="tool-logo"><span>Code::Blocks</span>
-                </button>
-                <button type="button" class="tool-chip" data-tool="VS Code" data-category="Coding" data-note="Building &amp; refining responsive HTML, CSS &amp; JavaScript pages.">
-                  <img src="https://drive.google.com/thumbnail?id=1zS1hYzVdBHDp03sZsaEpgW7nugJhVWQ4&sz=w128" alt="VS Code" class="tool-logo"><span>VS Code</span>
-                </button>
-                <button type="button" class="tool-chip" data-tool="XAMPP" data-category="Coding" data-note="Local web server testing, Apache &amp; database development.">
-                  <img src="https://drive.google.com/thumbnail?id=1YWInQnAdNQixkE7zjTJeiMvaEtdLdox3&sz=w128" alt="XAMPP" class="tool-logo"><span>XAMPP</span>
-                </button>
+            <div class="tool-inspector-bar">
+              <div class="tool-inspector-text" id="toolInspectorText">
+                <span class="tool-badge-pill">INTERACTIVE TOOLKIT</span>
+                <span>Hover or click any tool badge to preview how it powers my workflow.</span>
               </div>
+              <button type="button" class="tool-reset-btn" id="resetToolBtn" style="display: none;">Reset Selection</button>
             </div>
           </div>
         </div>
       </div>
     </main>
-
-    <!-- Bahagian Tools Beranimasi & Interaktif -->
-    <section class="tools-section-shell" aria-label="Toolkit & Workflow">
-      <div class="tools-container-wrapper">
-        <div class="tools-column">
-          <span class="tools-title">Microsoft</span>
-          <div class="tools-items-flex">
-            <button type="button" class="tool-chip" data-tool="Word" data-category="Microsoft" data-note="Formatted documentation, reports, proposals &amp; event paperwork.">
-              <img src="https://drive.google.com/thumbnail?id=1w2rg0mQUO0l3-Q9uhZHY7iidcZEAMVCO&sz=w128" alt="Word" class="tool-logo"><span>Word</span>
-            </button>
-            <button type="button" class="tool-chip" data-tool="Sheets" data-category="Microsoft" data-note="Collaborative tracking, schedules &amp; shared project lists.">
-              <img src="https://drive.google.com/thumbnail?id=1iax8l6bgapwFmnDGrDXd_MIABRbRdQ3N&sz=w128" alt="Sheets" class="tool-logo"><span>Sheets</span>
-            </button>
-            <button type="button" class="tool-chip" data-tool="Excel" data-category="Microsoft" data-note="Structured data tables, timelines &amp; budget/progress tracking.">
-              <img src="https://drive.google.com/thumbnail?id=1g3PpiYP19C3Qxuo5035UEDGF4VG_rIpz&sz=w128" alt="Excel" class="tool-logo"><span>Excel</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="tools-column">
-          <span class="tools-title">Design</span>
-          <div class="tools-items-flex">
-            <button type="button" class="tool-chip" data-tool="Blender" data-category="Design" data-note="3D modeling, texturing, rigging &amp; product/scene renders.">
-              <img src="https://drive.google.com/thumbnail?id=1krDv0O6Hp2PYi0OzRJ45r_6vyXICYdcA&sz=w128" alt="Blender" class="tool-logo"><span>Blender</span>
-            </button>
-            <button type="button" class="tool-chip" data-tool="Canva" data-category="Design" data-note="Social media posters, event publicity &amp; cover page slides.">
-              <img src="https://drive.google.com/thumbnail?id=1Xtt2rzCF5YE8y8ZcSmx-RGfqiU84-V9p&sz=w128" alt="Canva" class="tool-logo"><span>Canva</span>
-            </button>
-            <button type="button" class="tool-chip" data-tool="Photoshop" data-category="Design" data-note="Photo retouching, visual compositing &amp; crisp graphic artwork.">
-              <img src="https://drive.google.com/thumbnail?id=18UDPOIktfB2xpvHqGlirWEM17ADW9Xbe&sz=w128" alt="Photoshop" class="tool-logo"><span>Photoshop</span>
-            </button>
-            <button type="button" class="tool-chip" data-tool="CapCut" data-category="Design" data-note="Short-form video editing, pacing, captions &amp; visual transitions.">
-              <img src="https://drive.google.com/thumbnail?id=1iBZa-hySR8dYEFEZrz5KWQPtvRBqCXOU&sz=w128" alt="CapCut" class="tool-logo"><span>CapCut</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="tool-inspector-bar">
-        <div class="tool-inspector-text" id="toolInspectorText">
-          <span class="tool-badge-pill">INTERACTIVE TOOLKIT</span>
-          <span>Hover or click any tool badge to preview how it powers my workflow.</span>
-        </div>
-        <button type="button" class="tool-reset-btn" id="resetToolBtn" style="display: none;">Reset Selection</button>
-      </div>
-    </section>
 
     <footer class="footer-area">
       <span>&copy; 2026 Alvirah Rowena Wong Siew Li (BI24110060). All Rights Reserved.</span>
