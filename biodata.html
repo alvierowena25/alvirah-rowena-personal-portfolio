@@ -50,9 +50,9 @@
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: 1.5px solid var(--border-taupe);
-      border-radius: 32px; box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
+      border-radius: 36px; box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
       display: flex; flex-direction: column; justify-content: space-between;
-      overflow: hidden; margin: auto;
+      overflow: hidden; isolation: isolate; margin: auto;
       opacity: 0;
       transform: translateY(18px) scale(0.985);
       animation:
@@ -90,6 +90,8 @@
       padding: 18px 40px; border-bottom: 1px solid var(--border-taupe);
       background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(10px); flex-shrink: 0;
       z-index: 20; gap: 12px;
+      border-top-left-radius: 34px;
+      border-top-right-radius: 34px;
     }
     .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; }
     nav { display: flex; gap: 6px; background: var(--brown-light); padding: 4px; border-radius: 30px; border: 1.5px solid var(--border-taupe); flex-wrap: wrap; }
@@ -150,12 +152,13 @@
 
     .tab-pane { display: none; opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
     .tab-pane.active#tab-skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; opacity: 1; transform: translateY(0); }
-    .tab-pane.active#tab-timetable { display: grid; grid-template-columns: 1fr; gap: 16px; opacity: 1; transform: translateY(0); }
+    .tab-pane.active#tab-timetable { display: grid; grid-template-columns: 1fr; gap: 14px; opacity: 1; transform: translateY(0); }
     .tab-pane.active { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; opacity: 1; transform: translateY(0); }
 
     .bio-card {
       background: var(--brown-light); border: 1.5px solid var(--border-taupe); border-radius: 20px; padding: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      min-width: 0;
     }
     .bio-card:hover {
       transform: translateY(-3px);
@@ -172,19 +175,20 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
     .bio-unique-list li {
       display: flex;
       flex-direction: column;
-      gap: 2px;
-      font-size: 0.85rem;
+      gap: 3px;
+      font-size: 0.82rem;
       color: var(--text-muted);
       border-left: 2.5px solid var(--brown-primary);
       transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
-      background: rgba(255,255,255,0.55);
-      padding: 8px 10px;
-      border-radius: 0 10px 10px 0;
+      background: rgba(255,255,255,0.65);
+      padding: 8px 12px;
+      border-radius: 0 12px 12px 0;
+      overflow-wrap: anywhere;
     }
     .bio-unique-list li:hover { transform: translateX(3px); background: #ffffff; border-color: var(--brown-dark); }
     .bio-unique-list li span.label {
@@ -199,27 +203,39 @@
       font-weight: 600;
     }
 
+    /* Kemas & Kompak: Timetable Styles */
+    #tab-timetable .bio-card {
+      padding: 14px 16px;
+      border-radius: 16px;
+    }
+    #tab-timetable .bio-card h3 {
+      margin-bottom: 8px;
+      padding-bottom: 5px;
+      font-size: 0.72rem;
+      gap: 6px;
+    }
+
     .timetable-wrap {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      border-radius: 14px;
+      border-radius: 12px;
       border: 1px solid var(--border-taupe);
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.78);
     }
     table.timetable-grid {
       width: 100%;
       border-collapse: collapse;
-      min-width: 720px;
-      font-size: 0.78rem;
+      min-width: 680px;
+      font-size: 0.74rem;
     }
     table.timetable-grid th {
       background: var(--brown-dark);
       color: #ffffff;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.6px;
-      padding: 10px 12px;
+      font-size: 0.68rem;
+      letter-spacing: 0.5px;
+      padding: 7px 8px;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.14);
     }
@@ -227,16 +243,16 @@
       background: #c86d2d;
       color: #ffffff;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 700;
       text-align: center;
-      padding: 10px;
-      width: 115px;
+      padding: 6px 8px;
+      width: 104px;
       border: 1px solid rgba(255, 255, 255, 0.18);
       white-space: nowrap;
     }
     table.timetable-grid td.slot-cell {
-      padding: 8px;
+      padding: 5px;
       border: 1px solid var(--border-taupe);
       vertical-align: middle;
       text-align: center;
@@ -244,41 +260,106 @@
       transition: background 0.2s ease, opacity 0.25s ease;
     }
     table.timetable-grid td.slot-cell.dimmed {
-      opacity: 0.28;
+      opacity: 0.22;
     }
+
+    /* Mobile Agenda Cards (dikemaskan supaya tidak terlalu besar & padat) */
+    .mobile-timetable-agenda {
+      display: none;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .mobile-day-group {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--border-taupe);
+      border-radius: 12px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .mobile-day-group.hidden-day {
+      display: none;
+    }
+    .mobile-day-heading {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dashed var(--border-taupe);
+      padding-bottom: 3px;
+    }
+    .mobile-day-heading span:last-child {
+      font-size: 0.6rem;
+      color: var(--brown-primary);
+      background: rgba(139, 90, 43, 0.1);
+      padding: 1px 6px;
+      border-radius: 8px;
+    }
+    .mobile-slot-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .mobile-time-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #9e4b16;
+    }
+
     .class-pill {
-      border-radius: 10px;
-      padding: 8px 9px;
-      line-height: 1.35;
+      border-radius: 8px;
+      padding: 6px 8px;
+      line-height: 1.28;
       color: var(--brown-dark);
       border: 1px solid rgba(59, 38, 24, 0.14);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: left;
     }
     .class-pill:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(59, 38, 24, 0.1);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(59, 38, 24, 0.08);
     }
     .class-pill strong {
       display: block;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      margin-bottom: 2px;
+      font-size: 0.66rem;
+      margin-bottom: 1px;
     }
     .class-pill span {
       display: block;
-      font-size: 0.68rem;
+      font-size: 0.63rem;
       font-weight: 600;
+      color: #3d2c22;
     }
-    .slot-grey { background: #e2e2e2; }
-    .slot-cream { background: #f8f5dc; }
-    .slot-tan { background: #e3c48d; }
-    .slot-gold { background: #f8dd56; }
+    .slot-grey { background: #e6e4e1; }
+    .slot-cream { background: #faf6df; }
+    .slot-tan { background: #e8cca0; }
+    .slot-gold { background: #fae36b; }
+
+    #tab-timetable .bio-unique-list {
+      gap: 6px;
+    }
+    #tab-timetable .bio-unique-list li {
+      padding: 6px 10px;
+      gap: 1px;
+      font-size: 0.74rem;
+      border-radius: 0 9px 9px 0;
+    }
+    #tab-timetable .bio-unique-list li span.label {
+      font-size: 0.62rem;
+    }
 
     .skill-filter-btns {
       display: flex; gap: 4px; margin-bottom: 0; flex-wrap: wrap;
     }
     .filter-btn {
-      background: #ffffff; border: 1px solid var(--border-taupe); padding: 2px 8px; border-radius: 10px;
+      background: #ffffff; border: 1px solid var(--border-taupe); padding: 2px 8px; border-radius: 9px;
       font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700; color: var(--text-muted); cursor: pointer;
       transition: all 0.2s;
     }
@@ -381,6 +462,8 @@
     footer.footer-area {
       padding: 14px 40px; border-top: 1px solid var(--border-taupe); background: rgba(255, 255, 255, 0.88);
       display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
+      border-bottom-left-radius: 34px;
+      border-bottom-right-radius: 34px;
     }
     .footer-links { display: flex; gap: 12px; }
     .footer-links a { color: var(--brown-dark); text-decoration: none; font-weight: 600; }
@@ -401,13 +484,15 @@
         width: 100%;
         height: auto;
         min-height: calc(100vh - 28px);
-        border-radius: 26px;
-        overflow: visible;
+        border-radius: 28px;
+        overflow: hidden;
       }
       header.logo-nav {
         flex-direction: column;
         gap: 10px;
         padding: 16px 24px;
+        border-top-left-radius: 26px;
+        border-top-right-radius: 26px;
       }
       .page-content {
         padding: 20px 24px;
@@ -419,16 +504,16 @@
       }
       .profile-sidebar {
         display: grid;
-        grid-template-columns: 200px 1fr;
+        grid-template-columns: 180px 1fr;
         align-items: center;
         gap: 18px;
       }
       .profile-card-tilt {
-        max-width: 200px;
+        max-width: 180px;
         margin: 0;
       }
       .profile-img-box {
-        height: 200px;
+        height: 180px;
       }
       .profile-quick-badge {
         text-align: left;
@@ -451,6 +536,10 @@
         transform: scale(0.9);
         transform-origin: bottom right;
       }
+      footer.footer-area {
+        border-bottom-left-radius: 26px;
+        border-bottom-right-radius: 26px;
+      }
     }
 
     /* Phone Breakpoint (up to 640px) */
@@ -459,12 +548,14 @@
         padding: 10px;
       }
       .main-wrapper {
-        border-radius: 20px;
+        border-radius: 22px;
         min-height: calc(100vh - 20px);
       }
       header.logo-nav {
         padding: 14px;
         gap: 10px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
       }
       .logo-text {
         font-size: 0.82rem;
@@ -496,28 +587,47 @@
         padding: 5px 12px;
       }
       .profile-sidebar {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        grid-template-columns: 84px 1fr;
+        align-items: center;
+        gap: 10px;
       }
       .profile-card-tilt {
-        max-width: 210px;
-        margin: 0 auto;
+        width: 84px;
+        max-width: 84px;
+        margin: 0;
+        padding: 4px;
+        border-radius: 14px;
+        transform: none;
       }
       .profile-img-box {
-        height: 210px;
+        height: 84px;
+        border-radius: 10px;
       }
       .profile-quick-badge {
-        text-align: center;
-        padding: 12px;
+        text-align: left;
+        padding: 8px 10px;
+        font-size: 0.64rem;
+        border-radius: 12px;
+        line-height: 1.35;
+      }
+      .timetable-wrap {
+        display: none;
+      }
+      .mobile-timetable-agenda {
+        display: flex;
       }
       .tab-pane.active,
       .tab-pane.active#tab-skills,
       .tab-pane.active#tab-timetable {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 10px;
+      }
+      #tab-timetable .bio-card {
+        padding: 11px 12px;
+        border-radius: 14px;
       }
       .bio-card {
-        padding: 15px;
+        padding: 14px;
         border-radius: 16px;
       }
       .chibi-companion {
@@ -533,6 +643,8 @@
         flex-direction: column;
         text-align: center;
         font-size: 0.68rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
       }
     }
   </style>
@@ -602,6 +714,16 @@
           cell.classList.add('dimmed');
         }
       });
+
+      const mobileGroups = card.querySelectorAll('.mobile-day-group');
+      mobileGroups.forEach(group => {
+        const groupDay = group.getAttribute('data-day');
+        if (day === 'all' || groupDay === day) {
+          group.classList.remove('hidden-day');
+        } else {
+          group.classList.add('hidden-day');
+        }
+      });
     }
 
     window.onload = function() {
@@ -665,10 +787,10 @@
 
       <div class="bio-header-row">
         <div class="bio-tabs">
-          <button class="tab-btn active" onclick="switchTab(event, 'tab-academic')">Academic &amp; Bio</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-academic')">Academic &amp; Bio</button>
           <button class="tab-btn" onclick="switchTab(event, 'tab-skills')">Technical Skills</button>
           <button class="tab-btn" onclick="switchTab(event, 'tab-leadership')">Leadership &amp; Track</button>
-          <button class="tab-btn" onclick="switchTab(event, 'tab-timetable')">Class Timetable</button>
+          <button class="tab-btn active" onclick="switchTab(event, 'tab-timetable')">Class Timetable</button>
         </div>
       </div>
 
@@ -691,7 +813,7 @@
         </div>
 
         <div>
-          <div id="tab-academic" class="tab-pane active">
+          <div id="tab-academic" class="tab-pane">
             <div class="bio-card">
               <h3>Academic Details <span>✦</span></h3>
               <ul class="bio-unique-list">
@@ -930,12 +1052,12 @@
             </div>
           </div>
 
-          <div id="tab-timetable" class="tab-pane">
+          <div id="tab-timetable" class="tab-pane active">
             <div class="bio-card" id="card-class-timetable">
               <h3>
                 <span>Class Timetable Schedule <span>✦</span></span>
                 <div class="skill-filter-btns">
-                  <button class="filter-btn active" onclick="filterTimetableDay('all', this)">All Days</button>
+                  <button class="filter-btn active" onclick="filterTimetableDay('all', this)">All</button>
                   <button class="filter-btn" onclick="filterTimetableDay('mon', this)">Mon</button>
                   <button class="filter-btn" onclick="filterTimetableDay('tues', this)">Tues</button>
                   <button class="filter-btn" onclick="filterTimetableDay('wed', this)">Wed</button>
@@ -963,8 +1085,7 @@
                         <div class="class-pill slot-grey">
                           <strong>IM22503</strong>
                           <span>MULTIMEDIA WEB PROGRAMMING</span>
-                          <span>DR. NUR FARAH</span>
-                          <span>P1G | SEC01</span>
+                          <span>DR. NUR FARAH • P1G | SEC01</span>
                         </div>
                       </td>
                       <td class="slot-cell" data-day="tues">
@@ -977,16 +1098,14 @@
                         <div class="class-pill slot-tan">
                           <strong>IM32303</strong>
                           <span>COMPUTER GRAPHIC</span>
-                          <span>DR. WAN</span>
-                          <span>PODIUM C | SEC01</span>
+                          <span>DR. WAN • PODIUM C | SEC01</span>
                         </div>
                       </td>
                       <td class="slot-cell" data-day="thurs">
                         <div class="class-pill slot-cream">
                           <strong>IP01903</strong>
                           <span>TENAGA KERJA REALITY</span>
-                          <span>DR. TAMBRIN</span>
-                          <span>BT1 | SEC01</span>
+                          <span>DR. TAMBRIN • BT1 | SEC01</span>
                         </div>
                       </td>
                       <td class="slot-cell" data-day="fri"></td>
@@ -999,8 +1118,7 @@
                       <td class="slot-cell" data-day="thurs">
                         <div class="class-pill slot-tan">
                           <strong>- LAB CLASS -</strong>
-                          <span>Computer Graphic</span>
-                          <span>(LAB GAMES)</span>
+                          <span>Computer Graphic (LAB GAMES)</span>
                         </div>
                       </td>
                       <td class="slot-cell" data-day="fri"></td>
@@ -1010,8 +1128,7 @@
                       <td class="slot-cell" data-day="mon">
                         <div class="class-pill slot-grey">
                           <strong>- LAB CLASS -</strong>
-                          <span>MULTIMEDIA WEB PROGRAMMING</span>
-                          <span>(E-COM)</span>
+                          <span>MULTIMEDIA WEB PROG. (E-COM)</span>
                         </div>
                       </td>
                       <td class="slot-cell" data-day="tues"></td>
@@ -1020,16 +1137,14 @@
                         <div class="class-pill slot-cream">
                           <strong>IT32603</strong>
                           <span>AUGMENTED REALITY</span>
-                          <span>DR. RYAN MACDONELL</span>
-                          <span>DKP3 | SEC01</span>
+                          <span>DR. RYAN MACDONELL • DKP3 | SEC01</span>
                         </div>
                       </td>
                       <td class="slot-cell" data-day="fri">
                         <div class="class-pill slot-gold">
                           <strong>IT32503</strong>
                           <span>CYBERSECURITY</span>
-                          <span>DR. AINNUR HAFIZAH</span>
-                          <span>DKP2 | SEC01</span>
+                          <span>DR. AINNUR HAFIZAH • DKP2 | SEC01</span>
                         </div>
                       </td>
                     </tr>
@@ -1042,13 +1157,97 @@
                       <td class="slot-cell" data-day="fri">
                         <div class="class-pill slot-gold">
                           <strong>- LAB CLASS -</strong>
-                          <span>CYBERSECURITY</span>
-                          <span>(DKP 2)</span>
+                          <span>CYBERSECURITY (DKP 2)</span>
                         </div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
+              </div>
+
+              <div class="mobile-timetable-agenda">
+                <div class="mobile-day-group" data-day="mon">
+                  <div class="mobile-day-heading"><span>Monday</span><span>2</span></div>
+                  <div class="mobile-slot-item">
+                    <span class="mobile-time-tag">08:00 - 10:00</span>
+                    <div class="class-pill slot-grey">
+                      <strong>IM22503 • Multimedia Web Programming</strong>
+                      <span>Dr. Nur Farah • P1G | SEC01</span>
+                    </div>
+                  </div>
+                  <div class="mobile-slot-item">
+                    <span class="mobile-time-tag">02:00 - 04:00</span>
+                    <div class="class-pill slot-grey">
+                      <strong>Lab • Multimedia Web Programming</strong>
+                      <span>E-COM</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mobile-day-group" data-day="tues">
+                  <div class="mobile-day-heading"><span>Tuesday</span><span>1</span></div>
+                  <div class="mobile-slot-item">
+                    <span class="mobile-time-tag">08:00 - 10:00</span>
+                    <div class="class-pill slot-cream">
+                      <strong>Augmented Reality</strong>
+                      <span>Lab (Beside Toilet)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mobile-day-group" data-day="wed">
+                  <div class="mobile-day-heading"><span>Wednesday</span><span>1</span></div>
+                  <div class="mobile-slot-item">
+                    <span class="mobile-time-tag">08:00 - 10:00</span>
+                    <div class="class-pill slot-tan">
+                      <strong>IM32303 • Computer Graphic</strong>
+                      <span>Dr. Wan • Podium C | SEC01</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mobile-day-group" data-day="thurs">
+                  <div class="mobile-day-heading"><span>Thursday</span><span>3</span></div>
+                  <div class="mobile-slot-item">
+                    <span class="mobile-time-tag">08:00 - 10:00</span>
+                    <div class="class-pill slot-cream">
+                      <strong>IP01903 • Tenaga Kerja Reality</strong>
+                      <span>Dr. Tambrin • BT1 | SEC01</span>
+                    </div>
+                  </div>
+                  <div class="mobile-slot-item">
+                    <span class="mobile-time-tag">11:00 - 12:30</span>
+                    <div class="class-pill slot-tan">
+                      <strong>Lab • Computer Graphic</strong>
+                      <span>Lab Games</span>
+                    </div>
+                  </div>
+                  <div class="mobile-slot-item">
+                    <span class="mobile-time-tag">02:00 - 04:00</span>
+                    <div class="class-pill slot-cream">
+                      <strong>IT32603 • Augmented Reality</strong>
+                      <span>Dr. Ryan Macdonell • DKP3 | SEC01</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mobile-day-group" data-day="fri">
+                  <div class="mobile-day-heading"><span>Friday</span><span>2</span></div>
+                  <div class="mobile-slot-item">
+                    <span class="mobile-time-tag">02:00 - 04:00</span>
+                    <div class="class-pill slot-gold">
+                      <strong>IT32503 • Cybersecurity</strong>
+                      <span>Dr. Ainnur Hafizah • DKP2 | SEC01</span>
+                    </div>
+                  </div>
+                  <div class="mobile-slot-item">
+                    <span class="mobile-time-tag">04:00 - 05:00</span>
+                    <div class="class-pill slot-gold">
+                      <strong>Lab • Cybersecurity</strong>
+                      <span>DKP 2</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1057,15 +1256,15 @@
               <ul class="bio-unique-list">
                 <li>
                   <span class="label">IM22503 — Multimedia Web Programming</span>
-                  <span class="value">Mon 08:00–10:00 (Dr. Nur Farah, P1G | SEC01) + Lab Mon 02:00–04:00 (E-COM)</span>
+                  <span class="value">Mon 08:00–10:00 (Dr. Nur Farah, P1G) • Lab Mon 02:00–04:00 (E-COM)</span>
                 </li>
                 <li>
                   <span class="label">IM32303 — Computer Graphic</span>
-                  <span class="value">Wed 08:00–10:00 (Dr. Wan, Podium C | SEC01) + Lab Thurs 11:00–12:30 (Lab Games)</span>
+                  <span class="value">Wed 08:00–10:00 (Dr. Wan, Podium C) • Lab Thurs 11:00–12:30 (Lab Games)</span>
                 </li>
                 <li>
                   <span class="label">Augmented Reality &amp; IT32603</span>
-                  <span class="value">Tues 08:00–10:00 (Lab, Beside Toilet) • Thurs 02:00–04:00 (Dr. Ryan Macdonell, DKP3 | SEC01)</span>
+                  <span class="value">Tues 08:00–10:00 (Lab) • Thurs 02:00–04:00 (Dr. Ryan Macdonell, DKP3)</span>
                 </li>
                 <li>
                   <span class="label">IP01903 — Tenaga Kerja Reality</span>
@@ -1073,7 +1272,7 @@
                 </li>
                 <li>
                   <span class="label">IT32503 — Cybersecurity</span>
-                  <span class="value">Fri 02:00–04:00 (Dr. Ainnur Hafizah, DKP2 | SEC01) + Lab Fri 04:00–05:00 (DKP 2)</span>
+                  <span class="value">Fri 02:00–04:00 (Dr. Ainnur Hafizah, DKP2) • Lab Fri 04:00–05:00 (DKP 2)</span>
                 </li>
               </ul>
             </div>
