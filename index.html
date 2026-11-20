@@ -230,6 +230,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px 16px;
+      order: 1;
     }
 
     .tools-column {
@@ -345,9 +346,6 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.66rem;
       color: var(--text-muted);
-    }
-    .tools-grid-2x2 {
-      order: 1;
     }
     .tool-inspector-text {
       display: flex;
@@ -472,6 +470,8 @@
     footer.footer-area {
       padding: 12px 40px; border-top: 1.5px solid var(--border-taupe); background: var(--card-white);
       display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
+      border-bottom-left-radius: 34px;
+      border-bottom-right-radius: 34px;
     }
     .footer-links { display: flex; gap: 12px; }
     .footer-links a { color: var(--brown-dark); text-decoration: none; font-weight: 600; }
@@ -516,6 +516,10 @@
       .pro-stats-grid { text-align: left; }
       .under-profile-tools { max-width: 100%; }
       .chibi-companion { right: 18px; bottom: 20px; transform: scale(0.9); transform-origin: bottom right; }
+      footer.footer-area {
+        border-bottom-left-radius: 26px;
+        border-bottom-right-radius: 26px;
+      }
     }
 
     /* Phone Breakpoint (up to 640px) */
@@ -600,6 +604,8 @@
         flex-direction: column;
         text-align: center;
         font-size: 0.68rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
       }
     }
   </style>
