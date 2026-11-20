@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alvirah Rowena | Portfolio</title>
+  <title>Alvirah Rowena | Video Presentations</title>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -49,14 +49,14 @@
     }
 
     .main-wrapper {
-      position: relative; z-index: 10; width: 94%; max-width: 1400px; height: 92vh;
+      position: relative; z-index: 10; width: 94%; max-width: 1350px; height: 92vh;
       background: var(--card-white);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: 1.5px solid var(--border-taupe);
-      border-radius: 36px; box-shadow: 0 20px 50px rgba(44, 34, 30, 0.06);
+      border-radius: 32px; box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
       display: flex; flex-direction: column; justify-content: space-between;
-      overflow: hidden; isolation: isolate; margin: auto;
+      overflow: hidden; margin: auto;
       opacity: 0;
       transform: translateY(18px) scale(0.985);
       animation:
@@ -65,13 +65,19 @@
     }
 
     @keyframes wrapperReveal {
-      0% { opacity: 0; transform: translateY(18px) scale(0.985); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+      0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     @keyframes wrapperShadowBreath {
       0%, 100% {
-        box-shadow: 0 20px 50px rgba(44, 34, 30, 0.06);
+        box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
         border-color: var(--border-taupe);
       }
       50% {
@@ -91,155 +97,85 @@
 
     header.logo-nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 45px; border-bottom: 1px solid var(--border-taupe);
-      background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); flex-shrink: 0;
+      padding: 20px 40px; border-bottom: 1px solid var(--border-taupe);
+      background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(10px); flex-shrink: 0;
       gap: 12px; z-index: 20;
-      border-top-left-radius: 34px;
-      border-top-right-radius: 34px;
     }
-    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1.5px; }
-    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 5px; border-radius: 30px; border: 1.5px solid var(--border-taupe); flex-wrap: wrap; }
-    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 7px 18px; border-radius: 20px; transition: all 0.25s ease; }
+    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; }
+    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 4px; border-radius: 30px; border: 1.5px solid var(--border-taupe); flex-wrap: wrap; }
+    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: all 0.25s ease; }
     nav a:hover { color: var(--brown-dark); background: #ffffff; }
-    nav a.active { background: var(--brown-dark); color: #ffffff; box-shadow: 0 4px 12px rgba(44,29,17,0.15); }
+    nav a.active { background: #3b2618; color: #ffffff; }
 
     .page-content {
-      padding: 28px 45px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 22px;
+      padding: 25px 40px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 25px;
       scrollbar-width: thin; scrollbar-color: var(--border-taupe) transparent;
-    }
-
-    .page-header-flex {
-      display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap;
-      border-bottom: 2px solid var(--border-taupe); padding-bottom: 12px; gap: 12px;
     }
     .page-title {
       font-family: 'Instrument Serif', serif; font-size: 2.8rem; font-weight: 400; color: var(--brown-dark); line-height: 1;
     }
-    .page-subtitle {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-muted); margin-top: 6px;
-    }
 
-    .portfolio-filter-bar {
-      display: flex; gap: 6px; flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: #ffffff; border: 1px solid var(--border-taupe); padding: 4px 11px; border-radius: 12px;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; color: var(--text-muted); cursor: pointer;
-      transition: all 0.2s;
-    }
-    .filter-btn:hover, .filter-btn.active { background: var(--brown-primary); color: #fff; border-color: var(--brown-primary); }
-
-    .portfolio-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      align-items: start;
-    }
-
-    .bio-card {
-      background: var(--brown-light); border: 1.5px solid var(--border-taupe); border-radius: 20px; padding: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      min-width: 0;
-    }
-    .bio-card.hidden-card {
-      display: none;
-    }
-    .bio-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(139, 90, 43, 0.08);
-      border-color: var(--brown-primary);
-    }
-    .bio-card h3 {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; color: var(--brown-primary);
-      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid var(--border-taupe); padding-bottom: 6px;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-    }
-
-    .bio-unique-list {
-      list-style: none;
+    .section-category {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
-    .bio-unique-list li {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      border-left: 2.5px solid var(--brown-primary);
-      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
-      background: rgba(255,255,255,0.68);
-      padding: 10px 12px;
-      border-radius: 0 12px 12px 0;
-      overflow-wrap: anywhere;
-    }
-    .bio-unique-list li:hover { transform: translateX(3px); background: #ffffff; border-color: var(--brown-dark); }
-    .bio-unique-list li span.label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      color: var(--brown-primary);
-      font-weight: 700;
-    }
-    .bio-unique-list li span.value {
+    .section-heading {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
       color: var(--brown-dark);
-      font-weight: 700;
-      font-size: 0.86rem;
+      border-bottom: 1px solid var(--border-taupe);
+      padding-bottom: 5px;
     }
 
-    .work-thumbs-row {
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+      width: 100%;
+    }
+
+    .video-card {
+      background: var(--brown-light);
+      border: 1.5px solid var(--border-taupe);
+      border-radius: 18px;
+      padding: 12px;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 10px;
-      margin-top: 2px;
+      box-shadow: 0 4px 15px rgba(59, 38, 24, 0.03);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--brown-primary);
+      box-shadow: 0 10px 24px rgba(139, 90, 43, 0.1);
     }
 
-    .gallery-item {
-      position: relative;
-      width: 150px;
-      height: 112px;
-      border-radius: 10px;
+    .video-box {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #1b120c;
+      border: 1px solid var(--border-taupe);
+      border-radius: 12px;
       overflow: hidden;
-      background: #eae2d8;
-      border: 1.5px solid var(--brown-dark);
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(59, 38, 24, 0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .gallery-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(139, 90, 43, 0.14);
-      border-color: var(--brown-primary);
-    }
-    .gallery-item img {
+    .video-box iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      border: 0;
       display: block;
-      transition: transform 0.35s ease;
-    }
-    .gallery-item img:hover {
-      transform: scale(1.05);
     }
 
-    #imageModal {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(44, 29, 17, 0.85);
-      z-index: 1000;
-      justify-content: center; align-items: center;
-      backdrop-filter: blur(8px);
-      padding: 16px;
-    }
-    #imageModal img {
-      max-width: 88vw; max-height: 88vh;
-      border-radius: 14px;
-      border: 2px solid var(--border-taupe);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    .vid-title {
+      font-size: 0.9rem; font-weight: 700; color: var(--brown-dark); font-family: 'Plus Jakarta Sans', sans-serif;
+      text-align: left; padding-left: 2px;
     }
 
+    /* Pure White Chibi Companion */
     .chibi-companion {
       position: fixed;
       right: 28px;
@@ -319,13 +255,11 @@
     }
 
     footer.footer-area {
-      padding: 16px 45px; border-top: 1px solid var(--border-taupe); background: rgba(255, 255, 255, 0.88);
-      display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
-      border-bottom-left-radius: 34px;
-      border-bottom-right-radius: 34px;
+      padding: 16px 40px; border-top: 1px solid var(--border-taupe); background: rgba(255, 255, 255, 0.88);
+      display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.73rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
     }
-    .footer-links { display: flex; gap: 15px; }
-    .footer-links a { color: var(--brown-dark); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-links { display: flex; gap: 12px; }
+    .footer-links a { color: var(--brown-dark); text-decoration: none; font-weight: 600; }
     .footer-links a:hover { color: var(--brown-primary); }
 
     /* Tablet Breakpoint (641px to 1024px) */
@@ -343,33 +277,26 @@
         width: 100%;
         height: auto;
         min-height: calc(100vh - 28px);
-        border-radius: 28px;
-        overflow: hidden;
+        border-radius: 26px;
+        overflow: visible;
       }
       header.logo-nav {
         flex-direction: column;
         gap: 10px;
         padding: 16px 24px;
-        border-top-left-radius: 26px;
-        border-top-right-radius: 26px;
       }
       .page-content {
         padding: 22px 24px 80px;
         overflow: visible;
       }
-      .portfolio-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+      .video-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       }
       .chibi-companion {
         right: 18px;
         bottom: 18px;
         transform: scale(0.9);
         transform-origin: bottom right;
-      }
-      footer.footer-area {
-        border-bottom-left-radius: 26px;
-        border-bottom-right-radius: 26px;
       }
     }
 
@@ -379,19 +306,16 @@
         padding: 10px;
       }
       .main-wrapper {
-        border-radius: 22px;
+        border-radius: 20px;
         min-height: calc(100vh - 20px);
       }
       header.logo-nav {
         padding: 12px 14px;
         gap: 8px;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
       }
       .logo-text {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         text-align: center;
-        letter-spacing: 0.8px;
       }
       nav {
         width: 100%;
@@ -408,29 +332,21 @@
       }
       .page-content {
         padding: 16px 14px 84px;
-        gap: 16px;
-      }
-      .page-header-flex {
-        flex-direction: column;
-        align-items: flex-start;
+        gap: 18px;
       }
       .page-title {
         font-size: 2.1rem;
       }
-      .page-subtitle {
-        font-size: 0.7rem;
+      .section-heading {
+        font-size: 1.35rem;
       }
-      .portfolio-cards-grid {
+      .video-grid {
         grid-template-columns: 1fr;
         gap: 14px;
       }
-      .bio-card {
-        padding: 15px;
+      .video-card {
+        padding: 10px;
         border-radius: 16px;
-      }
-      .gallery-item {
-        width: calc(50% - 5px);
-        height: 98px;
       }
       .chibi-companion {
         right: 10px;
@@ -445,233 +361,9 @@
         flex-direction: column;
         text-align: center;
         font-size: 0.68rem;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
       }
     }
   </style>
-  <script>
-    const rawBaseUrl = "https://raw.githubusercontent.com/alvierowena25/Alvirah-Rowena-Portfolio/main";
-
-    const portfolioCards = [
-      {
-        id: "card-cover-slides",
-        category: "slides",
-        heading: "Cover Page Slides",
-        items: [
-          {
-            label: "Portfolio Cover Slide",
-            name: "Portfolio Cover Design",
-            files: ["https://drive.google.com/thumbnail?id=163H9svy7raPnFguus1uIizGbJ-7y1H10&sz=w1200"]
-          },
-          {
-            label: "Program Cover Slide",
-            name: "Program Cover Design",
-            files: ["https://drive.google.com/thumbnail?id=1g-MKNNOcKT_sIEkREOKuPZcsLkvxufTy&sz=w1200"]
-          },
-          {
-            label: "Celebration Cover Slide",
-            name: "Celebration Cover Design",
-            files: ["https://drive.google.com/thumbnail?id=1jficigPWocYdA22tVGnB25oDzIhJyhhN&sz=w1200"]
-          }
-        ]
-      },
-      {
-        id: "card-project-works",
-        category: "projects",
-        heading: "Project & 3D Works",
-        items: [
-          {
-            label: "Animations",
-            name: "3D & Motion Animation Showcase",
-            files: ["https://drive.google.com/thumbnail?id=14r0clfrwJCslHUx_rYiMzBDEut-0QEJi&sz=w1200"]
-          },
-          {
-            label: "IoT Smart Chili Plant",
-            name: "Innovatiot Smart Chili Plant Visuals",
-            files: [
-              "https://drive.google.com/thumbnail?id=1Fldtv4kXnOKVw3pgJiRVtTWUlf5rXbZc&sz=w1200",
-              "https://drive.google.com/thumbnail?id=1_5_jxWD2B0ZSSYksajy8fXdWezYrV-8G&sz=w1200"
-            ]
-          }
-        ]
-      },
-      {
-        id: "card-merch-syabas",
-        category: "posters",
-        heading: "Merchandise & Congratulatory Posters",
-        items: [
-          {
-            label: "Merchandise Posters",
-            name: "Event & Club Merchandise Posters",
-            files: [
-              "https://drive.google.com/thumbnail?id=1QtOp_ZG-niPHOxcGtaioamCyPdrRV9xW&sz=w1200",
-              "https://drive.google.com/thumbnail?id=19BRY3crrcTE6BgEVP_XMgyRV6D2MK1R0&sz=w1200"
-            ]
-          },
-          {
-            label: "Syabas & Tahniah Posters",
-            name: "Syabas & Tahniah Appreciation Posters",
-            files: [
-              "https://drive.google.com/thumbnail?id=1dPHlLCfj1ugUyBvP8E2NtB6PSZRCLRcp&sz=w1200",
-              "https://drive.google.com/thumbnail?id=1UoAo8Ep2PeMTZBj0D8ZhbrTK5-kfnYQE&sz=w1200"
-            ]
-          }
-        ]
-      },
-      {
-        id: "card-program-celebrations",
-        category: "posters",
-        heading: "Program & Celebrations Posters",
-        items: [
-          {
-            label: "Program Posters",
-            name: "Campus & Student Program Posters",
-            files: ["https://drive.google.com/thumbnail?id=18onVyxC3fbVr0lMZVVd2fZtj9YHa52vc&sz=w1200"]
-          },
-          {
-            label: "Celebrations Posters",
-            name: "Festive & Celebration Posters",
-            files: ["https://drive.google.com/thumbnail?id=1uB2bvZ-Y_fTUmiQ5AE2TZOnKMxr0sboC&sz=w1200"]
-          }
-        ]
-      }
-    ];
-
-    function resolveImageSrc(baseUrl, filename) {
-      if (/^https?:\/\//i.test(filename)) {
-        return filename;
-      }
-      return `${baseUrl}/${filename}`;
-    }
-
-    function filterPortfolio(category, btnElement) {
-      document.querySelectorAll(".portfolio-filter-bar .filter-btn").forEach((b) => b.classList.remove("active"));
-      btnElement.classList.add("active");
-
-      document.querySelectorAll("#portfolioCardsGrid .bio-card").forEach((card) => {
-        const cardCat = card.getAttribute("data-category");
-        if (category === "all" || cardCat === category) {
-          card.classList.remove("hidden-card");
-        } else {
-          card.classList.add("hidden-card");
-        }
-      });
-    }
-
-    function buildPortfolioCards() {
-      const gridContainer = document.getElementById("portfolioCardsGrid");
-      if (!gridContainer) return;
-      gridContainer.innerHTML = "";
-
-      portfolioCards.forEach((cardData) => {
-        const card = document.createElement("div");
-        card.className = "bio-card";
-        card.id = cardData.id;
-        card.setAttribute("data-category", cardData.category);
-
-        const heading = document.createElement("h3");
-        heading.innerHTML = `<span>${cardData.heading}</span><span>✦</span>`;
-        card.appendChild(heading);
-
-        const list = document.createElement("ul");
-        list.className = "bio-unique-list";
-
-        cardData.items.forEach((item) => {
-          const li = document.createElement("li");
-
-          const labelEl = document.createElement("span");
-          labelEl.className = "label";
-          labelEl.textContent = item.label;
-
-          const valueEl = document.createElement("span");
-          valueEl.className = "value";
-          valueEl.textContent = item.name;
-
-          const thumbsRow = document.createElement("div");
-          thumbsRow.className = "work-thumbs-row";
-
-          item.files.forEach((filename) => {
-            const itemDiv = document.createElement("div");
-            itemDiv.className = "gallery-item";
-
-            const img = document.createElement("img");
-            img.src = resolveImageSrc(rawBaseUrl, filename);
-            img.alt = `${item.name} — ${filename.split("/").pop()}`;
-            img.loading = "lazy";
-            img.onclick = () => openModal(img.src);
-            img.onerror = () => {
-              itemDiv.style.display = "flex";
-              itemDiv.style.alignItems = "center";
-              itemDiv.style.justifyContent = "center";
-              itemDiv.style.padding = "8px";
-              itemDiv.style.fontSize = "0.62rem";
-              itemDiv.style.fontFamily = "'JetBrains Mono', monospace";
-              itemDiv.style.textAlign = "center";
-              itemDiv.style.wordBreak = "break-all";
-              itemDiv.textContent = `Missing: ${filename}`;
-            };
-
-            itemDiv.appendChild(img);
-            thumbsRow.appendChild(itemDiv);
-          });
-
-          li.appendChild(labelEl);
-          li.appendChild(valueEl);
-          li.appendChild(thumbsRow);
-          list.appendChild(li);
-        });
-
-        card.appendChild(list);
-        gridContainer.appendChild(card);
-      });
-    }
-
-    function openModal(imgSrc) {
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImg");
-      modalImg.src = imgSrc;
-      modal.style.display = "flex";
-    }
-
-    function closeModal() {
-      document.getElementById("imageModal").style.display = "none";
-      document.getElementById("modalImg").src = "";
-    }
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
-
-    window.onload = function() {
-      buildPortfolioCards();
-
-      const chibi = document.getElementById("chibiCompanion");
-      const chibiBubble = document.getElementById("chibiBubble");
-      const chibiLines = [
-        "Hi! Tap me ✨",
-        "Tap any poster to zoom!",
-        "3D renders & posters inside",
-        "Designed by Alvirah"
-      ];
-      let chibiIndex = 0;
-
-      function cycleChibiLine() {
-        chibiIndex = (chibiIndex + 1) % chibiLines.length;
-        chibiBubble.textContent = chibiLines[chibiIndex];
-      }
-
-      if (chibi && chibiBubble) {
-        chibi.addEventListener("click", cycleChibiLine);
-        chibi.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            cycleChibiLine();
-          }
-        });
-      }
-    };
-  </script>
 </head>
 <body>
   <div class="paper-grain"></div>
@@ -681,42 +373,108 @@
 
   <div class="main-wrapper">
     <header class="logo-nav">
-      <div class="logo-text">ALVIRAH ROWENA / PORTFOLIO</div>
+      <div class="logo-text">MY WEBSITE PORTFOLIO</div>
       <nav>
         <a href="index.html">Home</a>
         <a href="biodata.html">Biodata</a>
-        <a href="portfolio.html" class="active">Portfolio</a>
-        <a href="video.html">Video</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="video.html" class="active">Video</a>
         <a href="comments.html">Comments</a>
       </nav>
     </header>
 
     <main class="page-content">
-      <div class="page-header-flex">
-        <div>
-          <h1 class="page-title">MY Designs &amp; Works</h1>
-          <p class="page-subtitle">Organized in the same structured card &amp; detail layout as Leadership &amp; Track.</p>
-        </div>
-        <div class="portfolio-filter-bar">
-          <button class="filter-btn active" onclick="filterPortfolio('all', this)">All</button>
-          <button class="filter-btn" onclick="filterPortfolio('slides', this)">Cover Slides</button>
-          <button class="filter-btn" onclick="filterPortfolio('projects', this)">Projects &amp; 3D</button>
-          <button class="filter-btn" onclick="filterPortfolio('posters', this)">Posters</button>
+      <div>
+        <h1 class="page-title">Video Showcases.</h1>
+        <p style="color: var(--text-muted); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
+          Selected animations, event recaps, community clips, and assignments.
+        </p>
+      </div>
+
+      <div class="section-category">
+        <h2 class="section-heading">Animations</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1uXV3NN-tjDx1V8w0_FLghNxFbbwW8wOx/preview" title="Humanoid" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Humanoid</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1-Ut1PCXT1mbzkvIgM8EVJgcn4pP_KSTo/preview" title="Ice cream shop" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Ice cream shop</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1jm1z09n2Yhm7W3pIXFTlcUuATK-WcN6P/preview" title="ADVERTISEMENT ZAVIRA" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">ADVERTISEMENT ZAVIRA</h3>
+          </div>
         </div>
       </div>
 
-      <div id="portfolioCardsGrid" class="portfolio-cards-grid"></div>
-    </main>
+      <div class="section-category">
+        <h2 class="section-heading">Program Video</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1kexLnKcNHnaaX3jnjOu5ob9WJMnG4DhN/preview" title="Bonding KESUWA-KAL" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Bonding KESUWA-KAL</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1i-Af36bsZMlY02zvp28HWCzLkabE8j3S/preview" title="Promoting KESUWA-KAL" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Promoting KESUWA-KAL</h3>
+          </div>
+        </div>
+      </div>
 
-    <div id="imageModal" onclick="closeModal()">
-      <img id="modalImg" src="" alt="Full Resolution View">
-    </div>
+      <div class="section-category">
+        <h2 class="section-heading">Church Video</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1GNMHpw15tXc6aXpSDFqpXjTgy7do0Gm_/preview" title="English Prayer Meeting" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">English Prayer Meeting</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1JcWcWdOmBwtK92wBYz8dyvwGPE4ldAK_/preview" title="Doa Kelompok" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Doa Kelompok</h3>
+          </div>
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/1hmTI1JbELvQqNLfYUef9bevMCCY-9qSd/preview" title="Guitarist Practice Caroling" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">Guitarist Practice Caroling</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-category">
+        <h2 class="section-heading">Assignment</h2>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-box">
+              <iframe src="https://drive.google.com/file/d/129U3OOXVmB49bxC0ilpZ_JXxJARhEtPx/preview" title="CERITA RAKYAT HUMINODUN" allow="autoplay; fullscreen" loading="lazy"></iframe>
+            </div>
+            <h3 class="vid-title">CERITA RAKYAT HUMINODUN</h3>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <footer class="footer-area">
       <span>&copy; 2026 Alvirah Rowena Wong Siew Li (BI24110060). All Rights Reserved.</span>
       <div class="footer-links">
-        <a href="mailto:alvierowena25@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/alvirah-rowena-81855a288/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:alvirah_rowena_bi24@iluv.ums.edu.my">Email</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </footer>
   </div>
@@ -739,5 +497,34 @@
       </svg>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const chibi = document.getElementById('chibiCompanion');
+      const chibiBubble = document.getElementById('chibiBubble');
+      const chibiLines = [
+        "Hi! Tap me ✨",
+        "Animations & recaps!",
+        "Press play on any clip",
+        "Motion & storytelling"
+      ];
+      let chibiIndex = 0;
+
+      function cycleChibiLine() {
+        chibiIndex = (chibiIndex + 1) % chibiLines.length;
+        chibiBubble.textContent = chibiLines[chibiIndex];
+      }
+
+      if (chibi && chibiBubble) {
+        chibi.addEventListener('click', cycleChibiLine);
+        chibi.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            cycleChibiLine();
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
