@@ -333,8 +333,9 @@
       transform: rotate(-10deg) scale(1.15);
     }
 
-    /* Bar Status Interaktif di dalam kad yang sama */
+    /* Bar Status Interaktif di bawah semua tools */
     .tool-inspector-bar {
+      order: 2;
       padding-top: 10px;
       border-top: 1px solid var(--border-taupe);
       display: flex;
@@ -344,6 +345,9 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.66rem;
       color: var(--text-muted);
+    }
+    .tools-grid-2x2 {
+      order: 1;
     }
     .tool-inspector-text {
       display: flex;
