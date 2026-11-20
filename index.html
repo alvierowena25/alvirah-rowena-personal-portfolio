@@ -111,7 +111,7 @@
       padding: 25px 40px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; justify-content: center;
       scrollbar-width: thin; scrollbar-color: var(--border-taupe) transparent;
     }
-    .hero-split { display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; align-items: center; }
+    .hero-split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 30px; align-items: center; }
     .hero-left { display: flex; flex-direction: column; gap: 12px; }
     .subtitle-badge {
       font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--brown-primary);
@@ -142,14 +142,33 @@
       font-size: 0.78rem; font-weight: 700; padding: 8px 18px; border-radius: 30px; border: 1.5px solid var(--border-taupe); transition: all 0.25s ease;
     }
     .btn-outline:hover { border-color: var(--brown-dark); background: var(--brown-light); }
-    .hero-right { display: flex; justify-content: center; align-items: center; }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
     .profile-card-tilt {
-      width: 100%; max-width: 260px; background: var(--brown-light); border: 1.5px solid var(--border-taupe);
+      width: 100%; max-width: 245px; background: var(--brown-light); border: 1.5px solid var(--border-taupe);
       border-radius: 22px; padding: 10px; box-shadow: 0 12px 30px rgba(59, 38, 24, 0.08); transform: rotate(2deg); transition: transform 0.3s ease;
     }
     .profile-card-tilt:hover { transform: rotate(0deg) scale(1.02); }
-    .profile-img-box { width: 100%; height: 270px; border-radius: 14px; overflow: hidden; background: #e8dcd0; }
+    .profile-img-box { width: 100%; height: 220px; border-radius: 14px; overflow: hidden; background: #e8dcd0; }
     .profile-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .under-profile-tools {
+      width: 100%;
+      max-width: 390px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      background: var(--brown-light);
+      border: 1px solid var(--border-taupe);
+      border-radius: 16px;
+      padding: 10px 12px;
+      text-align: left;
+    }
 
     /* Bahagian Tools dengan Interaksi & Animasi */
     .tools-section-shell {
@@ -161,8 +180,8 @@
 
     .tools-container-wrapper {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
       padding: 14px 40px 10px;
     }
 
@@ -431,6 +450,7 @@
       .subtitle-badge { align-self: center; }
       .hero-btns { justify-content: center; }
       .pro-stats-grid { text-align: left; }
+      .under-profile-tools { max-width: 100%; }
       .tools-container-wrapper { grid-template-columns: repeat(2, 1fr); padding: 14px 24px 8px; }
       .tool-inspector-bar { padding: 6px 24px 12px; flex-direction: column; align-items: flex-start; }
       .chibi-companion { right: 18px; bottom: 18px; transform: scale(0.9); transform-origin: bottom right; }
@@ -495,6 +515,9 @@
       .profile-img-box {
         height: 210px;
       }
+      .under-profile-tools {
+        grid-template-columns: 1fr;
+      }
       .tools-container-wrapper {
         grid-template-columns: 1fr;
         padding: 14px 14px 8px;
@@ -558,6 +581,38 @@
               <img src="https://drive.google.com/thumbnail?id=1Ly952FjpA66JGSxGXEfLEeLapgKRRUUO&sz=w800" alt="Alvirah Rowena">
             </div>
           </div>
+
+          <div class="under-profile-tools">
+            <div class="tools-column">
+              <span class="tools-title">AI Tools</span>
+              <div class="tools-items-flex">
+                <button type="button" class="tool-chip" data-tool="ChatGPT" data-category="AI Tools" data-note="Brainstorming concepts, copywriting drafts &amp; workflow ideation.">
+                  <img src="https://drive.google.com/thumbnail?id=1pOUjP8iA1i81VEzx2WHARd3E_ZULMFm-&sz=w128" alt="ChatGPT" class="tool-logo"><span>ChatGPT</span>
+                </button>
+                <button type="button" class="tool-chip" data-tool="Gemini" data-category="AI Tools" data-note="Creative structuring, visual planning &amp; fast research synthesis.">
+                  <img src="https://drive.google.com/thumbnail?id=11LhL4F3guyKOmvNY-t4DIrcuDyGVn9wb&sz=w128" alt="Gemini" class="tool-logo"><span>Gemini</span>
+                </button>
+                <button type="button" class="tool-chip" data-tool="NotebookLM" data-category="AI Tools" data-note="Organizing study notes, project references &amp; source summaries.">
+                  <img src="https://drive.google.com/thumbnail?id=1lkjeEvxeIulsHz3tR3w-yUKa65p8P7c7&sz=w128" alt="NotebookLM" class="tool-logo"><span>NotebookLM</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="tools-column">
+              <span class="tools-title">Coding</span>
+              <div class="tools-items-flex">
+                <button type="button" class="tool-chip" data-tool="Code::Blocks" data-category="Coding" data-note="C/C++ logic practice, algorithms &amp; foundational programming.">
+                  <img src="https://drive.google.com/thumbnail?id=1vxFaL54oMEExBIGV36E6CneUSygjuWhu&sz=w128" alt="Code::Blocks" class="tool-logo"><span>Code::Blocks</span>
+                </button>
+                <button type="button" class="tool-chip" data-tool="VS Code" data-category="Coding" data-note="Building &amp; refining responsive HTML, CSS &amp; JavaScript pages.">
+                  <img src="https://drive.google.com/thumbnail?id=1zS1hYzVdBHDp03sZsaEpgW7nugJhVWQ4&sz=w128" alt="VS Code" class="tool-logo"><span>VS Code</span>
+                </button>
+                <button type="button" class="tool-chip" data-tool="XAMPP" data-category="Coding" data-note="Local web server testing, Apache &amp; database development.">
+                  <img src="https://drive.google.com/thumbnail?id=1YWInQnAdNQixkE7zjTJeiMvaEtdLdox3&sz=w128" alt="XAMPP" class="tool-logo"><span>XAMPP</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
@@ -565,21 +620,6 @@
     <!-- Bahagian Tools Beranimasi & Interaktif -->
     <section class="tools-section-shell" aria-label="Toolkit & Workflow">
       <div class="tools-container-wrapper">
-        <div class="tools-column">
-          <span class="tools-title">AI Tools</span>
-          <div class="tools-items-flex">
-            <button type="button" class="tool-chip" data-tool="ChatGPT" data-category="AI Tools" data-note="Brainstorming concepts, copywriting drafts &amp; workflow ideation.">
-              <img src="https://drive.google.com/thumbnail?id=1pOUjP8iA1i81VEzx2WHARd3E_ZULMFm-&sz=w128" alt="ChatGPT" class="tool-logo"><span>ChatGPT</span>
-            </button>
-            <button type="button" class="tool-chip" data-tool="Gemini" data-category="AI Tools" data-note="Creative structuring, visual planning &amp; fast research synthesis.">
-              <img src="https://drive.google.com/thumbnail?id=11LhL4F3guyKOmvNY-t4DIrcuDyGVn9wb&sz=w128" alt="Gemini" class="tool-logo"><span>Gemini</span>
-            </button>
-            <button type="button" class="tool-chip" data-tool="NotebookLM" data-category="AI Tools" data-note="Organizing study notes, project references &amp; source summaries.">
-              <img src="https://drive.google.com/thumbnail?id=1lkjeEvxeIulsHz3tR3w-yUKa65p8P7c7&sz=w128" alt="NotebookLM" class="tool-logo"><span>NotebookLM</span>
-            </button>
-          </div>
-        </div>
-
         <div class="tools-column">
           <span class="tools-title">Microsoft</span>
           <div class="tools-items-flex">
@@ -591,21 +631,6 @@
             </button>
             <button type="button" class="tool-chip" data-tool="Excel" data-category="Microsoft" data-note="Structured data tables, timelines &amp; budget/progress tracking.">
               <img src="https://drive.google.com/thumbnail?id=1g3PpiYP19C3Qxuo5035UEDGF4VG_rIpz&sz=w128" alt="Excel" class="tool-logo"><span>Excel</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="tools-column">
-          <span class="tools-title">Coding</span>
-          <div class="tools-items-flex">
-            <button type="button" class="tool-chip" data-tool="Code::Blocks" data-category="Coding" data-note="C/C++ logic practice, algorithms &amp; foundational programming.">
-              <img src="https://drive.google.com/thumbnail?id=1vxFaL54oMEExBIGV36E6CneUSygjuWhu&sz=w128" alt="Code::Blocks" class="tool-logo"><span>Code::Blocks</span>
-            </button>
-            <button type="button" class="tool-chip" data-tool="VS Code" data-category="Coding" data-note="Building &amp; refining responsive HTML, CSS &amp; JavaScript pages.">
-              <img src="https://drive.google.com/thumbnail?id=1zS1hYzVdBHDp03sZsaEpgW7nugJhVWQ4&sz=w128" alt="VS Code" class="tool-logo"><span>VS Code</span>
-            </button>
-            <button type="button" class="tool-chip" data-tool="XAMPP" data-category="Coding" data-note="Local web server testing, Apache &amp; database development.">
-              <img src="https://drive.google.com/thumbnail?id=1YWInQnAdNQixkE7zjTJeiMvaEtdLdox3&sz=w128" alt="XAMPP" class="tool-logo"><span>XAMPP</span>
             </button>
           </div>
         </div>
@@ -753,4 +778,4 @@
   </script>
 </body>
 </html>
-```[cite: 8, 10]
+```[cite: 8]
