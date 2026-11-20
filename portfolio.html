@@ -11,7 +11,7 @@
       --card-white: rgba(255, 255, 255, 0.78);
       --border-taupe: #e4dcd3;
       --brown-primary: #8b5a2b;
-      --brown-dark: #2c1d11;
+      --brown-dark: #3b2618;
       --brown-light: rgba(250, 246, 240, 0.85);
       --text-main: #2c221e;
       --text-muted: #75665e;
@@ -104,12 +104,13 @@
     nav a.active { background: var(--brown-dark); color: #ffffff; box-shadow: 0 4px 12px rgba(44,29,17,0.15); }
 
     .page-content {
-      padding: 30px 45px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 26px;
+      padding: 28px 45px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 22px;
       scrollbar-width: thin; scrollbar-color: var(--border-taupe) transparent;
     }
 
     .page-header-flex {
-      display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--border-taupe); padding-bottom: 12px; gap: 12px;
+      display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap;
+      border-bottom: 2px solid var(--border-taupe); padding-bottom: 12px; gap: 12px;
     }
     .page-title {
       font-family: 'Instrument Serif', serif; font-size: 2.8rem; font-weight: 400; color: var(--brown-dark); line-height: 1;
@@ -118,78 +119,98 @@
       font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-muted); margin-top: 6px;
     }
 
-    .group-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--brown-primary);
-      margin-top: 6px;
+    .portfolio-filter-bar {
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: #ffffff; border: 1px solid var(--border-taupe); padding: 4px 11px; border-radius: 12px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; color: var(--text-muted); cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--brown-primary); color: #fff; border-color: var(--brown-primary); }
+
+    .portfolio-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      align-items: start;
     }
 
-    .topics-row {
+    .bio-card {
+      background: var(--brown-light); border: 1.5px solid var(--border-taupe); border-radius: 20px; padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      min-width: 0;
+    }
+    .bio-card.hidden-card {
+      display: none;
+    }
+    .bio-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(139, 90, 43, 0.08);
+      border-color: var(--brown-primary);
+    }
+    .bio-card h3 {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; color: var(--brown-primary);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 1px solid var(--border-taupe); padding-bottom: 6px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+
+    .bio-unique-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bio-unique-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-left: 2.5px solid var(--brown-primary);
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+      background: rgba(255,255,255,0.68);
+      padding: 10px 12px;
+      border-radius: 0 12px 12px 0;
+      overflow-wrap: anywhere;
+    }
+    .bio-unique-list li:hover { transform: translateX(3px); background: #ffffff; border-color: var(--brown-dark); }
+    .bio-unique-list li span.label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: var(--brown-primary);
+      font-weight: 700;
+    }
+    .bio-unique-list li span.value {
+      color: var(--brown-dark);
+      font-weight: 700;
+      font-size: 0.86rem;
+    }
+
+    .work-thumbs-row {
       display: flex;
       flex-wrap: wrap;
-      align-items: flex-start;
-      gap: 26px 38px;
-      width: 100%;
-    }
-
-    .section-block {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
       gap: 10px;
-      width: fit-content;
-      max-width: 100%;
-    }
-
-    .section-heading {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.65rem;
-      color: var(--brown-dark);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      white-space: nowrap;
-    }
-    .section-heading::after {
-      content: "";
-      width: 48px;
-      height: 1px;
-      background: var(--border-taupe);
-    }
-
-    .image-grid-container {
-      display: inline-flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 16px;
-      width: fit-content;
-      max-width: 100%;
-      background: var(--brown-light);
-      border: 1.5px solid var(--border-taupe);
-      border-radius: 20px;
-      padding: 18px;
+      margin-top: 2px;
     }
 
     .gallery-item {
       position: relative;
-      width: 265px;
-      height: 210px;
-      border-radius: 12px;
+      width: 150px;
+      height: 112px;
+      border-radius: 10px;
       overflow: hidden;
       background: #eae2d8;
       border: 1.5px solid var(--brown-dark);
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(59, 38, 24, 0.08);
+      box-shadow: 0 4px 10px rgba(59, 38, 24, 0.08);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      flex-shrink: 0;
     }
     .gallery-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(139, 90, 43, 0.14);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(139, 90, 43, 0.14);
       border-color: var(--brown-primary);
     }
     .gallery-item img {
@@ -197,10 +218,10 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
+      transition: transform 0.35s ease;
     }
     .gallery-item img:hover {
-      transform: scale(1.04);
+      transform: scale(1.05);
     }
 
     #imageModal {
@@ -336,9 +357,9 @@
         padding: 22px 24px 80px;
         overflow: visible;
       }
-      .gallery-item {
-        width: 210px;
-        height: 170px;
+      .portfolio-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
       .chibi-companion {
         right: 18px;
@@ -387,7 +408,7 @@
       }
       .page-content {
         padding: 16px 14px 84px;
-        gap: 18px;
+        gap: 16px;
       }
       .page-header-flex {
         flex-direction: column;
@@ -399,32 +420,17 @@
       .page-subtitle {
         font-size: 0.7rem;
       }
-      .topics-row {
-        flex-direction: column;
-        gap: 16px;
+      .portfolio-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
       }
-      .section-block,
-      .image-grid-container {
-        width: 100%;
-        max-width: 100%;
-      }
-      .section-heading {
-        font-size: 1.4rem;
-        white-space: normal;
-      }
-      .section-heading::after {
-        width: 28px;
-      }
-      .image-grid-container {
-        justify-content: center;
-        padding: 12px;
-        gap: 12px;
+      .bio-card {
+        padding: 15px;
         border-radius: 16px;
       }
       .gallery-item {
-        width: 100%;
-        max-width: 320px;
-        height: 195px;
+        width: calc(50% - 5px);
+        height: 98px;
       }
       .chibi-companion {
         right: 10px;
@@ -447,38 +453,42 @@
   <script>
     const rawBaseUrl = "https://raw.githubusercontent.com/alvierowena25/Alvirah-Rowena-Portfolio/main";
 
-    const portfolioGroups = [
+    const portfolioCards = [
       {
-        group: "01 / Cover Page Slides",
-        topics: [
+        id: "card-cover-slides",
+        category: "slides",
+        heading: "Cover Page Slides",
+        items: [
           {
-            title: "Portfolio Cover Slide",
-            containerId: "grid-por-slide",
+            label: "Portfolio Cover Slide",
+            name: "Portfolio Cover Design",
             files: ["https://drive.google.com/thumbnail?id=163H9svy7raPnFguus1uIizGbJ-7y1H10&sz=w1200"]
           },
           {
-            title: "Program Cover Slide",
-            containerId: "grid-prg-slide",
+            label: "Program Cover Slide",
+            name: "Program Cover Design",
             files: ["https://drive.google.com/thumbnail?id=1g-MKNNOcKT_sIEkREOKuPZcsLkvxufTy&sz=w1200"]
           },
           {
-            title: "Celebration Cover Slide",
-            containerId: "grid-cel-slide",
+            label: "Celebration Cover Slide",
+            name: "Celebration Cover Design",
             files: ["https://drive.google.com/thumbnail?id=1jficigPWocYdA22tVGnB25oDzIhJyhhN&sz=w1200"]
           }
         ]
       },
       {
-        group: "02 / Project & 3D Works",
-        topics: [
+        id: "card-project-works",
+        category: "projects",
+        heading: "Project & 3D Works",
+        items: [
           {
-            title: "Animations",
-            containerId: "grid-anim",
+            label: "Animations",
+            name: "3D & Motion Animation Showcase",
             files: ["https://drive.google.com/thumbnail?id=14r0clfrwJCslHUx_rYiMzBDEut-0QEJi&sz=w1200"]
           },
           {
-            title: "IoT Smart Chili Plant",
-            containerId: "grid-iot-post",
+            label: "IoT Smart Chili Plant",
+            name: "Innovatiot Smart Chili Plant Visuals",
             files: [
               "https://drive.google.com/thumbnail?id=1Fldtv4kXnOKVw3pgJiRVtTWUlf5rXbZc&sz=w1200",
               "https://drive.google.com/thumbnail?id=1_5_jxWD2B0ZSSYksajy8fXdWezYrV-8G&sz=w1200"
@@ -487,32 +497,41 @@
         ]
       },
       {
-        group: "03 / Event & Community Posters",
-        topics: [
+        id: "card-merch-syabas",
+        category: "posters",
+        heading: "Merchandise & Congratulatory Posters",
+        items: [
           {
-            title: "Merchandise Posters",
-            containerId: "grid-mer-post",
+            label: "Merchandise Posters",
+            name: "Event & Club Merchandise Posters",
             files: [
               "https://drive.google.com/thumbnail?id=1QtOp_ZG-niPHOxcGtaioamCyPdrRV9xW&sz=w1200",
               "https://drive.google.com/thumbnail?id=19BRY3crrcTE6BgEVP_XMgyRV6D2MK1R0&sz=w1200"
             ]
           },
           {
-            title: "Syabas & Tahniah Posters",
-            containerId: "grid-sya-post",
+            label: "Syabas & Tahniah Posters",
+            name: "Syabas & Tahniah Appreciation Posters",
             files: [
               "https://drive.google.com/thumbnail?id=1dPHlLCfj1ugUyBvP8E2NtB6PSZRCLRcp&sz=w1200",
               "https://drive.google.com/thumbnail?id=1UoAo8Ep2PeMTZBj0D8ZhbrTK5-kfnYQE&sz=w1200"
             ]
-          },
+          }
+        ]
+      },
+      {
+        id: "card-program-celebrations",
+        category: "posters",
+        heading: "Program & Celebrations Posters",
+        items: [
           {
-            title: "Program Posters",
-            containerId: "grid-prg-post",
+            label: "Program Posters",
+            name: "Campus & Student Program Posters",
             files: ["https://drive.google.com/thumbnail?id=18onVyxC3fbVr0lMZVVd2fZtj9YHa52vc&sz=w1200"]
           },
           {
-            title: "Celebrations Posters",
-            containerId: "grid-cel-post",
+            label: "Celebrations Posters",
+            name: "Festive & Celebration Posters",
             files: ["https://drive.google.com/thumbnail?id=1uB2bvZ-Y_fTUmiQ5AE2TZOnKMxr0sboC&sz=w1200"]
           }
         ]
@@ -526,82 +545,85 @@
       return `${baseUrl}/${filename}`;
     }
 
-    function createTopicBlock(topic) {
-      const block = document.createElement("div");
-      block.className = "section-block";
+    function filterPortfolio(category, btnElement) {
+      document.querySelectorAll(".portfolio-filter-bar .filter-btn").forEach((b) => b.classList.remove("active"));
+      btnElement.classList.add("active");
 
-      const heading = document.createElement("h2");
-      heading.className = "section-heading";
-      heading.textContent = topic.title;
-
-      const grid = document.createElement("div");
-      grid.className = "image-grid-container";
-      grid.id = topic.containerId;
-
-      block.appendChild(heading);
-      block.appendChild(grid);
-      return block;
-    }
-
-    function buildPortfolioSections() {
-      const content = document.getElementById("portfolioSections");
-      if (!content) return;
-      content.innerHTML = "";
-
-      portfolioGroups.forEach((grp) => {
-        const groupTitle = document.createElement("div");
-        groupTitle.className = "group-label";
-        groupTitle.textContent = grp.group;
-        content.appendChild(groupTitle);
-
-        const rowEl = document.createElement("div");
-        rowEl.className = "topics-row";
-
-        grp.topics.forEach((topic) => {
-          rowEl.appendChild(createTopicBlock(topic));
-        });
-
-        content.appendChild(rowEl);
-
-        grp.topics.forEach((topic) => {
-          renderFullGrid(topic.containerId, rawBaseUrl, topic.files);
-        });
+      document.querySelectorAll("#portfolioCardsGrid .bio-card").forEach((card) => {
+        const cardCat = card.getAttribute("data-category");
+        if (category === "all" || cardCat === category) {
+          card.classList.remove("hidden-card");
+        } else {
+          card.classList.add("hidden-card");
+        }
       });
     }
 
-    function renderFullGrid(containerId, baseUrl, imageArray) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      container.innerHTML = "";
+    function buildPortfolioCards() {
+      const gridContainer = document.getElementById("portfolioCardsGrid");
+      if (!gridContainer) return;
+      gridContainer.innerHTML = "";
 
-      if (!Array.isArray(imageArray) || imageArray.length === 0) {
-        container.innerHTML = '<div style="font-size:0.75rem; color:var(--text-muted); font-family:\'JetBrains Mono\',monospace; padding: 10px;">No images available</div>';
-        return;
-      }
+      portfolioCards.forEach((cardData) => {
+        const card = document.createElement("div");
+        card.className = "bio-card";
+        card.id = cardData.id;
+        card.setAttribute("data-category", cardData.category);
 
-      imageArray.forEach((filename) => {
-        const itemDiv = document.createElement("div");
-        itemDiv.className = "gallery-item";
+        const heading = document.createElement("h3");
+        heading.innerHTML = `<span>${cardData.heading}</span><span>✦</span>`;
+        card.appendChild(heading);
 
-        const img = document.createElement("img");
-        img.src = resolveImageSrc(baseUrl, filename);
-        img.alt = filename.split("/").pop();
-        img.loading = "lazy";
-        img.onclick = () => openModal(img.src);
-        img.onerror = () => {
-          itemDiv.style.display = "flex";
-          itemDiv.style.alignItems = "center";
-          itemDiv.style.justifyContent = "center";
-          itemDiv.style.padding = "8px";
-          itemDiv.style.fontSize = "0.65rem";
-          itemDiv.style.fontFamily = "'JetBrains Mono', monospace";
-          itemDiv.style.textAlign = "center";
-          itemDiv.style.wordBreak = "break-all";
-          itemDiv.textContent = `Missing: ${filename}`;
-        };
+        const list = document.createElement("ul");
+        list.className = "bio-unique-list";
 
-        itemDiv.appendChild(img);
-        container.appendChild(itemDiv);
+        cardData.items.forEach((item) => {
+          const li = document.createElement("li");
+
+          const labelEl = document.createElement("span");
+          labelEl.className = "label";
+          labelEl.textContent = item.label;
+
+          const valueEl = document.createElement("span");
+          valueEl.className = "value";
+          valueEl.textContent = item.name;
+
+          const thumbsRow = document.createElement("div");
+          thumbsRow.className = "work-thumbs-row";
+
+          item.files.forEach((filename) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "gallery-item";
+
+            const img = document.createElement("img");
+            img.src = resolveImageSrc(rawBaseUrl, filename);
+            img.alt = `${item.name} — ${filename.split("/").pop()}`;
+            img.loading = "lazy";
+            img.onclick = () => openModal(img.src);
+            img.onerror = () => {
+              itemDiv.style.display = "flex";
+              itemDiv.style.alignItems = "center";
+              itemDiv.style.justifyContent = "center";
+              itemDiv.style.padding = "8px";
+              itemDiv.style.fontSize = "0.62rem";
+              itemDiv.style.fontFamily = "'JetBrains Mono', monospace";
+              itemDiv.style.textAlign = "center";
+              itemDiv.style.wordBreak = "break-all";
+              itemDiv.textContent = `Missing: ${filename}`;
+            };
+
+            itemDiv.appendChild(img);
+            thumbsRow.appendChild(itemDiv);
+          });
+
+          li.appendChild(labelEl);
+          li.appendChild(valueEl);
+          li.appendChild(thumbsRow);
+          list.appendChild(li);
+        });
+
+        card.appendChild(list);
+        gridContainer.appendChild(card);
       });
     }
 
@@ -622,7 +644,7 @@
     });
 
     window.onload = function() {
-      buildPortfolioSections();
+      buildPortfolioCards();
 
       const chibi = document.getElementById("chibiCompanion");
       const chibiBubble = document.getElementById("chibiBubble");
@@ -673,11 +695,17 @@
       <div class="page-header-flex">
         <div>
           <h1 class="page-title">MY Designs &amp; Works</h1>
-          <p class="page-subtitle">Compact frames sized directly to your images.</p>
+          <p class="page-subtitle">Organized in the same structured card &amp; detail layout as Leadership &amp; Track.</p>
+        </div>
+        <div class="portfolio-filter-bar">
+          <button class="filter-btn active" onclick="filterPortfolio('all', this)">All</button>
+          <button class="filter-btn" onclick="filterPortfolio('slides', this)">Cover Slides</button>
+          <button class="filter-btn" onclick="filterPortfolio('projects', this)">Projects &amp; 3D</button>
+          <button class="filter-btn" onclick="filterPortfolio('posters', this)">Posters</button>
         </div>
       </div>
 
-      <div id="portfolioSections" style="display: flex; flex-direction: column; gap: 22px;"></div>
+      <div id="portfolioCardsGrid" class="portfolio-cards-grid"></div>
     </main>
 
     <div id="imageModal" onclick="closeModal()">
