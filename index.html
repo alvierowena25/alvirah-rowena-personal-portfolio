@@ -7,15 +7,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-cream: #f4efe9;
-      --card-white: #ffffff;
+      --bg-cream: #f3ece4;
+      --card-white: #fcf9f5;
       --border-taupe: #e4dcd3;
       --brown-primary: #8b5a2b;
       --brown-dark: #3b2618;
-      --brown-light: #faf6f0;
+      --brown-light: #faf5ee;
       --text-main: #2c221e;
       --text-muted: #75665e;
       --accent-glow: rgba(139, 90, 43, 0.16);
+
+      /* Claymorphism Shadows */
+      --clay-main:
+        0 26px 55px rgba(59, 38, 24, 0.12),
+        0 8px 18px rgba(139, 90, 43, 0.08),
+        inset 0 6px 12px rgba(255, 255, 255, 0.95),
+        inset 0 -8px 16px rgba(139, 90, 43, 0.12);
+      --clay-card:
+        0 10px 22px rgba(59, 38, 24, 0.08),
+        0 3px 8px rgba(139, 90, 43, 0.06),
+        inset 0 4px 8px rgba(255, 255, 255, 0.92),
+        inset 0 -5px 10px rgba(139, 90, 43, 0.12);
+      --clay-chip:
+        0 6px 14px rgba(59, 38, 24, 0.07),
+        inset 0 3px 6px rgba(255, 255, 255, 0.95),
+        inset 0 -3px 7px rgba(139, 90, 43, 0.13);
+      --clay-pressed:
+        inset 0 4px 10px rgba(59, 38, 24, 0.18),
+        inset 0 -2px 5px rgba(255, 255, 255, 0.5);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,11 +67,11 @@
       display: block;
     }
 
-    /* Bingkai Putih Utama dengan Animasi Masuk & Ambient Shadow */
+    /* Claymorphism Main Frame */
     .main-wrapper {
       position: relative; z-index: 10; width: 94%; max-width: 1350px; height: 92vh;
-      background: var(--card-white); border: 1.5px solid var(--border-taupe);
-      border-radius: 32px; box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
+      background: var(--card-white); border: 2px solid rgba(255, 255, 255, 0.85);
+      border-radius: 36px; box-shadow: var(--clay-main);
       display: flex; flex-direction: column; justify-content: space-between;
       overflow: hidden; margin: auto;
       opacity: 0;
@@ -75,12 +94,14 @@
 
     @keyframes wrapperShadowBreath {
       0%, 100% {
-        box-shadow: 0 25px 65px rgba(59, 38, 24, 0.08);
-        border-color: var(--border-taupe);
+        box-shadow: var(--clay-main);
       }
       50% {
-        box-shadow: 0 30px 75px rgba(139, 90, 43, 0.13);
-        border-color: #d6c9ba;
+        box-shadow:
+          0 30px 65px rgba(139, 90, 43, 0.15),
+          0 10px 20px rgba(59, 38, 24, 0.08),
+          inset 0 6px 12px rgba(255, 255, 255, 0.98),
+          inset 0 -8px 16px rgba(139, 90, 43, 0.14);
       }
     }
 
@@ -97,15 +118,28 @@
 
     header.logo-nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 40px; border-bottom: 1px solid var(--border-taupe);
-      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); flex-shrink: 0;
+      padding: 18px 40px; border-bottom: 1.5px solid var(--border-taupe);
+      background: rgba(252, 249, 245, 0.92); backdrop-filter: blur(10px); flex-shrink: 0;
       z-index: 20; gap: 12px;
+      box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.9);
     }
     .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; }
-    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 4px; border-radius: 30px; border: 1.5px solid var(--border-taupe); flex-wrap: wrap; }
-    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: all 0.25s ease; }
-    nav a:hover { color: var(--brown-dark); background: #ffffff; }
-    nav a.active { background: #3b2618; color: #ffffff; }
+    nav {
+      display: flex; gap: 6px; background: var(--brown-light); padding: 5px; border-radius: 999px;
+      border: 1.5px solid rgba(255, 255, 255, 0.8); flex-wrap: wrap; box-shadow: var(--clay-chip);
+    }
+    nav a {
+      text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600;
+      padding: 6px 16px; border-radius: 999px; transition: all 0.25s ease;
+    }
+    nav a:hover {
+      color: var(--brown-dark); background: #ffffff;
+      box-shadow: 0 4px 10px rgba(59, 38, 24, 0.08), inset 0 2px 4px #ffffff;
+    }
+    nav a.active {
+      background: linear-gradient(145deg, #4d3220, #3b2618); color: #ffffff;
+      box-shadow: 0 6px 14px rgba(59, 38, 24, 0.22), inset 0 2px 4px rgba(255, 255, 255, 0.25);
+    }
 
     .page-content {
       padding: 25px 40px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; justify-content: center;
@@ -115,33 +149,49 @@
     .hero-left { display: flex; flex-direction: column; gap: 12px; }
     .subtitle-badge {
       font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--brown-primary);
-      text-transform: uppercase; letter-spacing: 2px; background: var(--brown-light); padding: 4px 10px;
-      border-radius: 20px; border: 1px solid var(--border-taupe); align-self: flex-start;
+      text-transform: uppercase; letter-spacing: 2px; background: var(--brown-light); padding: 5px 12px;
+      border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.85); align-self: flex-start;
+      box-shadow: var(--clay-chip);
     }
     .hero-left h1 {
       font-family: 'Instrument Serif', serif; font-size: 3.2rem; font-weight: 400; color: var(--brown-dark); line-height: 0.95; text-transform: lowercase;
     }
     .hero-left h1 span { display: block; color: var(--brown-primary); font-style: italic; }
     .professional-bio { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-    .pro-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 2px 0; }
+    .pro-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 2px 0; }
     .stat-card {
-      background: var(--brown-light); border: 1px solid var(--border-taupe); padding: 6px 8px; border-radius: 10px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      background: var(--brown-light); border: 1.5px solid rgba(255, 255, 255, 0.85); padding: 8px 10px; border-radius: 18px;
+      box-shadow: var(--clay-card);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-    .stat-card:hover { transform: translateY(-2px); border-color: var(--brown-primary); }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 14px 26px rgba(59, 38, 24, 0.11),
+        inset 0 4px 8px rgba(255, 255, 255, 0.96),
+        inset 0 -5px 10px rgba(139, 90, 43, 0.15);
+    }
     .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 800; color: var(--brown-dark); display: block; }
     .stat-label { font-size: 0.65rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
     .hero-btns { display: flex; gap: 10px; margin-top: 2px; flex-wrap: wrap; }
     .btn-primary {
-      background: var(--brown-dark); color: #fff; text-decoration: none; font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem; font-weight: 700; padding: 8px 18px; border-radius: 30px; transition: all 0.25s ease;
+      background: linear-gradient(145deg, #4e3321, #3b2618); color: #fff; text-decoration: none; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 700; padding: 9px 20px; border-radius: 999px; transition: all 0.25s ease;
+      box-shadow: 0 8px 18px rgba(59, 38, 24, 0.22), inset 0 3px 6px rgba(255, 255, 255, 0.25), inset 0 -4px 8px rgba(0, 0, 0, 0.25);
     }
-    .btn-primary:hover { background: var(--brown-primary); transform: translateY(-2px); }
+    .btn-primary:hover {
+      background: linear-gradient(145deg, #9d6834, #8b5a2b); transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(139, 90, 43, 0.28), inset 0 3px 6px rgba(255, 255, 255, 0.35), inset 0 -4px 8px rgba(59, 38, 24, 0.25);
+    }
     .btn-outline {
-      background: transparent; color: var(--brown-dark); text-decoration: none; font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem; font-weight: 700; padding: 8px 18px; border-radius: 30px; border: 1.5px solid var(--border-taupe); transition: all 0.25s ease;
+      background: var(--brown-light); color: var(--brown-dark); text-decoration: none; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 700; padding: 9px 20px; border-radius: 999px;
+      border: 1.5px solid rgba(255, 255, 255, 0.85); transition: all 0.25s ease; box-shadow: var(--clay-chip);
     }
-    .btn-outline:hover { border-color: var(--brown-dark); background: var(--brown-light); }
+    .btn-outline:hover {
+      background: #ffffff; transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(59, 38, 24, 0.1), inset 0 3px 6px #ffffff, inset 0 -4px 8px rgba(139, 90, 43, 0.12);
+    }
 
     .hero-right {
       display: flex;
@@ -150,11 +200,14 @@
       gap: 14px;
     }
     .profile-card-tilt {
-      width: 100%; max-width: 245px; background: var(--brown-light); border: 1.5px solid var(--border-taupe);
-      border-radius: 22px; padding: 10px; box-shadow: 0 12px 30px rgba(59, 38, 24, 0.08); transform: rotate(2deg); transition: transform 0.3s ease;
+      width: 100%; max-width: 245px; background: var(--brown-light); border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px; padding: 11px; box-shadow: var(--clay-card); transform: rotate(2deg); transition: transform 0.3s ease;
     }
     .profile-card-tilt:hover { transform: rotate(0deg) scale(1.02); }
-    .profile-img-box { width: 100%; height: 220px; border-radius: 14px; overflow: hidden; background: #e8dcd0; }
+    .profile-img-box {
+      width: 100%; height: 220px; border-radius: 18px; overflow: hidden; background: #e8dcd0;
+      box-shadow: inset 0 4px 10px rgba(59, 38, 24, 0.16);
+    }
     .profile-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .under-profile-tools {
@@ -164,18 +217,20 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       background: var(--brown-light);
-      border: 1px solid var(--border-taupe);
-      border-radius: 16px;
-      padding: 10px 12px;
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      border-radius: 22px;
+      padding: 12px 14px;
       text-align: left;
+      box-shadow: var(--clay-card);
     }
 
     /* Bahagian Tools dengan Interaksi & Animasi */
     .tools-section-shell {
       background: var(--brown-light);
-      border-top: 1px solid var(--border-taupe);
+      border-top: 1.5px solid var(--border-taupe);
       flex-shrink: 0;
       transition: background 0.3s ease;
+      box-shadow: inset 0 4px 10px rgba(255, 255, 255, 0.85);
     }
 
     .tools-container-wrapper {
@@ -227,7 +282,7 @@
 
     .tools-items-flex {
       display: flex;
-      gap: 6px;
+      gap: 7px;
       flex-wrap: wrap;
     }
 
@@ -236,16 +291,16 @@
       align-items: center;
       gap: 6px;
       background: #ffffff;
-      border: 1px solid var(--border-taupe);
-      padding: 5px 10px;
-      border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
+      padding: 6px 11px;
+      border-radius: 14px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.68rem;
       font-weight: 700;
       color: var(--brown-dark);
       cursor: pointer;
+      box-shadow: var(--clay-chip);
       transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  border-color 0.22s ease,
                   box-shadow 0.22s ease,
                   background-color 0.22s ease,
                   color 0.22s ease;
@@ -253,21 +308,24 @@
 
     .tool-chip:hover {
       transform: translateY(-3px) scale(1.03);
-      border-color: var(--brown-primary);
-      box-shadow: 0 6px 14px var(--accent-glow);
+      box-shadow:
+        0 9px 18px var(--accent-glow),
+        inset 0 3px 6px #ffffff,
+        inset 0 -4px 8px rgba(139, 90, 43, 0.16);
       background: #fffdfb;
     }
 
     .tool-chip:active {
-      transform: translateY(-1px) scale(0.98);
+      transform: translateY(0) scale(0.98);
+      box-shadow: var(--clay-pressed);
     }
 
     .tool-chip.selected {
-      background: var(--brown-dark);
+      background: linear-gradient(145deg, #4e3321, #3b2618);
       color: #ffffff;
-      border-color: var(--brown-dark);
+      border-color: rgba(255, 255, 255, 0.35);
       transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(59, 38, 24, 0.2);
+      box-shadow: 0 8px 18px rgba(59, 38, 24, 0.22), inset 0 2px 5px rgba(255, 255, 255, 0.25);
     }
 
     .tool-logo {
@@ -285,7 +343,7 @@
 
     /* Bar Status Interaktif di bawah Tools */
     .tool-inspector-bar {
-      padding: 6px 40px 12px;
+      padding: 6px 150px 12px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -303,36 +361,37 @@
     }
     .tool-badge-pill {
       background: #ffffff;
-      border: 1px solid var(--border-taupe);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
       color: var(--brown-primary);
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.63rem;
+      box-shadow: var(--clay-chip);
     }
     .tool-reset-btn {
-      background: transparent;
-      border: 1px solid var(--border-taupe);
+      background: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
       color: var(--brown-dark);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.62rem;
       font-weight: 700;
-      padding: 2px 9px;
+      padding: 3px 10px;
       border-radius: 999px;
       cursor: pointer;
+      box-shadow: var(--clay-chip);
       transition: all 0.2s ease;
     }
     .tool-reset-btn:hover {
       background: var(--brown-dark);
       color: #ffffff;
-      border-color: var(--brown-dark);
     }
 
-    /* Pure White Chibi Companion */
+    /* Clay Pure White Chibi Companion */
     .chibi-companion {
       position: fixed;
       right: 28px;
-      bottom: 64px;
+      bottom: 24px;
       z-index: 30;
       display: flex;
       flex-direction: column;
@@ -351,43 +410,48 @@
     .chibi-bubble {
       background: #ffffff;
       color: var(--brown-dark);
-      border: 1.5px solid var(--border-taupe);
-      box-shadow: 0 8px 20px rgba(59, 38, 24, 0.1);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--clay-chip);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.64rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
       white-space: nowrap;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.2s ease;
     }
 
     .chibi-companion:hover .chibi-bubble {
       transform: translateY(-2px);
-      border-color: var(--brown-primary);
     }
 
     .chibi-avatar-shell {
       width: 68px;
       height: 68px;
-      border-radius: 22px;
+      border-radius: 26px;
       background: #ffffff;
-      border: 1.5px solid var(--border-taupe);
-      box-shadow: 0 12px 26px rgba(59, 38, 24, 0.12);
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      box-shadow:
+        0 14px 28px rgba(59, 38, 24, 0.14),
+        inset 0 4px 8px rgba(255, 255, 255, 0.98),
+        inset 0 -6px 12px rgba(139, 90, 43, 0.14);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
     }
 
     .chibi-companion:hover .chibi-avatar-shell {
       transform: scale(1.07) rotate(-2deg);
-      border-color: var(--brown-primary);
-      box-shadow: 0 14px 30px var(--accent-glow);
+      box-shadow:
+        0 16px 32px var(--accent-glow),
+        inset 0 4px 8px rgba(255, 255, 255, 1),
+        inset 0 -6px 12px rgba(139, 90, 43, 0.18);
     }
 
     .chibi-companion:active .chibi-avatar-shell {
       transform: scale(0.95);
+      box-shadow: var(--clay-pressed);
     }
 
     .chibi-svg {
@@ -408,7 +472,7 @@
     }
 
     footer.footer-area {
-      padding: 12px 40px; border-top: 1px solid var(--border-taupe); background: #ffffff;
+      padding: 12px 40px; border-top: 1.5px solid var(--border-taupe); background: rgba(252, 249, 245, 0.95);
       display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); flex-shrink: 0; gap: 10px;
     }
     .footer-links { display: flex; gap: 12px; }
@@ -430,7 +494,7 @@
         width: 100%;
         height: auto;
         min-height: calc(100vh - 28px);
-        border-radius: 26px;
+        border-radius: 28px;
         overflow: visible;
       }
       header.logo-nav {
@@ -452,8 +516,8 @@
       .pro-stats-grid { text-align: left; }
       .under-profile-tools { max-width: 100%; }
       .tools-container-wrapper { grid-template-columns: repeat(2, 1fr); padding: 14px 24px 8px; }
-      .tool-inspector-bar { padding: 6px 24px 12px; flex-direction: column; align-items: flex-start; }
-      .chibi-companion { right: 18px; bottom: 18px; transform: scale(0.9); transform-origin: bottom right; }
+      .tool-inspector-bar { padding: 6px 120px 12px 24px; flex-direction: column; align-items: flex-start; }
+      .chibi-companion { right: 18px; bottom: 20px; transform: scale(0.9); transform-origin: bottom right; }
     }
 
     /* Phone Breakpoint (up to 640px) */
@@ -463,7 +527,7 @@
       }
       .main-wrapper {
         width: 100%;
-        border-radius: 20px;
+        border-radius: 22px;
         min-height: calc(100vh - 20px);
       }
       header.logo-nav {
@@ -478,7 +542,7 @@
         width: 100%;
         max-width: 100%;
         justify-content: center;
-        border-radius: 16px;
+        border-radius: 18px;
         gap: 4px;
         padding: 4px;
       }
@@ -524,15 +588,15 @@
         gap: 12px;
       }
       .tool-inspector-bar {
-        padding: 6px 14px 84px;
+        padding: 6px 96px 84px 14px;
       }
       .chibi-companion {
-        right: 10px;
-        bottom: 12px;
+        right: 12px;
+        bottom: 16px;
         transform: scale(0.72);
         transform-origin: bottom right;
       }
-      .chibi-avatar-shell { width: 58px; height: 58px; border-radius: 18px; }
+      .chibi-avatar-shell { width: 58px; height: 58px; border-radius: 20px; }
       .chibi-svg { width: 48px; height: 48px; }
       footer.footer-area {
         padding: 14px;
