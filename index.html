@@ -101,9 +101,13 @@
       background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); flex-shrink: 0;
       z-index: 20;
     }
-    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; }
-    nav { display: flex; gap: 6px; background: var(--brown-light); padding: 4px; border-radius: 30px; border: 1.5px solid var(--border-taupe); }
-    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: all 0.25s ease; }
+    .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 800; color: var(--brown-primary); letter-spacing: 1px; text-align: center; }
+    nav {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;
+      background: var(--brown-light); padding: 4px; border-radius: 30px;
+      border: 1.5px solid var(--border-taupe); max-width: 100%;
+    }
+    nav a { text-decoration: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: all 0.25s ease; white-space: nowrap; }
     nav a:hover { color: var(--brown-dark); background: #ffffff; }
     nav a.active { background: #3b2618; color: #ffffff; }
     
@@ -447,7 +451,7 @@
     
     @media (max-width: 1050px) {
       body { overflow: auto; height: auto; }
-      .main-wrapper { height: auto; }
+      .main-wrapper { height: auto; width: 96%; }
       .hero-split { grid-template-columns: 1fr; text-align: center; }
       .subtitle-badge { align-self: center; }
       .hero-btns { justify-content: center; }
@@ -458,7 +462,9 @@
       .chibi-companion { right: 16px; bottom: 56px; }
       .chibi-avatar-shell { width: 58px; height: 58px; border-radius: 18px; }
       .chibi-svg { width: 48px; height: 48px; }
-      header.logo-nav { flex-direction: column; gap: 10px; padding: 15px; }
+      header.logo-nav { flex-direction: column; gap: 10px; padding: 14px 16px; }
+      nav { border-radius: 20px; padding: 4px; gap: 4px; }
+      nav a { padding: 5px 11px; font-size: 0.75rem; }
     }
   </style>
 </head>
